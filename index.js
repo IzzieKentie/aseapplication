@@ -104,8 +104,14 @@ app.post('/', ifLoggedin, [
       }
       response.end();
   });
-});*/
+});
 
 const port = process.env.PORT || 1337;
 server.listen(port);
-console.log("Server running at http://localhost:%d", port); 
+console.log("Server running at http://localhost:%d", port); */
+
+app.use('/', (req,res) => {
+    res.status(404).send('<h1>404 Page Not Found!</h1>');
+});
+
+app.listen(3000, () => console.log("Server is Running..."));
