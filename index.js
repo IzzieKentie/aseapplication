@@ -1,6 +1,6 @@
 const http = require('http');
 const fs = require('fs');
-const dbConnection = require('public/db.js');
+const dbConnection = require('public/db');
 
 const server = http.createServer((request, response) => {
     response.writeHead(200, {"Content-Type": "text/html"});
