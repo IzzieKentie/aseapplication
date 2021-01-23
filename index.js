@@ -15,14 +15,14 @@ app.set('view engine','ejs');
 
 const ifNotLoggedin = (req, res, next) => {
     if(!req.session.isLoggedIn){
-        return res.render('login');
+        return res.render('/login');
     }
     next();
 }
 
 const ifLoggedin = (req,res,next) => {
     if(req.session.isLoggedIn){
-        return res.redirect('home');
+        return res.redirect('/home');
     }
     next();
 }
