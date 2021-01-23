@@ -28,7 +28,7 @@ const ifNotLoggedin = (req, res, next) => {
 
 const ifLoggedin = (req,res,next) => {
     if(req.session.isLoggedIn){
-        return res.redirect('/home');
+        return res.redirect('public/home.ejs');
     }
    next();
 }
@@ -66,7 +66,7 @@ app.post('/', ifLoggedin, [
                 if(compare_result = true){
                     req.session.isLoggedIn = true;
                     req.session.userID = rows[0].ID;
-                    res.redirect('/home');
+                    res.redirect('public/home.ejs');
                 }
                 else{
                     res.render('public/login.ejs',{
