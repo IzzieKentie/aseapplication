@@ -1,5 +1,26 @@
 body {margin: 0;}
 
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  background-color: DodgerBlue;
+}
+
+.flex-container > div {
+  width: 15%;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ffffff;
+  font-family: "Ubuntu";
+  margin-top: 1%;
+}
+
 ul.topnav {
   list-style-type: none;
   margin: 0;
