@@ -42,6 +42,59 @@ app.get('/', ifNotLoggedin, (req,res,next) => {
     });
     
 });
+
+app.post('/', ifLoggedin, [
+    body('user').custom((value) => {
+        return dbConnection.execute('SELECT `username` FROM `ase_team` WHERE `username`=?', [value])
+        .then(([rows]) => {
+            if(rows.length == 1){
+                return true;
+                
+            }
+            return Promise.reject('Invalid Username');
+            
+        });
+    }),
+    body('pass','Password is empty!').trim().not().isEmpty(),
+], (req, res) => {
+    const validation_result = validationResult(req);
+    const {pass, user} = req.body;
+    if(validation_result.isEmpty()){
+        
+        dbConnection.execute("SELECT * FROM `ase_team` WHERE `username`=?",[user_email])
+        .then(([rows]) => {
+            bcrypt.compare(pass, rows[0].password).then(compare_result => {
+                if(compare_result === true){
+                    req.session.isLoggedIn = true;
+                    req.session.userID = rows[0].id;
+
+                    res.redirect('/');
+                }
+                else{
+                    res.render('login',{
+                        login_errors:['Invalid Password!']
+                    });
+                }
+            })
+            .catch(err => {
+                if (err) throw err;
+            });
+
+
+        }).catch(err => {
+            if (err) throw err;
+        });
+    }
+    else{
+        let allErrors = validation_result.errors.map((error) => {
+            return error.msg;
+        });
+        // REDERING login-register PAGE WITH LOGIN VALIDATION ERRORS
+        res.render('login-register',{
+            login_errors:allErrors
+        });
+    }
+});
 /*
 const server = http.createServer((request, response) => {
     response.writeHead(200, {"Content-Type": "text/html"});
