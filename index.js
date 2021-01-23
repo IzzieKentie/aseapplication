@@ -90,7 +90,7 @@ app.post('/', ifLoggedin, [
             return error.msg;
         });
         // REDERING login-register PAGE WITH LOGIN VALIDATION ERRORS
-        res.render('login-register',{
+        res.render('login',{
             login_errors:allErrors
         });
     }
