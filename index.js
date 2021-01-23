@@ -1,6 +1,6 @@
 const http = require('http');
 const fs = require('fs');
-const dbConnection = require('./db');
+const conn = require('./db');
 const express = require('express');
 const path = require('path');
 const cookieSession = require('cookie-session');
@@ -34,8 +34,7 @@ const ifLoggedin = (req,res,next) => {
 }
 
 app.get('/', ifNotLoggedin, (req,res,next) => {
-    dbConnection.execute("SELECT `username` FROM `ase_team` WHERE `id`=?",[req.session.userID])
-    .then(([rows]) => {
+    conn.execute("SELECT `username` FROM `ase_team` WHERE `id`=?",[req.session.userID]).then(([rows]) => {
         res.render('home',{
             name:rows[0].name
         });
@@ -45,8 +44,7 @@ app.get('/', ifNotLoggedin, (req,res,next) => {
 
 app.post('/', ifLoggedin, [
     body('user').custom((value) => {
-        return dbConnection.execute('SELECT `username` FROM `ase_team` WHERE `username`=?', [value])
-        .then(([rows]) => {
+        return conn.execute('SELECT `username` FROM `ase_team` WHERE `username`=?', [value]).then(([rows]) => {
             if(rows.length == 1){
                 return true;
                 
@@ -61,8 +59,7 @@ app.post('/', ifLoggedin, [
     const {pass, user} = req.body;
     if(validation_result.isEmpty()){
         
-        dbConnection.execute("SELECT * FROM `ase_team` WHERE `username`=?",[user])
-        .then(([rows]) => {
+        conn.execute("SELECT * FROM `ase_team` WHERE `username`=?",[user]).then(([rows]) => {
             bcrypt.compare(pass, rows[0].password).then(compare_result => {
                 if(compare_result === true){
                     req.session.isLoggedIn = true;
