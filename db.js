@@ -1,15 +1,8 @@
-const mysql=require('mysql');
+const mysql=require('mysql2');
  const conn=mysql.createConnection({
    host:'asefypapplication.mysql.database.azure.com',
    user:'izziefyp',
    password:'012414@Kent',
    database:'ase_application'
- });
-conn.connect(function(error){
-   if(!!error){
-     console.log(error);
-   }else{
-     console.log('Connected!:)');
-   }
- });  
+ }).promise();
 module.exports = connection; 
