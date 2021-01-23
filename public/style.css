@@ -11,6 +11,14 @@ ul.topnav {
 
 ul.topnav li {float: left;}
 
+ul.topnav li.center {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 ul.topnav li a {
   display: block;
   color: black;
