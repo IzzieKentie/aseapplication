@@ -50,7 +50,7 @@ ul.topnav li.right {float: right;
 .flex-container-top {
   display: flex;
   flex-direction: row;
-  margin-top: 2%;
+  margin-top: 3%;
   height: 10%;
 }
 .flex-container-bottom {
@@ -60,7 +60,7 @@ ul.topnav li.right {float: right;
 }
 
 .flex-item-40-black {
-  background-color: #000000;
+  background-color: #0A8FC0;
   padding: 10px;
   flex: 40%;
   height: 200px;
@@ -82,6 +82,7 @@ ul.topnav li.right {float: right;
 
 .flex-item-20-black {
   background-color: #000000;
+  color: white;
   padding: 10px;
   flex: 20%;
   height: 200px;
