@@ -1,4 +1,4 @@
-/*const http = require('http');
+const http = require('http');
 const fs = require('fs');
 const express = require('express');
 const path = require('path');
@@ -91,7 +91,7 @@ app.post('/', ifLoggedin, [
     }
 });
 // END OF LOGIN PAGE
-*/
+/*
 
 const http = require('http');
 const fs = require('fs');
@@ -108,7 +108,7 @@ const server = http.createServer((request, response) => {
       response.end();
   });
 });
-
+*/
 const port = process.env.PORT || 1337;
 server.listen(port);
 console.log("Server running at http://localhost:%d", port); 
