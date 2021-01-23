@@ -1,34 +1,47 @@
 body {margin: 0;}
 
-.topbar-center-logo {
-  background: #2c3840;
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ffffff;
+  font-family: "Ubuntu";
+  margin-top: 1%;
+
 }
 
-.topbar-center-logo .menu {
-  background: #2c3840;
+ul.topnav li {float: left;}
+
+.center {
+  display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 1%;
 }
 
-.topbar-center-logo .menu a {
-  color: #fefefe;
+ul.topnav li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border-bottom: 3px solid #ffffff;
 }
 
-.topbar-center-logo .top-bar-center {
-  -webkit-flex: 1 0 auto;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
+ul.topnav li a:hover:not(.active) {
+  border-bottom: 3px solid #0070AD;
+}
+
+ul.topnav li a.active {
+  border-bottom: 3px solid #0070AD;
+}
+
+ul.topnav li.right {float: right;
 }
 
 @media screen and (max-width: 600px) {
-  .topbar-center-logo .top-bar-center {
-    display: none;
-  }
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
 }
-
-.topbar-center-logo-mobile {
-  background: #2c3840;
-}
-
-.topbar-center-logo-mobile .menu-icon {
-  vertical-align: text-top;
-}
-
