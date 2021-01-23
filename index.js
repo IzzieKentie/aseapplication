@@ -23,24 +23,25 @@ const ifNotLoggedin = (req, res, next) => {
     if(!req.session.isLoggedIn){
         return res.render('login');
     }
-    next();
+   next();
 }
 
 const ifLoggedin = (req,res,next) => {
     if(req.session.isLoggedIn){
         return res.redirect('/home');
     }
-    next();
+   next();
 }
 
 app.get('/', ifNotLoggedin, (req,res,next) => {
-    conn.execute("SELECT `username` FROM `ase_team` WHERE `id`=?",[req.session.userID]).then(([rows]) => {
+    conn.execute("SELECT `username` FROM `ase_team` WHERE `ID`=?",[req.session.userID]).then(([rows]) => {
         res.render('home',{
             name:rows[0].name
         });
-    });
+
+    }).catch(e => { console.log(e) });
     
-});
+}); 
 
 app.post('/', ifLoggedin, [
     body('user').custom((value) => {
@@ -49,9 +50,10 @@ app.post('/', ifLoggedin, [
                 return true;
                 
             }
-            return Promise.reject('Invalid Username');
+
+           return Promise.reject('Invalid Username');
             
-        });
+        })
     }),
     body('pass','Password is empty!').trim().not().isEmpty(),
 ], (req, res) => {
@@ -63,8 +65,8 @@ app.post('/', ifLoggedin, [
             bcrypt.compare(pass.toString(), rows[0].password.toString()).then(compare_result => {
                 if(compare_result = true){
                     req.session.isLoggedIn = true;
-                    req.session.userID = rows[0].id;
-                    res.redirect('public/home.ejs');
+                    req.session.userID = rows[0].ID;
+                    res.redirect('/home');
                 }
                 else{
                     res.render('public/login.ejs',{
