@@ -7,6 +7,8 @@ ul.topnav {
   overflow: hidden;
   background-color: #ffffff;
   font-family: "Ubuntu";
+  top: 5%;
+
 }
 
 ul.topnav li {float: left;}
@@ -36,7 +38,8 @@ ul.topnav li a.active {
   border-bottom: 3px solid #0070AD;
 }
 
-ul.topnav li.right {float: right;}
+ul.topnav li.right {float: right;
+}
 
 @media screen and (max-width: 600px) {
   ul.topnav li.right, 
