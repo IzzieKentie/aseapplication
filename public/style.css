@@ -16,8 +16,7 @@ ul.topnav li {float: left;}
 ul.topnav li.center {
     position: absolute;
     left: 50%;
-    margin-left: -50px !important;  
-    display: block;
+    transform: translateX(-50%);
     top: 1%;
 }
 
