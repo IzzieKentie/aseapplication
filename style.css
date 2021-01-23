@@ -7,8 +7,7 @@ ul.topnav {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: white;
-  font-family: ubuntu;
+  background-color: #fff;
 }
 
 ul.topnav li {float: left;}
