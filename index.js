@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const server = http.createServer((request, response) => {
     response.writeHead(200, {"Content-Type": "text/html"});
-    fs.readFile('public/home.html', null, function (error, data) {
+    fs.readFile('public/home.ejs', null, function (error, data) {
       if (error) {
           response.writeHead(404);
           respone.write('Whoops! File not found!');
