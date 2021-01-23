@@ -61,7 +61,7 @@ app.post('/', ifLoggedin, [
     const {pass, user} = req.body;
     if(validation_result.isEmpty()){
         
-        dbConnection.execute("SELECT * FROM `ase_team` WHERE `username`=?",[user_email])
+        dbConnection.execute("SELECT * FROM `ase_team` WHERE `username`=?",[user])
         .then(([rows]) => {
             bcrypt.compare(pass, rows[0].password).then(compare_result => {
                 if(compare_result === true){
