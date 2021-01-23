@@ -21,7 +21,10 @@ ul.topnav li a {
 
 ul.topnav li a:hover:not(.active) {background-color: #0070AD;}
 
-ul.topnav li a.active {background-color: #0070AD;}
+ul.topnav li a.active {
+  background-color: #0070AD;
+  color: white;
+}
 
 ul.topnav li.right {float: right;}
 
