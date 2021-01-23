@@ -7,14 +7,13 @@ ul.topnav {
   overflow: hidden;
   background-color: #ffffff;
   font-family: "Ubuntu";
-  text-colour: #000000;
 }
 
 ul.topnav li {float: left;}
 
 ul.topnav li a {
   display: block;
-  color: white;
+  color: black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
