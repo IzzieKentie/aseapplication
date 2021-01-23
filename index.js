@@ -1,4 +1,4 @@
-const http = require('http');
+/*const http = require('http');
 const fs = require('fs');
 const express = require('express');
 const path = require('path');
@@ -27,7 +27,7 @@ const ifLoggedin = (req,res,next) => {
     next();
 }
 
-/*app.get('/', ifNotLoggedin, (req,res,next) => {
+app.get('/', ifNotLoggedin, (req,res,next) => {
     dbConnection.execute("SELECT `name` FROM `users` WHERE `id`=?",[req.session.userID])
     .then(([rows]) => {
         res.render('home',{
@@ -91,9 +91,12 @@ app.post('/', ifLoggedin, [
     }
 });
 // END OF LOGIN PAGE
+*/
 
+const http = require('http');
+const fs = require('fs');
 
-/*const server = http.createServer((request, response) => {
+const server = http.createServer((request, response) => {
     response.writeHead(200, {"Content-Type": "text/html"});
     fs.readFile('public/home.ejs', null, function (error, data) {
       if (error) {
@@ -108,10 +111,11 @@ app.post('/', ifLoggedin, [
 
 const port = process.env.PORT || 1337;
 server.listen(port);
-console.log("Server running at http://localhost:%d", port); */
+console.log("Server running at http://localhost:%d", port); 
 
+/*
 app.use('/', (req,res) => {
     res.status(404).send('<h1>404 Page Not Found!</h1>');
 });
 
-app.listen(3000, () => console.log("Server is Running..."));
+app.listen(3000, () => console.log("Server is Running..."));*/
