@@ -61,7 +61,6 @@ ul.topnav li.right {float: right;
 
 .flex-item-40-black {
   background-color: #0A8FC0;
-  padding: 10px;
   flex: 40%;
   height: 200px;
   text-align: center;
@@ -69,14 +68,12 @@ ul.topnav li.right {float: right;
 
 .flex-item-40-blue {
   background-color: #0070AD;
-  padding: 10px;
   flex: 40%;
   height: 200px;
 }
 
 .flex-item-20-blue {
   background-color: #0070AD;
-  padding: 10px;
   flex: 20%;
   height: 200px;
   text-align: center;
@@ -86,7 +83,6 @@ ul.topnav li.right {float: right;
   background-color: #000000;
   color: white;
   text-align: center;
-  padding: 10px;
   flex: 20%;
   height: 200px;
 }
@@ -95,7 +91,6 @@ ul.topnav li.right {float: right;
   background-color: #002B6E;
   color: black;
   text-align: center;
-  padding: 10px;
   flex: 20%;
   height: 200px;
 }
