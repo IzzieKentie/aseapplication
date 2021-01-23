@@ -9,8 +9,10 @@ ul.topnav {
   font-family: "Ubuntu";
 }
 
-.logo {
-  text-align: center;
+ul.topnav li.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 ul.topnav li {float: left;}
