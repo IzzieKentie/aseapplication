@@ -1,5 +1,5 @@
 const mysql=require('mysql2');
- const conn=mysql.createConnection({
+ const conn=mysql.createPool({
    host:"asefypapplication.mysql.database.azure.com",
    user:"izziefyp@asefypapplication",
    password:"012414@Kent"
