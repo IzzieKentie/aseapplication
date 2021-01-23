@@ -43,9 +43,15 @@ ul.topnav li a.active {
 ul.topnav li.right {float: right;
 }
 
-.flex-container {
+.flex-container-top {
   display: flex;
   flex-direction: row;
+  padding-left: 5%;
+}
+.flex-container-bottom {
+  display: flex;
+  flex-direction: row;
+  padding-left: ;
 }
 
 .flex-item-4 {
