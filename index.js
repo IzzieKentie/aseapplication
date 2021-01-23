@@ -95,7 +95,7 @@ app.post('/', ifLoggedin, [
 
 const http = require('http');
 const fs = require('fs');
-
+*/
 const server = http.createServer((request, response) => {
     response.writeHead(200, {"Content-Type": "text/html"});
     fs.readFile('public/home.ejs', null, function (error, data) {
@@ -110,12 +110,12 @@ const server = http.createServer((request, response) => {
 });
 
 const port = process.env.PORT || 1337;
-app.listen(port);
+server.listen(port);
 console.log("Server running at http://localhost:%d", port); 
-*/
 
+/*
 app.use('/', (req,res) => {
     res.status(404).send('<h1>404 Page Not Found!</h1>');
 });
 
-app.listen(3000, () => console.log("Server is Running..."));
+app.listen(3000, () => console.log("Server is Running..."));*/
