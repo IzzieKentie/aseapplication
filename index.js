@@ -27,7 +27,7 @@ const ifLoggedin = (req,res,next) => {
     next();
 }
 
-app.get('/', ifNotLoggedin, (req,res,next) => {
+/*app.get('/', ifNotLoggedin, (req,res,next) => {
     dbConnection.execute("SELECT `name` FROM `users` WHERE `id`=?",[req.session.userID])
     .then(([rows]) => {
         res.render('home',{
