@@ -60,16 +60,18 @@ app.post('/', ifLoggedin, [
     if(validation_result.isEmpty()){
         
         conn.execute("SELECT * FROM `ase_team` WHERE `username`=?",[user]).then(([rows]) => {
-            bcrypt.compare(pass, rows[0].password).then(compare_result => {
-                if(compare_result === true){
+            bcrypt.compare(pass.toString(), rows[0].password.toString()).then(compare_result => {
+                if(compare_result = true){
                     req.session.isLoggedIn = true;
                     req.session.userID = rows[0].id;
-
-                    res.redirect('/');
+                    res.redirect('public/home.ejs');
                 }
                 else{
-                    res.render('login',{
+                        console.log(pass);
+                        console.log(rows[0].password);
+                    res.render('public/login.ejs',{
                         login_errors:['Invalid Password!']
+
                     });
                 }
             })
