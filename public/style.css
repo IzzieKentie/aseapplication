@@ -1,41 +1,36 @@
 body {margin: 0;}
 
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  background-color: DodgerBlue;
+
+
+.topbar-center-logo {
+  background: #2c3840;
 }
 
-.flex-container > div {
-  width: 15%;
-  margin: 10px;
-  text-align: center;
-  line-height: 75px;
-  font-size: 30px;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #ffffff;
-  font-family: "Ubuntu";
-  display: block;
-  color: black;
-  padding: 14px 16px;
-  text-decoration: none;
-  border-bottom: 3px solid #ffffff;
+.topbar-center-logo .menu {
+  background: #2c3840;
 }
 
-flex-container.a:hover:not(.active) {
-  border-bottom: 3px solid #0070AD;
+.topbar-center-logo .menu a {
+  color: #fefefe;
 }
 
-flex-container.a.active {
-  border-bottom: 3px solid #0070AD;
+.topbar-center-logo .top-bar-center {
+  -webkit-flex: 1 0 auto;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
 }
 
-ul.topnav li.right {float: right;
+@media screen and (max-width: 39.9375em) {
+  .topbar-center-logo .top-bar-center {
+    display: none;
+  }
 }
 
-@media screen and (max-width: 600px) {
-  flex-container {float: none;}
+.topbar-center-logo-mobile {
+  background: #2c3840;
 }
+
+.topbar-center-logo-mobile .menu-icon {
+  vertical-align: text-top;
+}
+
