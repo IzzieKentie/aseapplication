@@ -1,5 +1,9 @@
 body {margin: 0;}
 
+h1 {
+  font-family: "Ubuntu";
+}
+
 ul.topnav {
   list-style-type: none;
   margin: 0;
