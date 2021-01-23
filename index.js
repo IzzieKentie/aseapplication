@@ -1,5 +1,11 @@
 const http = require('http');
 const fs = require('fs');
+const express = require('express');
+const dbConnection = require('db.js');
+
+const app = express();
+app.use(express.urlencoded({extended:false}));
+
 
 const server = http.createServer((request, response) => {
     response.writeHead(200, {"Content-Type": "text/html"});
