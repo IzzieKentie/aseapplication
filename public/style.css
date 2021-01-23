@@ -21,7 +21,7 @@ ul.topnav li a {
 }
 
 ul.topnav li a:hover:not(.active) {
-  border-bottom: 3px solid #ffffff;
+  border-bottom: 3px solid #0070AD;
 }
 
 ul.topnav li a.active {
