@@ -14,8 +14,9 @@ ul.topnav li {float: left;}
 ul.topnav li.center {
     position: absolute;
     left: 50%;
-    margin-left: -50px !important;  /* 50% of your logo width */
+    margin-left: -50px !important;  
     display: block;
+    top: 1%;
 }
 
 ul.topnav li a {
