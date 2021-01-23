@@ -8,7 +8,7 @@ const server = http.createServer((request, response) => {
           response.writeHead(404);
           respone.write('Whoops! File not found!');
       } else {
-          response.write('Hi there');
+          response.write(data);
       }
       response.end();
   });
