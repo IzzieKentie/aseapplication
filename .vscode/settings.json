@@ -1,4 +1,4 @@
 {
-    "appService.defaultWebAppToDeploy": "/subscriptions/e6131622-7c81-40a8-a626-c18503389a7b/resourceGroups/ASEApplication/providers/Microsoft.Web/sites/ASEApplication",
-    "appService.deploySubpath": "."
+    "appService.deploySubpath": ".",
+    "appService.defaultWebAppToDeploy": "/subscriptions/e6131622-7c81-40a8-a626-c18503389a7b/resourceGroups/ASEApplication/providers/Microsoft.Web/sites/aseapplication"
 }
