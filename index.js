@@ -67,11 +67,8 @@ app.post('/', ifLoggedin, [
                     res.redirect('public/home.ejs');
                 }
                 else{
-                        console.log(pass);
-                        console.log(rows[0].password);
                     res.render('public/login.ejs',{
-                        login_errors:['Invalid Password!']
-
+                    login_errors:['Invalid Password!']
                     });
                 }
             })
