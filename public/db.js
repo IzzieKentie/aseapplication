@@ -4,4 +4,4 @@ const mysql=require('mysql2');
    user:"izziefyp@asefypapplication",
    password:"012414@Kent"
  }).promise();
-module.exports = dbConnection;
+module.exports = conn;
