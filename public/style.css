@@ -21,28 +21,7 @@ body {margin: 0;}
   margin-top: 1%;
 }
 
-ul.topnav {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #ffffff;
-  font-family: "Ubuntu";
-  margin-top: 1%;
-
-}
-
-ul.topnav li {float: left;}
-
-.center {
-  display: block;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 1%;
-}
-
-ul.topnav li a {
+flex-container.a {
   display: block;
   color: black;
   text-align: center;
@@ -51,11 +30,11 @@ ul.topnav li a {
   border-bottom: 3px solid #ffffff;
 }
 
-ul.topnav li a:hover:not(.active) {
+flex-container.a:hover:not(.active) {
   border-bottom: 3px solid #0070AD;
 }
 
-ul.topnav li a.active {
+flex-container.a.active {
   border-bottom: 3px solid #0070AD;
 }
 
