@@ -66,7 +66,7 @@ app.post('/', ifLoggedin, [
                 if(compare_result = true){
                     req.session.isLoggedIn = true;
                     req.session.userID = rows[0].ID;
-                    res.redirect('/home');
+                    return res.redirect('/home');
                 }
                 else{
                     res.render('login',{
