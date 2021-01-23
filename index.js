@@ -42,7 +42,7 @@ app.get('/', ifNotLoggedin, (req,res,next) => {
     });
     
 });
-
+/*
 const server = http.createServer((request, response) => {
     response.writeHead(200, {"Content-Type": "text/html"});
     fs.readFile('public/home.ejs', null, function (error, data) {
@@ -54,8 +54,9 @@ const server = http.createServer((request, response) => {
       }
       response.end();
   });
-});
+});*/
 
 const port = process.env.PORT || 1337;
-server.listen(port);
+app.listen(port);
 console.log("Server running at http://localhost:%d", port); 
+
