@@ -51,7 +51,7 @@ ul.topnav li.right {float: right;
 .flex-container-bottom {
   display: flex;
   flex-direction: row;
-  padding-left: ;
+  padding-left: 0%;
 }
 
 .flex-item-4 {
