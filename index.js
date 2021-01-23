@@ -34,7 +34,7 @@ const ifLoggedin = (req,res,next) => {
 }
 
 app.get('/', ifNotLoggedin, (req,res,next) => {
-    dbConnection.execute("SELECT `username` FROM `ase_team` WHERE `id`=?",[req.session.userID])
+    dbConnection.query("SELECT `username` FROM `ase_team` WHERE `id`=?",[req.session.userID])
     .then(([rows]) => {
         res.render('home',{
             name:rows[0].name
@@ -45,7 +45,7 @@ app.get('/', ifNotLoggedin, (req,res,next) => {
 
 app.post('/', ifLoggedin, [
     body('user').custom((value) => {
-        return dbConnection.execute('SELECT `username` FROM `ase_team` WHERE `username`=?', [value])
+        return dbConnection.query('SELECT `username` FROM `ase_team` WHERE `username`=?', [value])
         .then(([rows]) => {
             if(rows.length == 1){
                 return true;
