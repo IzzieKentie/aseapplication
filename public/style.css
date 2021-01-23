@@ -46,7 +46,7 @@ ul.topnav li.right {float: right;
 .flex-container-top {
   display: flex;
   flex-direction: row;
-  padding-left: 10%;
+  padding-left: 0%;
 }
 .flex-container-bottom {
   display: flex;
@@ -54,8 +54,26 @@ ul.topnav li.right {float: right;
   padding-left: 0%;
 }
 
-.flex-item-4 {
-  background-color: #f1f1f1;
+.flex-item-40-black {
+  background-color: #000000;
+  padding: 10px;
+  flex: 40%;
+}
+
+.flex-item-40-blue {
+  background-color: #0070AD;
+  padding: 10px;
+  flex: 40%;
+}
+
+.flex-item-20-blue {
+  background-color: #0070AD;
+  padding: 10px;
+  flex: 20%;
+}
+
+.flex-item-20-black {
+  background-color: #000000;
   padding: 10px;
   flex: 20%;
 }
