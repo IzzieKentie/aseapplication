@@ -36,7 +36,7 @@ app.get('/', ifNotLoggedin, (req,res,next) => {
     });
     
 });
-
+/*
 // LOGIN PAGE
 app.post('/', ifLoggedin, [
     body('user').custom((value) => {
@@ -91,7 +91,7 @@ app.post('/', ifLoggedin, [
     }
 });
 // END OF LOGIN PAGE
-/*
+
 
 const http = require('http');
 const fs = require('fs');
@@ -110,7 +110,7 @@ const server = http.createServer((request, response) => {
 });
 */
 const port = process.env.PORT || 1337;
-server.listen(port);
+app.listen(port);
 console.log("Server running at http://localhost:%d", port); 
 
 /*
