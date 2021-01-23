@@ -43,7 +43,21 @@ ul.topnav li a.active {
 ul.topnav li.right {float: right;
 }
 
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-item-4 {
+  background-color: #f1f1f1;
+  padding: 10px;
+  flex: 25%;
+}
+
 @media screen and (max-width: 600px) {
   ul.topnav li.right, 
   ul.topnav li {float: none;}
+    .flex-container {
+    flex-direction: column;
+  }
 }
