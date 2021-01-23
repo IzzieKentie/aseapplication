@@ -12,7 +12,7 @@ app.use(express.urlencoded({extended:false}));
 
 app.set('views', path.join(__dirname,'public'));
 app.set('view engine','ejs');
-
+/*
 const ifNotLoggedin = (req, res, next) => {
     if(!req.session.isLoggedIn){
         return res.render('/login');
@@ -36,7 +36,7 @@ app.get('/', ifNotLoggedin, (req,res,next) => {
     });
     
 });
-/*
+
 // LOGIN PAGE
 app.post('/', ifLoggedin, [
     body('user').custom((value) => {
