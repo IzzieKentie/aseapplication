@@ -33,10 +33,8 @@ const ifLoggedin = (req,res,next) => {
     next();
 }
 
-const db = await dbConnection.getConnection();
-
 app.get('/', ifNotLoggedin, (req,res,next) => {
-    await db.execute("SELECT `username` FROM `ase_team` WHERE `id`=?",[req.session.userID])
+    db.execute("SELECT `username` FROM `ase_team` WHERE `id`=?",[req.session.userID])
     .then(([rows]) => {
         res.render('home',{
             name:rows[0].name
@@ -63,7 +61,7 @@ app.post('/', ifLoggedin, [
     const {pass, user} = req.body;
     if(validation_result.isEmpty()){
         
-        await db.execute("SELECT * FROM `ase_team` WHERE `username`=?",[user])
+        db.execute("SELECT * FROM `ase_team` WHERE `username`=?",[user])
         .then(([rows]) => {
             bcrypt.compare(pass, rows[0].password).then(compare_result => {
                 if(compare_result === true){
