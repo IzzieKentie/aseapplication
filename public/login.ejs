@@ -14,16 +14,19 @@
 <div class="flex-container-login">
 <form method="post" action="">
 	<label for="user">Username:</label>
+	    <br>
     <input type="text" id="user" name="user">
     <br>
         <br>
     	<label for="pass">Password:</label>
+    	    <br>
     <input type="text" id="pass" name="pass">
     <% if (locals.login_errors) { 
         login_errors.forEach(function(error_msg){ %>
     	<div class="alert alert-danger" role="alert"><%= error_msg %></div>
         <% });
     } %>
+    <br>
     <br>
     <input type="submit" value="Submit">
 </form>
