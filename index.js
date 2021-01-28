@@ -4,7 +4,6 @@ const conn = require('./db');
 const express = require('express');
 const path = require('path');
 const cookieSession = require('cookie-session');
-const bcrypt = require('bcrypt');
 const { body, validationResult } = require('express-validator');
 
 const app = express();
@@ -38,7 +37,7 @@ app.get('/logout',(req,res)=>{
     res.render('login');
 });
 
-app.get('/', ifNotLoggedin, (req,res,next) => {
+/*app.get('/', ifNotLoggedin, (req,res,next) => {
     conn.execute("SELECT `username` FROM `ase_team` WHERE `ID`=?",[req.session.userID]).then(([rows]) => {
         res.render('home',{
             name:rows[0].name
@@ -46,7 +45,7 @@ app.get('/', ifNotLoggedin, (req,res,next) => {
 
     }).catch(e => { console.log(e) });
     
-}); 
+}); */
 
 app.post('/', ifLoggedin, [
     body('user').custom((value) => {
