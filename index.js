@@ -61,8 +61,8 @@ app.post('/', ifLoggedin, [
     const {pass, user} = req.body;
     if(validation_result.isEmpty()){
         conn.execute("SELECT * FROM `ase_team` WHERE `username`=?",[user]).then(([rows]) => {
-            compare(pass.toString(), rows[0].password.toString()).then(compare_result => {
-                if(compare_result === true){
+           // compare(pass.toString(), rows[0].password.toString()).then(compare_result => {
+                if(pass.toString().trim() === rows[0].password.toString().trim()){
                     req.session.isLoggedIn = true;
                     req.session.userID = rows[0].ID;
                     res.render('home');
@@ -72,10 +72,10 @@ app.post('/', ifLoggedin, [
                     login_errors:['Invalid Password!']
                     });
                 }
-            })
-            .catch(err => {
-                if (err) throw err;
-            });
+          //  })
+           // .catch(err => {
+           //     if (err) throw err;
+           // });
 
 
         }).catch(err => {
