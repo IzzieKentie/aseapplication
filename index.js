@@ -35,7 +35,7 @@ const ifLoggedin = (req,res,next) => {
 
 app.get('/logout',(req,res)=>{
     req.session = null;
-    res.redirect('login.ejs');
+    res.redirect('/login-page');
 });
 
 app.get('/', ifNotLoggedin, (req,res,next) => {
