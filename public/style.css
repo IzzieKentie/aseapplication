@@ -47,6 +47,11 @@ ul.topnav li a.active {
 ul.topnav li.right {float: right;
 }
 
+label {
+  font-family: "Ubuntu";
+  font-size: 15pt;
+}
+
 input[type=text], select {
   width: 50%;
   padding: 12px 20px;
