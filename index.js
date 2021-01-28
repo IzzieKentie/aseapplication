@@ -63,7 +63,7 @@ app.post('/', ifLoggedin, [
         
         conn.execute("SELECT * FROM `ase_team` WHERE `username`=?",[user]).then(([rows]) => {
          //   bcrypt.compare(pass.toString(), rows[0].password.toString()).then(compare_result => {
-                if(pass.toString().trim() ==== ows[0].password.toString().trim()){
+                if(pass.toString().trim() === rows[0].password.toString().trim()){
                     req.session.isLoggedIn = true;
                     req.session.userID = rows[0].ID;
                     res.render('home');
