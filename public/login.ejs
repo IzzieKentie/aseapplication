@@ -6,15 +6,17 @@
 </head>
 <body>
   <img class="center" style="width: 8%;" src="ASE_UK_logo_v1.0.png"></li>
+  <div class="container" style="margin: auto">
 <form method="post" action="">
     <input type="text" id="user" name="user">
     <input type="text" id="pass" name="pass">
-               <% if (locals.login_errors) { 
-                      login_errors.forEach(function(error_msg){ %>
-                      <div class="alert alert-danger" role="alert"><%= error_msg %></div>
-                    <% });
-                    } %>
+    <% if (locals.login_errors) { 
+        login_errors.forEach(function(error_msg){ %>
+    	<div class="alert alert-danger" role="alert"><%= error_msg %></div>
+        <% });
+    } %>
     <input type="submit" value="Submit">
 </form>
+</div>
 </body>
 </html>
