@@ -37,15 +37,14 @@ app.get('/logout',(req,res)=>{
     res.render('login');
 });
 
-/*app.get('/', ifNotLoggedin, (req,res,next) => {
+app.get('/', ifNotLoggedin, (req,res,next) => {
     conn.execute("SELECT `username` FROM `ase_team` WHERE `ID`=?",[req.session.userID]).then(([rows]) => {
         res.render('home',{
             name:rows[0].name
         });
 
     }).catch(e => { console.log(e) });
-    
-}); */
+});
 
 app.post('/', ifLoggedin, [
     body('user').custom((value) => {
