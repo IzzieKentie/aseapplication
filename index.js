@@ -60,7 +60,6 @@ app.post('/', ifLoggedin, [
     const validation_result = validationResult(req);
     const {pass, user} = req.body;
     if(validation_result.isEmpty()){
-        
         conn.execute("SELECT * FROM `ase_team` WHERE `username`=?",[user]).then(([rows]) => {
             compare(pass.toString(), rows[0].password.toString()).then(compare_result => {
                 if(compare_result === true){
@@ -73,7 +72,7 @@ app.post('/', ifLoggedin, [
                     login_errors:['Invalid Password!']
                     });
                 }
-         //   })
+            })
             .catch(err => {
                 if (err) throw err;
             });
@@ -93,19 +92,7 @@ app.post('/', ifLoggedin, [
         });
     }
 });
-/*
-const server = http.createServer((request, response) => {
-    response.writeHead(200, {"Content-Type": "text/html"});
-    fs.readFile('public/home.ejs', null, function (error, data) {
-      if (error) {
-          response.writeHead(404);
-          respone.write('Whoops! File not found!');
-      } else {
-          response.write(data);
-      }
-      response.end();
-  });
-});*/
+
 
 const port = process.env.PORT || 1337;
 app.listen(port);
