@@ -33,6 +33,11 @@ const ifLoggedin = (req,res,next) => {
    next();
 }
 
+app.get('/logout',(req,res)=>{
+    req.session = null;
+    res.render('login');
+});
+
 app.get('/', ifNotLoggedin, (req,res,next) => {
     conn.execute("SELECT `username` FROM `ase_team` WHERE `ID`=?",[req.session.userID]).then(([rows]) => {
         res.render('home',{
@@ -61,7 +66,6 @@ app.post('/', ifLoggedin, [
     const {pass, user} = req.body;
     if(validation_result.isEmpty()){
         conn.execute("SELECT * FROM `ase_team` WHERE `username`=?",[user]).then(([rows]) => {
-           // compare(pass.toString(), rows[0].password.toString()).then(compare_result => {
                 if(pass.toString().trim() === rows[0].password.toString().trim()){
                     req.session.isLoggedIn = true;
                     req.session.userID = rows[0].ID;
@@ -72,12 +76,6 @@ app.post('/', ifLoggedin, [
                     login_errors:['Invalid Password!']
                     });
                 }
-          //  })
-           // .catch(err => {
-           //     if (err) throw err;
-           // });
-
-
         }).catch(err => {
             if (err) throw err;
         });
@@ -92,6 +90,7 @@ app.post('/', ifLoggedin, [
         });
     }
 });
+
 
 
 const port = process.env.PORT || 1337;
