@@ -92,7 +92,6 @@ app.get('/PastEvents',(req,res)=>{
         res.render('PastEvents',{
             data:rows
         });
-
     }).catch(e => { console.log(e) });
 });
 
@@ -103,6 +102,15 @@ app.get('/CurrentEvent',(req,res)=>{
         });
 
     }).catch(e => { console.log(e) });
+
+      app.get('/selected_event',(req,res)=>{
+      conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[req.body.name],).then(([events]) => {
+        res.render('PastEvents',{
+            data:events
+        });
+
+    }).catch(e => { console.log(e) });
+});
 });
 
 app.get('/UpcomingEvents',(req,res)=>{

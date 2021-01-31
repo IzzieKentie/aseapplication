@@ -80,6 +80,13 @@ input[type=submit] {
   height: 10%;
 }
 
+.flex-container-left {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3%;
+  height: 100%%;
+}
+
 .flex-container-login {
   display: block;
   flex-direction: row;
@@ -88,6 +95,12 @@ input[type=submit] {
   text-align: center;
 }
 .flex-container-bottom {
+  display: flex;
+  flex-direction: row;
+  padding-left: 0%;
+}
+
+.flex-container {
   display: flex;
   flex-direction: row;
   padding-left: 0%;

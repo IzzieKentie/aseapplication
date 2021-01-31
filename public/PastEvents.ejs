@@ -26,7 +26,42 @@
   <li class="right"><a href="/logout">Logout</a></li>
 </ul>
   <img class="center" style="width: 8%;" src="ASE_UK_logo_v1.0.png"></li>
-
+  <div class="flex-container">
+      <% if(data.length){ 
+        for(var i = 0;i < data.length;i++) { %>
+        <div class="flex-item" name="<%=data[i].event_id%>">
+          <p>Event ID</p>
+          <a href="/selected_event"><p><%=data[i].event_id%></p></a>
+        </div>
+        <div class="flex-item" name="<%=data[i].event_name%>">
+          <p>Event Name</p>
+          <a href="/selected_event"><p><%=data[i].event_name%></p></a>
+        </div>
+        <div class="flex-item" name="<%=data[i].event_description%>">
+          <p>Event Description</p>
+          <a href="/selected_event"><p><%=data[i].event_description%></p></a>
+        </div>
+        <div class="flex-item" name="<%=data[i].event_client%>">
+          <p>Event Client</p>
+          <a href="/selected_event"><p><%=data[i].event_client%></p></a>
+        </div>
+        <div class="flex-item" name="<%=data[i].event_pf%>">
+          <p>Process Facilitator</p>
+          <a href="/selected_event"><p><%=data[i].event_pf%></p></a>
+        </div>
+        <div class="flex-item" name="<%=data[i].event_cofac%>">
+          <p>Co Facilitator</p>
+          <a href="/selected_event"><p><%=data[i].event_cofac%></p></a>
+        </div>
+        <div class="flex-item" name="<%=data[i].event_fac%>">
+          <p>Facilitator</p>
+          <a href="/selected_event"><p><%=data[i].event_fac%></p></a>
+        </div>
+        <% }
+  }else{ %>
+    <div class="flex-item">No Events</td>
+  <% } %>
+  </div>
   <table border="1" cellpadding="7" cellspacing="7">
   <tr>
     <th>Event ID</th>
@@ -40,7 +75,7 @@
   <% if(data.length){ 
     for(var i = 0;i < data.length;i++) { %>
   <tr>
-    <td><%=data[i].event_id%></td>
+    <td name="<%=data[i].event_id%>"><%=data[i].event_id%></td>
     <td><%=data[i].event_name%></td>
     <td><%=data[i].event_description%></td>
     <td><%=data[i].event_client%></td>
