@@ -102,15 +102,6 @@ app.get('/CurrentEvent',(req,res)=>{
         });
 
     }).catch(e => { console.log(e) });
-
-      app.get('/selected_event',(req,res)=>{
-      conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[req.body.name],).then(([events]) => {
-        res.render('PastEvents',{
-            data:events
-        });
-
-    }).catch(e => { console.log(e) });
-});
 });
 
 app.get('/UpcomingEvents',(req,res)=>{
@@ -123,6 +114,15 @@ app.get('/UpcomingEvents',(req,res)=>{
 
 app.get('/home',(req,res)=>{
     res.render('home');
+});
+
+app.get('/selected_event',(req,res)=>{
+      conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[req.body.name],).then(([rows]) => {
+        res.render('SelectedEvent',{
+            data:rows
+        });
+
+    }).catch(e => { console.log(e) });
 });
 
 
