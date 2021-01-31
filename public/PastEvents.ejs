@@ -43,7 +43,11 @@
     <td><%=data[i].event_pf%></td>
   </tr>
   <% }
-  }
+  }else{ %>
+  <tr>
+    <td colspan="3">No user</td>
+  </tr>
+<% } %>
 </table>
 </body>
 </html>
