@@ -26,12 +26,18 @@
   <li class="right"><a href="/logout">Logout</a></li>
 </ul>
   <img class="center" style="width: 8%;" src="ASE_UK_logo_v1.0.png"></li>
+  <form method="POST" action="/selected_event">
   <div class="flex-container">
       <% if(data.length){ 
         for(var i = 0;i < data.length;i++) { %>
+
+        <input type = "hidden" name = "selected" value = "<%=data[i].event_id%>" />
+                <div class="flex-item-event" >
+              <input type="submit" value="View">
+        </div>
         <div class="flex-item-event" >
           <p>Event Name</p>
-          <a href="/selected_event" name="selected" id="selected"><p name="selected" id="selected"><%=data[i].event_name%></p></a>
+          <p>"><%=data[i].event_name%></p>
         </div>
         <div class="flex-item-event">
           <p>Event Description</p>
@@ -58,5 +64,6 @@
     <div class="flex-item-event">No Events to Display</div>
   <% } %>
   </div>
+</form>
 </body>
 </html>

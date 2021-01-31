@@ -116,8 +116,9 @@ app.get('/home',(req,res)=>{
     res.render('home');
 });
 
-app.get('/selected_event',(req,res)=>{
+app.post('/selected_event',(req,res)=>{
       const {selected} = req.body
+      console.log(selected);
       conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[selected],).then(([rows]) => {
         res.render('SelectedEvent',{
             data:rows
