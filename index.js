@@ -99,6 +99,11 @@ app.get('/UpcomingEvents',(req,res)=>{
     res.render('UpcomingEvents');
 });
 
+app.get('/home',(req,res)=>{
+    res.render('home');
+});
+
+
 const port = process.env.PORT || 1337;
 app.listen(port);
 console.log("Server running at http://localhost:%d", port); 
