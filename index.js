@@ -88,7 +88,7 @@ app.post('/', ifLoggedin, [
 });
 
 app.get('/PastEvents',(req,res)=>{
-      conn.execute("SELECT * FROM ASE_EVENTS").then(([rows]) => {
+      conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Past"],).then(([rows]) => {
         res.render('PastEvents',{
             data:rows
         });
@@ -97,12 +97,21 @@ app.get('/PastEvents',(req,res)=>{
 });
 
 app.get('/CurrentEvent',(req,res)=>{
-    res.render('CurrentEvent');
+          conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Current"],).then(([rows]) => {
+        res.render('CurrentEvent',{
+            data:rows
+        });
+
+    }).catch(e => { console.log(e) });
 });
 
 app.get('/UpcomingEvents',(req,res)=>{
-    res.render('UpcomingEvents');
-});
+      conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Upcoming"],).then(([rows]) => {
+        res.render('UpcomingEvents',{
+            data:rows
+        });
+
+    }).catch(e => { console.log(e) });});
 
 app.get('/home',(req,res)=>{
     res.render('home');
