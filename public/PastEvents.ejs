@@ -29,9 +29,9 @@
   <div class="flex-container">
       <% if(data.length){ 
         for(var i = 0;i < data.length;i++) { %>
-        <div class="flex-item-event" name="<%=data[i].event_id%>">
+        <div class="flex-item-event" >
           <p>Event Name</p>
-          <a href="/selected_event"><p><%=data[i].event_name%></p></a>
+          <a href="/selected_event" name="selected" id="selected"><p name="selected" id="selected"><%=data[i].event_name%></p></a>
         </div>
         <div class="flex-item-event">
           <p>Event Description</p>

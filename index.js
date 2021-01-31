@@ -117,7 +117,8 @@ app.get('/home',(req,res)=>{
 });
 
 app.get('/selected_event',(req,res)=>{
-      conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[req.body.name],).then(([rows]) => {
+      const {selected} = req.body
+      conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[selected],).then(([rows]) => {
         res.render('SelectedEvent',{
             data:rows
         });
