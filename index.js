@@ -51,9 +51,7 @@ app.post('/', ifLoggedin, [
         return conn.execute('SELECT `username` FROM `ase_team` WHERE `username`=?', [value]).then(([rows]) => {
             if(rows.length == 1){
                 return true;
-                
             }
-
            return Promise.reject('Invalid Username');
             
         })
@@ -89,7 +87,17 @@ app.post('/', ifLoggedin, [
     }
 });
 
+app.get('/PastEvents',(req,res)=>{
+    res.render('PastEvents');
+});
 
+app.get('/CurrentEvent',(req,res)=>{
+    res.render('CurrentEvent');
+});
+
+app.get('/UpcomingEvents',(req,res)=>{
+    res.render('UpcomingEvents');
+});
 
 const port = process.env.PORT || 1337;
 app.listen(port);
