@@ -88,7 +88,12 @@ app.post('/', ifLoggedin, [
 });
 
 app.get('/PastEvents',(req,res)=>{
-    res.render('PastEvents');
+      conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT 'EVENT_ID' FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND 'EVENT_STATUS'='Upcoming'",[req.session.userID]).then(([rows]) => {
+        res.render('PastEvents',{
+            data:rows
+        });
+
+    }).catch(e => { console.log(e) });
 });
 
 app.get('/CurrentEvent',(req,res)=>{
