@@ -4,6 +4,10 @@ h1 {
   font-family: "Ubuntu";
 }
 
+p {
+  font-family: "Ubuntu";
+}
+
 ul.topnav {
   list-style-type: none;
   margin: 0;
@@ -85,6 +89,15 @@ input[type=submit] {
   flex-direction: column;
   margin-top: 3%;
   height: 100%%;
+}
+
+.flex-container-event-column {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3%;
+  height: 100%%;
+  padding-left:5%;
+  font-family: "Ubuntu";
 }
 
 .flex-container-login {
