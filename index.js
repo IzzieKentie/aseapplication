@@ -90,7 +90,7 @@ app.post('/', ifLoggedin, [
 app.get('/PastEvents',(req,res)=>{
       conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Past"],).then(([rows]) => {
         res.render('PastEvents',{
-            event_data:past_events
+            data:rows
         });
     }).catch(e => { console.log(e) });
 });

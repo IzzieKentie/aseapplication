@@ -65,43 +65,5 @@
   <% } %>
   </div>
 </form>
-
-  <div class="flex-container">
-      <% if(event_data.length){ 
-        for(var i = 0;i < event_data.length;i++) { %>
-
-        <input type = "hidden" name = "selected" value = "<%=data[i].event_id%>" />
-                <div class="flex-item-event" >
-              <input type="submit" value="View">
-        </div>
-        <div class="flex-item-event" >
-          <p>Event Name</p>
-          <p><%=event_data[i].event_name%></p>
-        </div>
-        <div class="flex-item-event">
-          <p>Event Description</p>
-          <p><%=event_data[i].event_description%></p>
-        </div>
-        <div class="flex-item-event">
-          <p>Event Client</p>
-          <p><%=event_data[i].event_client%></p>
-        </div>
-        <div class="flex-item-event">
-          <p>Process Facilitator</p>
-          <p><%=event_data[i].event_pf%></p>
-        </div>
-        <div class="flex-item-event">
-          <p>Co Facilitator</p>
-          <p><%=event_data[i].event_cofac%></p>
-        </div>
-        <div class="flex-item-event">
-          <p>Facilitator</p>
-          <p><%=event_data[i].event_fac%></p>
-        </div>
-        <% }
-  }else{ %>
-    <div class="flex-item-event">No Events to Display</div>
-  <% } %>
-  </div>
 </body>
 </html>
