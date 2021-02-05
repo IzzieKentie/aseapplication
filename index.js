@@ -132,33 +132,38 @@ app.get('/home',(req,res)=>{
 app.post('/selected_event',(req,res)=>{
       const {selected} = req.body
       console.log(req.session.userID);
-      conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[selected],).then(([rows]) => {
-        if(req.session.role === 'Co-Designer') {
-          res.render('SelectedEvent',{
-            data:rows
-          });
-        }
-        else if(req.session.role === 'Process Facilitator') {
-          res.render('SelectedEvent_PF',{
-            data:rows
-          });
-        }
-        else {
-          res.render('SelectedEvent_FAC',{
-            data:rows
-          });
-        }
-
+      conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Past"],).then(([rows]) => {
+          var events =[];
+          events = rows;
+        conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[selected],).then(([rows]) => {
+          if(req.session.role === 'Co-Designer') {
+            res.render('SelectedEvent',{
+              data:rows, events
+            });
+          }
+          else if(req.session.role === 'Process Facilitator') {
+            res.render('SelectedEvent_PF',{
+              data:rows, events
+            });
+          }
+          else {
+            res.render('SelectedEvent_FAC',{
+              data:rows, events
+            });
+          }
+      }).catch(e => { console.log(e) });
     }).catch(e => { console.log(e) });
 });
 
 app.post('/EditSelectedEvent',(req,res)=>{
       const {selected} = req.body
       console.log(req.session.userID);
+      conn.execute("SELECT * FROM ASE_TEAM",).then(result => {
       conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[selected],).then(([rows]) => {
           res.render('EditSelectedEvent',{
-            data:rows
+            data:rows, dropDown:result
           });
+    }).catch(e => { console.log(e) });
     }).catch(e => { console.log(e) });
 });
 

@@ -30,7 +30,6 @@
   <div class="flex-container">
       <% if(data.length){ 
         for(var i = 0;i < data.length;i++) { %>
-
         <input type = "hidden" name = "selected" value = "<%=data[i].event_id%>" />
                 <div class="flex-item-event" >
               <input type="submit" value="View">
@@ -39,7 +38,7 @@
           <p>Event Name</p>
           <p><%=data[i].event_name%></p>
         </div>
-        <div class="flex-item-event">
+ <!--       <div class="flex-item-event">
           <p>Event Description</p>
           <p><%=data[i].event_description%></p>
         </div>
@@ -58,7 +57,7 @@
         <div class="flex-item-event">
           <p>Facilitator</p>
           <p><%=data[i].event_fac%></p>
-        </div>
+        </div> -->
         <% }
   }else{ %>
     <div class="flex-item-event">No Events to Display</div>
