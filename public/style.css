@@ -131,6 +131,13 @@ input[type=text], select {
     margin-top: 3%;
 }
 
+.menu_and_event {
+  display: flex;
+  flex-direction: row;
+  padding-left: 0%;
+  margin-top: 3%;
+}
+
 .flex-event-menu {
   display: flex;
   flex-direction: column;
@@ -140,7 +147,6 @@ input[type=text], select {
 
 .flex-event-menu-item {
   flex: 20%;
-  height: 200px;
   text-align: left;
 }
 
