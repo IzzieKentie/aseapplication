@@ -65,6 +65,7 @@ app.post('/', ifLoggedin, [
                 if(pass.toString().trim() === rows[0].password.toString().trim()){
                     req.session.isLoggedIn = true;
                     req.session.userID = rows[0].ID;
+                    req.session.role = rows[0].role; 
                     res.render('home');
                 }
                 else{
@@ -96,10 +97,22 @@ app.get('/PastEvents',(req,res)=>{
 });
 
 app.get('/CurrentEvent',(req,res)=>{
-          conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Current"],).then(([rows]) => {
-        res.render('CurrentEvent',{
+        conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Current"],).then(([rows]) => {
+        if(req.session.role === "Co-Designer") {
+          res.render('CurrentEvent',{
             data:rows
-        });
+          });
+        }
+        else if(req.session.role === "Process Facilitator") {
+          res.render('CurrentEvent_PF',{
+            data:rows
+          });
+        }
+        else {
+          res.render('CurrentEvent_FAC',{
+            data:rows
+          });
+        }
 
     }).catch(e => { console.log(e) });
 });
@@ -118,13 +131,55 @@ app.get('/home',(req,res)=>{
 
 app.post('/selected_event',(req,res)=>{
       const {selected} = req.body
-      console.log(selected);
+      console.log(req.session.userID);
       conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[selected],).then(([rows]) => {
-        res.render('SelectedEvent',{
+        if(req.session.role === 'Co-Designer') {
+          res.render('SelectedEvent',{
             data:rows
-        });
+          });
+        }
+        else if(req.session.role === 'Process Facilitator') {
+          res.render('SelectedEvent_PF',{
+            data:rows
+          });
+        }
+        else {
+          res.render('SelectedEvent_FAC',{
+            data:rows
+          });
+        }
 
     }).catch(e => { console.log(e) });
+});
+
+app.post('/EditSelectedEvent',(req,res)=>{
+      const {selected} = req.body
+      console.log(req.session.userID);
+      conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[selected],).then(([rows]) => {
+          res.render('EditSelectedEvent',{
+            data:rows
+          });
+    }).catch(e => { console.log(e) });
+});
+
+app.post('/SaveEvent',(req,res)=>{
+      const {event} = req.body
+      console.log(req.body);
+      conn.execute("UPDATE ASE_EVENTS SET event_name = ?, event_description = ?, event_client = ?, event_pf = ?, event_cofac = ?, event_fac = ?, event_status = ? WHERE EVENT_ID=?",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cofac, req.body.fac, req.body.status, req.body.selected],)
+        conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[req.body.selected],).then(([rows]) => {
+          if(req.session.role === "Process Facilitator") {
+          res.render('SelectedEvent_PF',{
+            data:rows
+          });
+        }
+          else {
+            res.render('SelectedEvent_FAC',{
+            data:rows
+            });
+          }
+        
+    }).catch(e => { console.log(e) });
+
 });
 
 
