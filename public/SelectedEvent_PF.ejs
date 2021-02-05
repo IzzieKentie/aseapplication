@@ -26,33 +26,51 @@
   <li class="right"><a href="/logout">Logout</a></li>
 </ul>
   <img class="center" style="width: 8%;" src="ASE_UK_logo_v1.0.png"></li>
+
+  <div class="menu_and_event">
+  <div class="flex-event-menu">
+  <% if(events.length){ 
+       for(var i = 0;i < events.length;i++) { %>
+        <form method="POST" action="/selected_event">
+            <input type = "hidden" name = "selected" value = "<%=events[i].event_id%>" />
+            <div class="flex-event-menu-item">
+              <input class="select_event" type="submit" value="<%=events[i].event_name%>"/>
+            </div>
+        </form>
+       <% }
+     }else{ %>
+               <div class="flex-event-menu">
+            <div class="flex-event-menu-item">No Events to Display</div>
+          </div>
+  <% } %>
+            </div>
   <form method="POST" action="/EditSelectedEvent">
-  <div class="flex-container-event-column">
-        <div class="flex-item-selected-event">
+  <div class="flex-event_selected">
+        <div class="flex-event-selected-item">
           <h3><b>Event Name</b></h3>
           <p><%=data[0].event_name%></p>
         </div>
-        <div class="flex-item-selected-event">
+        <div class="flex-event-selected-item">
           <h3><b>Event Description</b></h3>
           <p><%=data[0].event_description%></p>
         </div>
-        <div class="flex-item-selected-event">
+        <div class="flex-event-selected-item">
           <h3><b>Event Client</b></h3>
           <p><%=data[0].event_client%></p>
         </div>
-        <div class="flex-item-selected-event">
+        <div class="flex-event-selected-item">
           <h3><b>Process Facilitator</b></h3>
           <p><%=data[0].event_pf%></p>
         </div>
-        <div class="flex-item-selected-event">
+        <div class="flex-event-selected-item">
           <h3><b>Co Facilitator</b></h3>
           <p><%=data[0].event_cofac%></p>
         </div>
-        <div class="flex-item-selected-event">
+        <div class="flex-event-selected-item">
           <h3><b>Facilitator</b></h3>
           <p><%=data[0].event_fac%></p>
         </div>
-        <div class="flex-item-selected-event">
+        <div class="flex-event-selected-item">
           <h3><b>Status</b></h3>
           <p><%=data[0].event_status%></p>
         </div>
@@ -62,5 +80,6 @@
         </div>
   </div>
 </form>
+</div>
 </body>
 </html>
