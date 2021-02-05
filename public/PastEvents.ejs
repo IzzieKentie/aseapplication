@@ -26,19 +26,19 @@
   <li class="right"><a href="/logout">Logout</a></li>
 </ul>
   <img class="center" style="width: 8%;" src="ASE_UK_logo_v1.0.png"></li>
-  <form method="POST" action="/selected_event">
-  <div class="flex-event-menu">
-      <% if(data.length){ 
-        for(var i = 0;i < data.length;i++) { %>
-        <input type = "hidden" name = "selected" value = "<%=data[i].event_id%>" />
-                <div class="flex-event-menu-item">
-              <input class="select_event" type="submit" value="<%=data[i].event_name%>">
-        </div>
-        <% }
-  }else{ %>
-    <div class="flex-event-menu-item">No Events to Display</div>
+  <% if(data.length){ 
+       for(var i = 0;i < data.length;i++) { %>
+        <form method="POST" action="/selected_event">
+          <div class="flex-event-menu">
+            <input type = "hidden" name = "selected" value = "<%=data[i].event_id%>" />
+            <div class="flex-event-menu-item">
+              <input class="select_event" type="submit" value="<%=data[i].event_name%>"/>
+            </div>
+          </div>
+        </form>
+       <% }
+     }else{ %>
+            <div class="flex-event-menu-item">No Events to Display</div>
   <% } %>
-  </div>
-</form>
 </body>
 </html>

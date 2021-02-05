@@ -131,7 +131,7 @@ app.get('/home',(req,res)=>{
 
 app.post('/selected_event',(req,res)=>{
       const {selected} = req.body
-      console.log(req.session.userID);
+      console.log(selected);
       conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Past"],).then(([rows]) => {
           var events =[];
           events = rows;
