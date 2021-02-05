@@ -143,10 +143,11 @@ input[type=text], select {
   flex-direction: column;
   padding-left: 4%;
   margin-top: 3%;
+  width:20%;
 }
 
 .flex-event-menu-item {
-  flex: 20%;
+  flex: 100%;
   text-align: left;
 }
 
@@ -155,13 +156,12 @@ input[type=text], select {
   padding-left: 4%;
   margin-top: 3%;
   flex-direction: column;
+  width:80%;
 }
 
 .flex-event-selected-item {
   display: flex;
-  padding-left: 4%;
-  margin-top: 3%;
-  width: 80%;
+  width: 100%;
 }
 
 .flex-item {
