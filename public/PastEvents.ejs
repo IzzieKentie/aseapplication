@@ -31,7 +31,7 @@
       <% if(data.length){ 
         for(var i = 0;i < data.length;i++) { %>
         <input type = "hidden" name = "selected" value = "<%=data[i].event_id%>" />
-                <div class="flex-item-event" >
+                <div class="flex-event-menu-item">
               <input type="submit" value="View">
         </div>
         <div class="flex-event-menu-item" >
@@ -39,7 +39,7 @@
         </div>
         <% }
   }else{ %>
-    <div class="flex-item-event">No Events to Display</div>
+    <div class="flex-event-menu-item">No Events to Display</div>
   <% } %>
   </div>
 </form>
