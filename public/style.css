@@ -141,7 +141,7 @@ input[type=text], select {
 .flex-event-menu-item {
   flex: 20%;
   height: 200px;
-  text-align: center;
+  text-align: left;
 }
 
 .flex-event-selected {
