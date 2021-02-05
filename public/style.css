@@ -118,6 +118,18 @@ input[type=submit] {
   text-align: center;
 }
 
+.flex-item-30 {
+  flex: 30%;
+  height: 200px;
+  text-align: center;
+}
+
+.flex-item-70 {
+  flex: 70%;
+  height: 200px;
+  text-align: center;
+}
+
 .flex-item-40-black {
   background-color: #0A8FC0;
   flex: 40%;
