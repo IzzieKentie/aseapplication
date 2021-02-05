@@ -27,37 +27,16 @@
 </ul>
   <img class="center" style="width: 8%;" src="ASE_UK_logo_v1.0.png"></li>
   <form method="POST" action="/selected_event">
-  <div class="flex-container">
+  <div class="flex-event-menu">
       <% if(data.length){ 
         for(var i = 0;i < data.length;i++) { %>
         <input type = "hidden" name = "selected" value = "<%=data[i].event_id%>" />
                 <div class="flex-item-event" >
               <input type="submit" value="View">
         </div>
-        <div class="flex-item-event" >
-          <p>Event Name</p>
-          <p><%=data[i].event_name%></p>
+        <div class="flex-event-menu-item" >
+          <h3><%=data[i].event_name%></h3>
         </div>
- <!--       <div class="flex-item-event">
-          <p>Event Description</p>
-          <p><%=data[i].event_description%></p>
-        </div>
-        <div class="flex-item-event">
-          <p>Event Client</p>
-          <p><%=data[i].event_client%></p>
-        </div>
-        <div class="flex-item-event">
-          <p>Process Facilitator</p>
-          <p><%=data[i].event_pf%></p>
-        </div>
-        <div class="flex-item-event">
-          <p>Co Facilitator</p>
-          <p><%=data[i].event_cofac%></p>
-        </div>
-        <div class="flex-item-event">
-          <p>Facilitator</p>
-          <p><%=data[i].event_fac%></p>
-        </div> -->
         <% }
   }else{ %>
     <div class="flex-item-event">No Events to Display</div>
