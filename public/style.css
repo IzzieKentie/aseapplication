@@ -78,7 +78,7 @@ input[type=text], select {
 }
 
 .select_event {
-  width: 10%;
+  width: 80%;
   background-color: #0070AD;
   color: white;
   padding: 14px 20px;
