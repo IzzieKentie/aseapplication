@@ -118,15 +118,8 @@ input[type=submit] {
   text-align: center;
 }
 
-.flex-item-30 {
-  flex: 30%;
-  height: 200px;
-  text-align: center;
-}
-
-.flex-item-70 {
-  flex: 70%;
-  height: 200px;
+.flex-item-selected-event {
+  flex: 100%;
   text-align: center;
 }
 
