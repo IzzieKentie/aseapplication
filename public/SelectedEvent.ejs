@@ -29,16 +29,13 @@
     <div class="flex-event-menu">
       <% if(events.length){ 
         for(var i = 0;i < events.length;i++) { %>
-        <div class="flex-event-menu-item" >
-          <p><%=events[i].event_name%></p>
-        </div>
         <input type = "hidden" name = "selected" value = "<%=events[i].event_id%>" />
-        <div class="flex-item-event" >
-              <input type="submit" value="View">
+        <div class="flex-event-menu-item" >
+              <input type="submit" value="<%=events[i].event_name%>">
         </div>
         <% }
   }else{ %>
-    <div class="flex-item-event">No Events to Display</div>
+    <div class="flex-event-menu-item">No Events to Display</div>
   <% } %>
   </div>
 

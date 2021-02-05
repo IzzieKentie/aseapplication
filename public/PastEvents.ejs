@@ -32,10 +32,7 @@
         for(var i = 0;i < data.length;i++) { %>
         <input type = "hidden" name = "selected" value = "<%=data[i].event_id%>" />
                 <div class="flex-event-menu-item">
-              <input type="submit" value="View">
-        </div>
-        <div class="flex-event-menu-item" >
-          <h3><%=data[i].event_name%></h3>
+              <input class="select_event" type="submit" value="<%=data[i].event_name%>">
         </div>
         <% }
   }else{ %>
