@@ -67,8 +67,8 @@
 </form>
 
   <div class="flex-container">
-      <% if(data:past_events.length){ 
-        for(var i = 0;i < data:past_events.length;i++) { %>
+      <% if(event_data.length){ 
+        for(var i = 0;i < event_data.length;i++) { %>
 
         <input type = "hidden" name = "selected" value = "<%=data[i].event_id%>" />
                 <div class="flex-item-event" >
@@ -76,27 +76,27 @@
         </div>
         <div class="flex-item-event" >
           <p>Event Name</p>
-          <p><%=data:past_events[i].event_name%></p>
+          <p><%=event_data[i].event_name%></p>
         </div>
         <div class="flex-item-event">
           <p>Event Description</p>
-          <p><%=data:past_events[i].event_description%></p>
+          <p><%=event_data[i].event_description%></p>
         </div>
         <div class="flex-item-event">
           <p>Event Client</p>
-          <p><%=data:past_events[i].event_client%></p>
+          <p><%=event_data[i].event_client%></p>
         </div>
         <div class="flex-item-event">
           <p>Process Facilitator</p>
-          <p><%=data:past_events[i].event_pf%></p>
+          <p><%=event_data[i].event_pf%></p>
         </div>
         <div class="flex-item-event">
           <p>Co Facilitator</p>
-          <p><%=data:past_events[i].event_cofac%></p>
+          <p><%=event_data[i].event_cofac%></p>
         </div>
         <div class="flex-item-event">
           <p>Facilitator</p>
-          <p><%=data:past_events[i].event_fac%></p>
+          <p><%=event_data[i].event_fac%></p>
         </div>
         <% }
   }else{ %>
