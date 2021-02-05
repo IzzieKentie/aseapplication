@@ -133,7 +133,7 @@ input[type=submit] {
 
 .flex-item-selected-event {
   flex: 100%;
-  text-align: center;
+  text-align: left;
 }
 
 .flex-item-40-black {
