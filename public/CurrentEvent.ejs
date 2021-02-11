@@ -26,8 +26,49 @@
   <li class="right"><a href="/logout">Logout</a></li>
 </ul>
   <img class="center" style="width: 8%;" src="ASE_UK_logo_v1.0.png"></li>
-
-
-
+ <div class="menu_and_event">
+    <div class="flex-event-selected">
+      <% if(data.length){ 
+        <div class="flex-event-selected-item" >
+          <h3>Event Name</h3>
+          </div>
+          <div class="flex-event-selected-item" >
+          <p><%=data[0].event_name%></p>
+        </div>
+       <div class="flex-event-selected-item">
+          <h3>Event Description</h3>
+          </div>
+          <div class="flex-event-selected-item">
+          <p><%=data[0].event_description%></p>
+        </div>
+        <div class="flex-event-selected-item">
+          <h3>Event Client</h3>
+          </div>
+          <div class="flex-event-selected-item">
+          <p><%=data[0].event_client%></p>
+        </div>
+        <div class="flex-event-selected-item">
+          <h3>Process Facilitator</h3>
+          </div>
+          <div class="flex-event-selected-item">
+          <p><%=data[0].event_pf%></p>
+        </div>
+        <div class="flex-event-selected-item">
+          <h3>Co Facilitator</h3>
+          </div>
+          <div class="flex-event-selected-item">
+          <p><%=data[0].event_cofac%></p>
+        </div>
+        <div class="flex-event-selected-item">
+          <h3>Facilitator</h3>
+          </div>
+          <div class="flex-event-selected-item">
+          <p><%=data[0].event_fac%></p>
+        </div> 
+  }else{ %>
+    <div class="flex-event-selected-item">No Events to Display</div>
+  <% } %>
+  </div>
+</div>
 </body>
 </html>
