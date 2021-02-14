@@ -314,9 +314,9 @@ app.post('/feedback',(req,res)=>{
       var feedback = [];
         feedback = rows;
           conn.execute("SELECT * FROM FEEDBACK WHERE feedback_id=?)", [selected],).then(([rows]) => {
-          res.render('feedback');
-        }.catch(e => { console.log(e) });
-    }.catch(e => { console.log(e) });
+            res.render('feedback');
+          }).catch(e => { console.log(e) });
+    }).catch(e => { console.log(e) });
 });
 
 app.get('/CreateEvent',(req,res)=>{
