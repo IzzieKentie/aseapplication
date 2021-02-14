@@ -7,8 +7,8 @@
 <body>
 <ul class="topnav">
   <li><a href="/home">Home</a></li>
-  <li><a href="/profile">Profile</a></li>
-    <li><a href="/feedback"">Feedback</a></li>
+  <li><a href="profile.html">Profile</a></li>
+    <li><a href="#feedback">Feedback</a></li>
     <div class="dropdown">
     <button class="dropbtn">
       <li><a class="active" href="#events">Events</a></li>
@@ -26,6 +26,24 @@
   <li class="right"><a href="/logout">Logout</a></li>
 </ul>
   <img class="center" style="width: 8%;" src="ASE_UK_logo_v1.0.png"></li>
-
+  <div class="menu_and_event">
+  <div class="flex-event-menu">
+  <% if(data.length){ 
+       for(var i = 0;i < data.length;i++) { %>
+        <form method="POST" action="/selected_event">
+            <input type = "hidden" name = "selected" value = "<%=data[i].event_id%>" />
+            <div class="flex-event-menu-item">
+              <input class="select_event" type="submit" value="<%=data[i].event_name%>"/>
+            </div>
+        </form>
+       <% }
+     }else{ %>
+        <div class="flex-event-menu">
+          <div class="flex-event-menu-item">No Events to Display</div>
+        </div>
+  <% } %>
+  </div>
+  <div class="flex-event-selected"></div>
+</div>
 </body>
 </html>
