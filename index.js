@@ -308,7 +308,11 @@ app.get('/home',(req,res)=>{
     res.render('home');
 });
 
-app.post('/feedback',(req,res)=>{
+app.get('/feedback',(req,res)=>{
+    res.render('feedback');
+});
+
+app.post('/selectfeedback',(req,res)=>{
   const {selected} = req.body;
     conn.execute("SELECT f.*, a.event_name, t.forename, t.surname FROM FEEDBACK f, ASE_EVENTS a, ASE_TEAM t WHERE f.reciever_ID = ? AND f.EVENT_ID = a.EVENT_ID AND f.giver_id=t.ID", [req.session.userID],).then(([rows]) => {
       var feedback = [];
