@@ -321,12 +321,13 @@ app.get('/home',(req,res)=>{
 
 app.post('/selectfeedback',(req,res)=>{
   const {selected} = req.body;
+  console.log(selected);
     conn.execute("SELECT f.*, a.event_name, t.forename, t.surname FROM FEEDBACK f, ASE_EVENTS a, ASE_TEAM t WHERE f.reciever_ID = ? AND f.EVENT_ID = a.EVENT_ID AND f.giver_id=t.ID", [req.session.userID],).then(([rows]) => {
       var feedback = [];
         feedback = rows;
-          conn.execute("SELECT * FROM FEEDBACK WHERE feedback_id=?", [selected],).then(([rows]) => {
-            res.render('selectfeedback', {
-              data:rows, feedback
+          conn.execute("SELECT * FROM FEEDBACK WHERE feedback_id=?",[selected],).then(([rows]) => {
+            res.render('selectfeedback',{
+              feedback,data:rows
             });
           }).catch(e => { console.log(e) });
     }).catch(e => { console.log(e) });
