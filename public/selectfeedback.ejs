@@ -39,10 +39,35 @@
        <% }
      }else{ %>
                <div class="flex-event-menu">
-            <div class="flex-event-menu-item">No Feedback to Display</div>
+            <div class="flex-event-menu-item">No Deedback to Display</div>
           </div>
   <% } %>
             </div>
+    <div class="flex-event-selected">
+      <% if(rows.length){ 
+        for(var i = 0;i < rows.length;i++) { %>
+        <div class="flex-event-selected-item" >
+          <h3>What you did well:</h3>
+          </div>
+          <div class="flex-event-selected-item" >
+          <p><%=data[i].did_well%></p>
+        </div>
+       <div class="flex-event-selected-item">
+          <h3>What you did not do well:</h3>
+          </div>
+          <div class="flex-event-selected-item">
+          <p><%=data[i].not_well%></p>
+        </div>
+        <div class="flex-event-selected-item">
+          <h3>What to improve on</h3>
+          </div>
+          <div class="flex-event-selected-item">
+          <p><%=data[i].improvements%></p>
+        </div>
+        <% }} else { %>
+    <div class="flex-event-selected-item">No Feedback to Display</div>
+  <% } %>
+  </div>
 </div>
 </body>
 </html>

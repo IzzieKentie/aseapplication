@@ -308,9 +308,16 @@ app.get('/home',(req,res)=>{
     res.render('home');
 });
 
-app.get('/feedback',(req,res)=>{
-    res.render('feedback');
+  app.get('/feedback',(req,res)=>{
+  conn.execute("SELECT f.*, a.event_name, t.forename, t.surname FROM FEEDBACK f, ASE_EVENTS a, ASE_TEAM t WHERE f.reciever_ID = ? AND f.EVENT_ID = a.EVENT_ID AND f.giver_id=t.ID", [req.session.userID],).then(([rows]) => {
+        var feedback = [];
+        feedback = rows;
+        res.render('feedback',{
+          feedback
+        });
+    }).catch(e => { console.log(e) });
 });
+
 
 app.post('/selectfeedback',(req,res)=>{
   const {selected} = req.body;
@@ -318,7 +325,9 @@ app.post('/selectfeedback',(req,res)=>{
       var feedback = [];
         feedback = rows;
           conn.execute("SELECT * FROM FEEDBACK WHERE feedback_id=?)", [selected],).then(([rows]) => {
-            res.render('feedback');
+            res.render('selectfeedback', {
+              data:rows, feedback
+            });
           }).catch(e => { console.log(e) });
     }).catch(e => { console.log(e) });
 });
