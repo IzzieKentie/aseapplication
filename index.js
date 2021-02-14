@@ -171,6 +171,30 @@ app.post('/SaveEvent',(req,res)=>{
       const {event} = req.body
       console.log(req.body);
       conn.execute("UPDATE ASE_EVENTS SET event_name = ?, event_description = ?, event_client = ?, event_pf = ?, event_cofac = ?, event_fac = ?, event_status = ? WHERE EVENT_ID=?",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cofac, req.body.fac, req.body.status, req.body.selected],)
+        conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Current"],).then(([rows]) => {
+        if(req.session.role === "Co-Designer") {
+          res.render('CurrentEvent',{
+            data:rows
+          });
+        }
+        else if(req.session.role === "Process Facilitator") {
+          res.render('CurrentEvent_PF',{
+            data:rows
+          });
+        }
+        else {
+          res.render('CurrentEvent_FAC',{
+            data:rows
+          });
+        }
+
+    }).catch(e => { console.log(e) });
+});
+
+app.post('/SaveCurrentEvent',(req,res)=>{
+      const {event} = req.body
+      console.log(req.body);
+      conn.execute("UPDATE ASE_EVENTS SET event_name = ?, event_description = ?, event_client = ?, event_pf = ?, event_cofac = ?, event_fac = ?, event_status = ? WHERE EVENT_ID=?",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cofac, req.body.fac, req.body.status, req.body.selected],)
         conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Past"],).then(([rows]) => {
           var events =[];
           events = rows;
