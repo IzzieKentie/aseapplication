@@ -248,9 +248,9 @@ app.post('/SaveEvent',(req,res)=>{
       console.log(values);
       var sql = "INSERT INTO EVENT_ASSIGNED (event_id, member_id) VALUES ?";
       conn.query(sql, [values], function(err) {
-    if (err) throw err;
-    conn.end();
-});
+        if (err) throw err;
+        conn.end();
+      });
       conn.execute("UPDATE ASE_EVENTS SET event_name = ?, event_description = ?, event_client = ?, event_pf = ?, event_cofac = ?, event_fac = ?, event_status = ? WHERE EVENT_ID=?",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cf, req.body.f, req.body.event_status, req.body.selected],)
         if(req.body.event_status === 'Past') {
           conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Past"],).then(([rows]) => {
@@ -306,6 +306,17 @@ app.post('/SaveEvent',(req,res)=>{
 
 app.get('/home',(req,res)=>{
     res.render('home');
+});
+
+app.post('/feedback',(req,res)=>{
+  const {selected} = req.body;
+    conn.execute("SELECT f.*, a.event_name, t.forename, t.surname FROM FEEDBACK f, ASE_EVENTS a, ASE_TEAM t WHERE f.reciever_ID = ? AND f.EVENT_ID = a.EVENT_ID AND f.giver_id=t.ID", [req.session.userID],).then(([rows]) => {
+      var feedback = [];
+        feedback = rows;
+          conn.execute("SELECT * FROM FEEDBACK WHERE feedback_id=?)", [selected],).then(([rows]) => {
+          res.render('feedback');
+        }.catch(e => { console.log(e) });
+    }.catch(e => { console.log(e) });
 });
 
 app.get('/CreateEvent',(req,res)=>{
