@@ -324,7 +324,7 @@ app.post('/selectfeedback',(req,res)=>{
     conn.execute("SELECT f.*, a.event_name, t.forename, t.surname FROM FEEDBACK f, ASE_EVENTS a, ASE_TEAM t WHERE f.reciever_ID = ? AND f.EVENT_ID = a.EVENT_ID AND f.giver_id=t.ID", [req.session.userID],).then(([rows]) => {
       var feedback = [];
         feedback = rows;
-          conn.execute("SELECT * FROM FEEDBACK WHERE feedback_id=?)", [selected],).then(([rows]) => {
+          conn.execute("SELECT * FROM FEEDBACK WHERE feedback_id=?", [selected],).then(([rows]) => {
             res.render('selectfeedback', {
               data:rows, feedback
             });
