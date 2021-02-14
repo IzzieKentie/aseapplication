@@ -26,66 +26,42 @@
   <li class="right"><a href="/logout">Logout</a></li>
 </ul>
   <img class="center" style="width: 8%;" src="ASE_UK_logo_v1.0.png"></li>
-  <form method="POST" action="/SaveEvent">
+  <form method="POST" action="/CreateNewEvent">
   <div class="flex-container-event-column">
         <div class="flex-item-selected-event">
           <h3><b>Event Name</b></h3>
-          <input type="text" name="name" id="name" value="<%=data[0].event_name%>"></input>
+          <input type="text" name="name" id="name"></input>
         </div>
         <div class="flex-item-selected-event">
           <h3><b>Event Description</b></h3>
-          <input type="text" name="description" value="<%=data[0].event_description%>"></input>
+          <input type="text" name="description"></input>
         </div>
         <div class="flex-item-selected-event">
           <h3><b>Event Client</b></h3>
-          <input type="text" name="client" value="<%=data[0].event_client%>"></input>
+          <input type="text" name="client"></input>
         </div>
         <div class="flex-item-selected-event">
           <h3><b>Process Facilitator</b></h3>
-          <select id="pf" name="pf">
-            <% if(pf.length){ 
-              for(var i = 0;i < pf.length;i++) { %>
-              <option value="<%=pf[i].forename%> <%=pf[i].surname%>"><%=pf[i].forename%> <%=pf[i].surname%></option>
-            <% }}%>
-          </select>
+          <input type="text" name="pf"></input>
         </div>
         <div class="flex-item-selected-event">
           <h3><b>Co Facilitator</b></h3>
-          <select id="cf" name="cf">
-            <% if(cf.length){ 
-              for(var i = 0;i < cf.length;i++) { %>
-              <option value="<%=cf[i].forename%> <%=cf[i].surname%>"><%=cf[i].forename%> <%=cf[i].surname%></option>
-            <% }}%>
-          </select>
+          <input type="text" name="cofac"></input>
         </div>
         <div class="flex-item-selected-event">
           <h3><b>Facilitator</b></h3>
-          <select id="f" name="f">
-            <% if(f.length){ 
-              for(var i = 0;i < f.length;i++) { %>
-              <option value="<%=f[i].forename%> <%=f[i].surname%>"><%=f[i].forename%> <%=f[i].surname%></option>
-            <% }}%>
-          </select>        
-        </div>
-        <div class="flex-item-selected-event">
-          <h3><b>Co-Designer's</b></h3>
-            <% if(cd.length){ 
-              for(var i = 0;i < cd.length;i++) { %>
-              <input type="checkbox" name="CoDesigner" value="<%=cd[i].ID%>">
-              <label for="<%=cd[i].forename%> <%=cd[i].surname%>"><%=cd[i].forename%> <%=cd[i].surname%></label><br>
-            <% }}%>
+          <input type="text" name="fac"></input>
         </div>
         <div class="flex-item-selected-event">
           <h3><b>Status</b></h3>
-          <select id="event_status" name="event_status" value="<%=data[0].event_status%>">
+          <select id="event_status" name="event_status">
             <option value="Past">Past</option>
             <option value="Current">Current</option>
             <option value="Upcoming">Upcoming</option>
           </select>
         </div>
-        <input type = "hidden" name = "selected" value = "<%=data[0].event_id%>" />
         <div class="flex-item-event" >
-          <input type="submit" value="Save">
+          <input type="submit" value="Create">
         </div>
   </div>
 </form>

@@ -28,9 +28,15 @@
   <img class="center" style="width: 8%;" src="ASE_UK_logo_v1.0.png"></li>
   <div class="menu_and_event">
   <div class="flex-event-menu">
+    <form method="" action="/CreateEvent">
+      <div class="flex-event-menu-item">
+        <input class="select_event" type="submit"/>
+      </div>
+    </form>
   <% if(data.length){ 
        for(var i = 0;i < data.length;i++) { %>
         <form method="POST" action="/selected_event">
+            <input type = "hidden" name = "status" value = "<%=data[i].event_status%>" />
             <input type = "hidden" name = "selected" value = "<%=data[i].event_id%>" />
             <div class="flex-event-menu-item">
               <input class="select_event" type="submit" value="<%=data[i].event_name%>"/>

@@ -101,6 +101,7 @@ app.get('/PastEvents',(req,res)=>{
 app.post('/selected_event',(req,res)=>{
       const {selected} = req.body
       console.log(selected);
+      console.log(req.body.status);
       if(req.body.status === "Past") {
         conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Past"],).then(([rows]) => {
           var events =[];
@@ -212,17 +213,45 @@ app.post('/EditSelectedEvent',(req,res)=>{
       const {selected} = req.body
       const {status} = req.body
       console.log(status);
-      conn.execute("SELECT * FROM ASE_TEAM",).then(result => {
-        conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[selected],).then(([rows]) => {
-          res.render('EditSelectedEvent',{
-            data:rows, dropDown:result
-          });
-        }).catch(e => { console.log(e) });      
-    }).catch(e => { console.log(e) });
+      conn.execute("SELECT * FROM ASE_TEAM WHERE ROLE='Process Facilitator'",).then(([rows]) => {
+        var pf = [];
+        pf = rows;
+        conn.execute("SELECT * FROM ASE_TEAM WHERE ROLE='Co-Facilitator'",).then(([rows]) => {
+          var cf = [];
+          cf = rows;
+          conn.execute("SELECT * FROM ASE_TEAM WHERE ROLE='Facilitator'",).then(([rows]) => {
+            var f = [];
+            f = rows;
+            conn.execute("SELECT * FROM ASE_TEAM WHERE ROLE='Co-Designer' OR ROLE='Process Facilitator'",).then(([rows]) => {
+            var cd = [];
+            cd = rows;
+              conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[selected],).then(([rows]) => {
+                res.render('EditSelectedEvent',{
+                  data:rows, pf, cf, f, cd
+                });
+              }).catch(e => { console.log(e) });      
+            }).catch(e => { console.log(e) });      
+          }).catch(e => { console.log(e) });
+        }).catch(e => { console.log(e) });
+      }).catch(e => { console.log(e) });
 });
 
 app.post('/SaveEvent',(req,res)=>{
-      conn.execute("UPDATE ASE_EVENTS SET event_name = ?, event_description = ?, event_client = ?, event_pf = ?, event_cofac = ?, event_fac = ?, event_status = ? WHERE EVENT_ID=?",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cofac, req.body.fac, req.body.event_status, req.body.selected],)
+      const{CoDesigner} = req.body
+      console.log(req.body);
+      var cd = [];
+      let values = [];
+      cd = req.body.CoDesigner;
+      for(var i = 0;i < cd.length;i++) {
+           values.push([req.body.selected,cd[i]]); 
+      }
+      console.log(values);
+      var sql = "INSERT INTO EVENT_ASSIGNED (event_id, member_id) VALUES ?";
+      conn.query(sql, [values], function(err) {
+    if (err) throw err;
+    conn.end();
+});
+      conn.execute("UPDATE ASE_EVENTS SET event_name = ?, event_description = ?, event_client = ?, event_pf = ?, event_cofac = ?, event_fac = ?, event_status = ? WHERE EVENT_ID=?",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cf, req.body.f, req.body.event_status, req.body.selected],)
         if(req.body.event_status === 'Past') {
           conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Past"],).then(([rows]) => {
           var events =[];
@@ -279,6 +308,15 @@ app.get('/home',(req,res)=>{
     res.render('home');
 });
 
+app.get('/CreateEvent',(req,res)=>{
+    res.render('CreateEvent');
+});
+
+app.post('/CreateNewEvent', (req,res)=>{
+    conn.execute("INSERT INTO ASE_EVENTS VALUES(?, ?, ?, ?, ?, ?, ?)",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cofac, req.body.fac, req.body.event_status],)
+    .catch(e => { console.log(e) });
+    res.render('home');
+  });
 
 
 
