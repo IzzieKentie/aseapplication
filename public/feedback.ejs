@@ -34,7 +34,7 @@
         <form method="POST" action="/selectfeedback">
             <input type = "hidden" name = "selected" value = "<%=feedback[i].feedback_id%>" />
             <div class="flex-feedback-menu-item">
-              <input class="select_event" type="submit" value="<%=feedback[i].event_name%> from <%=feedback[i].forename%> <%=feedback[i].surname%>"/>
+              <input class="select_feedback" type="submit" value="<%=feedback[i].event_name%> from <%=feedback[i].forename%> <%=feedback[i].surname%>"/>
             </div>
         </form>
   <% }
@@ -43,6 +43,7 @@
           <div class="flex-feedback-menu-item"><p>No Feedback to Display</p></div>
       </div>
   <% } %>
+  </div>
       <div class="flex-feedback-selected">
       </div>
       <div class="flex-feedback-menu">
