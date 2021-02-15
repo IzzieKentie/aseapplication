@@ -308,14 +308,22 @@ app.get('/home',(req,res)=>{
     res.render('home');
 });
 
-  app.get('/feedback',(req,res)=>{
-  conn.execute("SELECT f.*, a.event_name, t.forename, t.surname FROM FEEDBACK f, ASE_EVENTS a, ASE_TEAM t WHERE f.reciever_ID = ? AND f.EVENT_ID = a.EVENT_ID AND f.giver_id=t.ID", [req.session.userID],).then(([rows]) => {
+app.get('/feedback',(req,res)=>{
+  conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID = ?)", [req.session.userID],).then(([rows]) => {
+    var events = [];
+    events = rows;
+    conn.execute("SELECT * FROM ASE_TEAM", [req.session.userID],).then(([rows]) => {
+      var team = [];
+      team = rows;
+      conn.execute("SELECT f.*, a.event_name, t.forename, t.surname FROM FEEDBACK f, ASE_EVENTS a, ASE_TEAM t WHERE f.reciever_ID = ? AND f.EVENT_ID = a.EVENT_ID AND f.giver_id=t.ID", [req.session.userID],).then(([rows]) => {
         var feedback = [];
         feedback = rows;
         res.render('feedback',{
-          feedback
+          feedback, events, team
         });
+      }).catch(e => { console.log(e) });
     }).catch(e => { console.log(e) });
+  }).catch(e => { console.log(e) });
 });
 
 
@@ -332,6 +340,12 @@ app.post('/selectfeedback',(req,res)=>{
           }).catch(e => { console.log(e) });
     }).catch(e => { console.log(e) });
 });
+
+app.post('/requestFeedback', (req,res)=>{
+    conn.execute("INSERT INTO FEEDBACK_REQUESTS (requester_id, giver_id, event_id) VALUES(?, ?, ?)",[req.session.userID, req.body.feedback_from, req.body.feedback_event],)
+    .catch(e => { console.log(e) });
+    res.render('home');
+  });
 
 app.get('/CreateEvent',(req,res)=>{
     res.render('CreateEvent');
