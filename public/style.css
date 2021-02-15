@@ -156,7 +156,7 @@ input[type=text], select {
   padding-left: 4%;
   margin-top: 3%;
   flex-direction: column;
-  width:80%;
+  width:25%;
 }
 
 .flex-feedback-menu {
