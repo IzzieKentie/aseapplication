@@ -173,7 +173,7 @@ input[type=text], select {
 .flex-feedback-menu {
   display: flex;
   flex-direction: column;
-  padding-left: 4%;
+  padding-left: 2%;
   margin-top: 3%;
   width:25%;
 }
@@ -185,7 +185,7 @@ input[type=text], select {
 
 .flex-feedback-selected {
   display: flex;
-  padding-left: 4%;
+  padding-left: 2%;
   margin-top: 3%;
   flex-direction: column;
   width:25%;

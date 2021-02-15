@@ -76,6 +76,25 @@
       <div class="flex-feedback-menu">
         <div class="flex-feedback-menu-item">
           <h3>Request feedback</h3>
+          <form method="POST" action="/feedbackRequest">
+            <h3><b>Event: </b></h3>
+            <select id="feedback_event" name="feedback_event">
+              <% if(events.length){ 
+                for(var i = 0;i < events.length;i++) { %>
+                <option value="<%=events[i].event_id%>"><%=events[i].event_name%></option>
+              <% }}%>
+            </select>    
+            <h3><b>Request Feedback From: </b></h3>
+            <select id="feedback_from" name="feedback_from">
+              <% if(team.length){ 
+                for(var i = 0;i < team.length;i++) { %>
+                <option value="<%=team[i].ID%>"><%=team[i].forename%> <%=team[i].surname%></option>
+              <% }}%>
+            </select> 
+            <div class="flex-feedback-menu-item">
+              <button class="select-feedback" type="submit">Send</button>
+            </div>
+          </form>
         </div>
       </div>
 </div>
