@@ -33,7 +33,7 @@
         <form method="POST" action="/selectfeedback">
             <input type = "hidden" name = "selected" value = "<%=feedback[i].feedback_id%>" />
             <div class="flex-feedback-menu-item">
-              <input class="select-feedback" type="submit" value="<%=feedback[i].event_name%><br> from <%=feedback[i].forename%> <%=feedback[i].surname%>"/>
+              <input class="select-feedback" type="submit" value="<%=feedback[i].event_name%>/n \n from <%=feedback[i].forename%> <%=feedback[i].surname%>"/>
             </div>
         </form>
        <% }
