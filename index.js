@@ -341,7 +341,7 @@ app.post('/selectfeedback',(req,res)=>{
     }).catch(e => { console.log(e) });
 });
 
-app.post('/requestFeedback', (req,res)=>{
+app.post('/feedbackRequest', (req,res)=>{
     conn.execute("INSERT INTO FEEDBACK_REQUESTS (requester_id, giver_id, event_id) VALUES(?, ?, ?)",[req.session.userID, req.body.feedback_from, req.body.feedback_event],)
     .catch(e => { console.log(e) });
     res.render('home');
