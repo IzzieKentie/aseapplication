@@ -33,7 +33,7 @@
         <form method="POST" action="/selectfeedback">
             <input type = "hidden" name = "selected" value = "<%=feedback[i].feedback_id%>" />
             <div class="flex-feedback-menu-item">
-              <input class="select_event" type="submit" value="<%=feedback[i].event_name%> from <%=feedback[i].forename%> <%=feedback[i].surname%>"/>
+              <input class="select-event" type="submit" value="<%=feedback[i].event_name%> from <%=feedback[i].forename%> <%=feedback[i].surname%>"/>
             </div>
         </form>
        <% }
@@ -42,7 +42,7 @@
           <div class="flex-feedback-menu-item">No Deedback to Display</div>
         </div>
       <% } %>
-  </div>
+      </div>
     <div class="flex-feedback-selected">
       <% if(data.length){ 
         for(var i = 0;i < data.length;i++) { %>
