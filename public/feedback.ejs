@@ -71,17 +71,26 @@
       <div class="flex-feedback-menu">
         <div class="flex-feedback-menu-item">
           <h3>Feedback Requests</h3>
-   <!--       <% if(requests.length){ 
+          <% if(requests.length){ 
             for(var i = 0;i < requests.length;i++) { %>
               <form method="POST" action="/givefeedback">
-              <h3><b>Please give feedback for <%=requests[i].event_name%></b></h3>
-
+              <h3><b>Please provide feedback for: <%=requests[i].event_name%> - <%=requests[i].forename%> <%=requests[i].surname%></b></h3>
+              <p>What did they do well?</p>
+              <input type="hidden" name="event_id" value="<%=requests[i].event_id%>"></input>
+              <input type="hidden" name="requester_id" value="<%=requests[i].requester_id%>"></input>
+              <input type="hidden" name="giver_id" value="<%=requests[i].giver_id%>"></input>
+              <input type="hidden" name="request_id" value="<%=requests[i].request_id%>"></input>
+              <input type="text" name="did_well"></input>
+              <p>What did they not do well?</p>
+              <input type="text" name="did_well"></input>
+              <p>What improvements can be made?</p>
+              <input type="text" name="did_well"></input>
             <div class="flex-feedback-menu-item">
-              <button class="select-feedback" type="submit">Send</button>
+              <button class="select-feedback" type="submit">Complete</button>
             </div>
           </form>
           <% }}%>
-        </div> -->
+        </div> 
       </div>
       <div class="flex-feedback-menu">
         <div class="flex-feedback-menu-item" style="padding-right: 2%">

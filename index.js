@@ -310,7 +310,7 @@ app.get('/home',(req,res)=>{
 
 app.get('/feedback',(req,res)=>{
   var selected = [];
-  conn.execute("SELECT f.*, t.forename, t.surname, a.event_name FROM FEEDBACK_REQUESTS f, ASE_TEAM t, ASE_EVENTS a WHERE f.REQUESTER_ID = ? AND f.event_id = a.event_id AND t.ID = f.giver_id", [req.session.userID],).then(([rows]) => {
+  conn.execute("SELECT f.*, t.forename, t.surname, a.event_name FROM FEEDBACK_REQUESTS f, ASE_TEAM t, ASE_EVENTS a WHERE f.GIVER_ID = ? AND f.event_id = a.event_id AND t.ID = f.requester_id", [req.session.userID],).then(([rows]) => {
   var requests = [];
   requests = rows;
     conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID = ?)", [req.session.userID],).then(([rows]) => {
@@ -332,7 +332,7 @@ app.get('/feedback',(req,res)=>{
 });
 
 app.post('/selectfeedback',(req,res)=>{
-  conn.execute("SELECT f.*, t.forename, t.surname, a.event_name FROM FEEDBACK_REQUESTS f, ASE_TEAM t, ASE_EVENTS a WHERE f.REQUESTER_ID = ? AND f.event_id = a.event_id AND t.ID = f.giver_id", [req.session.userID],).then(([rows]) => {
+  conn.execute("SELECT f.*, t.forename, t.surname, a.event_name FROM FEEDBACK_REQUESTS f, ASE_TEAM t, ASE_EVENTS a WHERE f.GIVER_ID = ? AND f.event_id = a.event_id AND t.ID = f.requester_id", [req.session.userID],).then(([rows]) => {
   var requests = [];
   requests = rows;
     conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID = ?)", [req.session.userID],).then(([rows]) => {
@@ -351,8 +351,7 @@ app.post('/selectfeedback',(req,res)=>{
             res.render('feedback',{
                 feedback, events, team, requests, selected
               });
-                        }).catch(e => { console.log(e) });
-
+          }).catch(e => { console.log(e) });
         }).catch(e => { console.log(e) });
       }).catch(e => { console.log(e) });
     }).catch(e => { console.log(e) });
@@ -362,6 +361,12 @@ app.post('/selectfeedback',(req,res)=>{
 app.post('/feedbackRequest', (req,res)=>{
     conn.execute("INSERT INTO FEEDBACK_REQUESTS (requester_id, giver_id, event_id) VALUES(?, ?, ?)",[req.session.userID, req.body.feedback_from, req.body.feedback_event],)
     .catch(e => { console.log(e) });
+    res.render('home');
+  });
+
+app.post('/giveFeedback', (req,res)=>{
+    conn.execute("INSERT INTO FEEDBACK (reciver_id, giver_id, did_well, not_well, improvements, event_id) VALUES(?, ?, ?, ?, ?, ?)",[req.session.requester_id, req.body.giver_id, req.body.did_well, req.body.not_well, req.body.imrpovements, req.body.event_id],).catch(e => { console.log(e) });
+    conn.execute("DELETE FROM FEEDBACK_REQUESTS WHERE request_id = ?",[req.body.request_id],).catch(e => { console.log(e) });
     res.render('home');
   });
 
