@@ -71,11 +71,20 @@
       <div class="flex-feedback-menu">
         <div class="flex-feedback-menu-item">
           <h3>Feedback Requests</h3>
-<!-- Continue here-->
-        </div>
+   <!--       <% if(requests.length){ 
+            for(var i = 0;i < requests.length;i++) { %>
+              <form method="POST" action="/givefeedback">
+              <h3><b>Please give feedback for <%=requests[i].event_name%></b></h3>
+
+            <div class="flex-feedback-menu-item">
+              <button class="select-feedback" type="submit">Send</button>
+            </div>
+          </form>
+          <% }}%>
+        </div> -->
       </div>
       <div class="flex-feedback-menu">
-        <div class="flex-feedback-menu-item">
+        <div class="flex-feedback-menu-item" style="padding-right: 2%">
           <h3>Request feedback</h3>
           <form method="POST" action="/feedbackRequest">
             <h3><b>Event: </b></h3>
