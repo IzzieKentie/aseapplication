@@ -44,6 +44,29 @@
   <% } %>
   </div>
       <div class="flex-feedback-selected">
+        <% if(selected.length){ 
+        for(var i = 0;i < selected.length;i++) { %>
+        <div class="flex-feedback-selected-item" >
+          <h3>What you did well:</h3>
+          </div>
+          <div class="flex-feedback-selected-item" >
+          <p><%=selected[i].did_well%></p>
+        </div>
+       <div class="flex-feedback-selected-item">
+          <h3>What you did not do well:</h3>
+          </div>
+          <div class="flex-feedback-selected-item">
+          <p><%=selected[i].not_well%></p>
+        </div>
+        <div class="flex-feedback-selected-item">
+          <h3>What to improve on</h3>
+          </div>
+          <div class="flex-feedback-selected-item">
+          <p><%=selected[i].improvements%></p>
+        </div>
+        <% }} else { %>
+    <div class="flex-feedback-selected-item">No Feedback to Display</div>
+  <% } %>
       </div>
       <div class="flex-feedback-menu">
         <div class="flex-feedback-menu-item">

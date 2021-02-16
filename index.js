@@ -321,40 +321,42 @@ app.get('/feedback',(req,res)=>{
         conn.execute("SELECT f.*, a.event_name, t.forename, t.surname FROM FEEDBACK f, ASE_EVENTS a, ASE_TEAM t WHERE f.reciever_ID = ? AND f.EVENT_ID = a.EVENT_ID AND f.giver_id=t.ID", [req.session.userID],).then(([rows]) => {
           var feedback = [];
           feedback = rows;
-         /* res.render('feedback',{
-            feedback, events, team, requests
-          });*/
-          if(req.body.select != null) {
-            conn.execute("SELECT * FROM FEEDBACK WHERE feedback_id=?",[req.body.selected],).then(([rows]) => {
-              res.render('selectfeedback',{
-                feedback, events, team, requests, data:rows
-              });
-            }).catch(e => { console.log(e) });
-          }
-          else {
-            res.render('selectfeedback',{
-                feedback, events, team, requests
-              });
-          }
+          var selected = [];
+          res.render('feedback',{
+            feedback, events, team, requests, selected
+          });
         }).catch(e => { console.log(e) });
       }).catch(e => { console.log(e) });
     }).catch(e => { console.log(e) });
   }).catch(e => { console.log(e) });
 });
 
-
 app.post('/selectfeedback',(req,res)=>{
-  const {selected} = req.body;
-  console.log(selected);
-    conn.execute("SELECT f.*, a.event_name, t.forename, t.surname FROM FEEDBACK f, ASE_EVENTS a, ASE_TEAM t WHERE f.reciever_ID = ? AND f.EVENT_ID = a.EVENT_ID AND f.giver_id=t.ID", [req.session.userID],).then(([rows]) => {
-      var feedback = [];
-        feedback = rows;
-          conn.execute("SELECT * FROM FEEDBACK WHERE feedback_id=?",[selected],).then(([rows]) => {
-            res.render('selectfeedback',{
-              feedback,data:rows
-            });
-          }).catch(e => { console.log(e) });
+  conn.execute("SELECT f.*, t.forename, t.surname, a.event_name FROM FEEDBACK_REQUESTS f, ASE_TEAM t, ASE_EVENTS a WHERE f.REQUESTER_ID = ? AND f.event_id = a.event_id AND t.ID = f.giver_id", [req.session.userID],).then(([rows]) => {
+  var requests = [];
+  requests = rows;
+    conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID = ?)", [req.session.userID],).then(([rows]) => {
+    var events = [];
+    events = rows;
+      conn.execute("SELECT * FROM ASE_TEAM", [req.session.userID],).then(([rows]) => {
+      var team = [];
+      team = rows;
+        conn.execute("SELECT f.*, a.event_name, t.forename, t.surname FROM FEEDBACK f, ASE_EVENTS a, ASE_TEAM t WHERE f.reciever_ID = ? AND f.EVENT_ID = a.EVENT_ID AND f.giver_id=t.ID", [req.session.userID],).then(([rows]) => {
+          var feedback = [];
+          feedback = rows;
+          var selected = [];
+          console.log(req.body.selected);
+            conn.execute("SELECT * FROM FEEDBACK WHERE feedback_id=?",[req.body.selected],).then(([rows]) => {
+              selected = rows;
+            res.render('feedback',{
+                feedback, events, team, requests, selected
+              });
+                        }).catch(e => { console.log(e) });
+
+        }).catch(e => { console.log(e) });
+      }).catch(e => { console.log(e) });
     }).catch(e => { console.log(e) });
+  }).catch(e => { console.log(e) });
 });
 
 app.post('/feedbackRequest', (req,res)=>{
