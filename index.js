@@ -365,7 +365,7 @@ app.post('/feedbackRequest', (req,res)=>{
   });
 
 app.post('/giveFeedback', (req,res)=>{
-    conn.execute("INSERT INTO FEEDBACK (reciver_id, giver_id, did_well, not_well, improvements, event_id) VALUES(?, ?, ?, ?, ?, ?)",[req.session.requester_id, req.body.giver_id, req.body.did_well, req.body.not_well, req.body.imrpovements, req.body.event_id],).catch(e => { console.log(e) });
+    conn.execute("INSERT INTO FEEDBACK (reciever_id, giver_id, did_well, not_well, improvements, event_id) VALUES(?, ?, ?, ?, ?, ?)",[req.body.requester_id, req.body.giver_id, req.body.did_well, req.body.not_well, req.body.improvements, req.body.event_id],).catch(e => { console.log(e) });
     conn.execute("DELETE FROM FEEDBACK_REQUESTS WHERE request_id = ?",[req.body.request_id],).catch(e => { console.log(e) });
     res.render('home');
   });
