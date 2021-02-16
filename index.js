@@ -309,18 +309,34 @@ app.get('/home',(req,res)=>{
 });
 
 app.get('/feedback',(req,res)=>{
-  conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID = ?)", [req.session.userID],).then(([rows]) => {
+  conn.execute("SELECT f.*, t.forename, t.surname, a.event_name FROM FEEDBACK_REQUESTS f, ASE_TEAM t, ASE_EVENTS a WHERE f.REQUESTER_ID = ? AND f.event_id = a.event_id AND t.ID = f.giver_id", [req.session.userID],).then(([rows]) => {
+  var requests = [];
+  requests = rows;
+    conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID = ?)", [req.session.userID],).then(([rows]) => {
     var events = [];
     events = rows;
-    conn.execute("SELECT * FROM ASE_TEAM", [req.session.userID],).then(([rows]) => {
+      conn.execute("SELECT * FROM ASE_TEAM", [req.session.userID],).then(([rows]) => {
       var team = [];
       team = rows;
-      conn.execute("SELECT f.*, a.event_name, t.forename, t.surname FROM FEEDBACK f, ASE_EVENTS a, ASE_TEAM t WHERE f.reciever_ID = ? AND f.EVENT_ID = a.EVENT_ID AND f.giver_id=t.ID", [req.session.userID],).then(([rows]) => {
-        var feedback = [];
-        feedback = rows;
-        res.render('feedback',{
-          feedback, events, team
-        });
+        conn.execute("SELECT f.*, a.event_name, t.forename, t.surname FROM FEEDBACK f, ASE_EVENTS a, ASE_TEAM t WHERE f.reciever_ID = ? AND f.EVENT_ID = a.EVENT_ID AND f.giver_id=t.ID", [req.session.userID],).then(([rows]) => {
+          var feedback = [];
+          feedback = rows;
+         /* res.render('feedback',{
+            feedback, events, team, requests
+          });*/
+          if(req.body.select != null) {
+            conn.execute("SELECT * FROM FEEDBACK WHERE feedback_id=?",[req.body.selected],).then(([rows]) => {
+              res.render('selectfeedback',{
+                feedback, events, team, requests, data:rows
+              });
+            }).catch(e => { console.log(e) });
+          }
+          else {
+            res.render('selectfeedback',{
+                feedback, events, team, requests
+              });
+          }
+        }).catch(e => { console.log(e) });
       }).catch(e => { console.log(e) });
     }).catch(e => { console.log(e) });
   }).catch(e => { console.log(e) });
@@ -344,7 +360,7 @@ app.post('/selectfeedback',(req,res)=>{
 app.post('/feedbackRequest', (req,res)=>{
     conn.execute("INSERT INTO FEEDBACK_REQUESTS (requester_id, giver_id, event_id) VALUES(?, ?, ?)",[req.session.userID, req.body.feedback_from, req.body.feedback_event],)
     .catch(e => { console.log(e) });
-    res.render('home');
+    res.render('feedback');
   });
 
 app.get('/CreateEvent',(req,res)=>{
