@@ -183,8 +183,10 @@ app.post('/saveNotes',(req,res)=>{
     conn.execute("INSERT INTO EVENT_ADDNL_INFO (EVENT_ID, MEMBER_ID, EVENT_NOTES) VALUES (?,?,?)",[req.body.event_id, req.session.userID, req.body.event_notes],).catch(e => { console.log(e) });
   }
   else {
-        conn.execute("UPDATE EVENT_ADDNL_INFO SET EVENT_NOTES=? WHERE INFO_ID=?",[req.body.event_notes, req.body.info_id],).catch(e => { console.log(e) });
+    conn.execute("UPDATE EVENT_ADDNL_INFO SET EVENT_NOTES=? WHERE INFO_ID=?",[req.body.event_notes, req.body.info_id],).catch(e => { console.log(e) });
   }
+  res.redirect('back');
+
 });
 
 //Upcoming Events
