@@ -101,13 +101,13 @@ app.get('/PastEvents',(req,res)=>{
 app.post('/selected_event',(req,res)=>{
       const {selected} = req.body
       console.log(selected);
-      console.log(req.body.status);
       if(req.body.status === "Past") {
         conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Past"],).then(([rows]) => {
           var events =[];
           events = rows;
           conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[selected],).then(([rows]) => {
             if(req.session.role === 'Co-Designer') {
+              console.log("This is past event -co-designer")
               res.render('SelectedEvent',{
                 data:rows, events
               });
