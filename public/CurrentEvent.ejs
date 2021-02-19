@@ -85,12 +85,12 @@
         </div>
         <% if(info.length){ %>
         <div class="flex-event-selected-item">
-          <form method="POST" action="/saveNotes" id="add_notes">
+          <form method="POST" action="/saveNotes" id="add_notes" style="width: 90%">
             <input type="hidden" name="request_type" value="UPDATE"></input>
             <input type="hidden" name="info_id" value="<%=info[0].info_id%>"></input>
             <input type="hidden" name="event_id" value="<%=info[0].event_id%>"></input>
             <input type="hidden" name="member_id" value="<%=info[0].member_id%>"></input>
-            <textarea name="event_notes" form="add_notes" value="<%=info[0].event_notes%>"><%=info[0].event_notes%></textarea>
+            <textarea name="event_notes" form="add_notes" value="<%=info[0].event_notes%>" class="notes"><%=info[0].event_notes%></textarea>
             <br><br>
             <input type="submit" class="select-event" value="Save"></input>
           </form>
@@ -98,10 +98,10 @@
           <% 
      }else{ %>
         <div class="flex-event-selected-item">
-          <form method="POST" action="/saveNotes" id="add_notes">
+          <form method="POST" action="/saveNotes" id="add_notes" style="width: 90%">
             <input type="hidden" name="request_type" value="INSERT"></input>
             <input type="hidden" name="event_id" value="<%=data[0].event_id%>"></input>
-            <textarea name="event_notes" form="add_notes"></textarea>
+            <textarea name="event_notes" form="add_notes" class="notes"></textarea>
             <br><br>
             <input type="submit" class="select-event" value="Save"></input>
           </form>
