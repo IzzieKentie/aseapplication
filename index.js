@@ -378,13 +378,13 @@ app.post('/selectfeedback',(req,res)=>{
 app.post('/feedbackRequest', (req,res)=>{
     conn.execute("INSERT INTO FEEDBACK_REQUESTS (requester_id, giver_id, event_id) VALUES(?, ?, ?)",[req.session.userID, req.body.feedback_from, req.body.feedback_event],)
     .catch(e => { console.log(e) });
-      res.redirect('back');
+      res.redirect('feedback');
   });
 
 app.post('/giveFeedback', (req,res)=>{
     conn.execute("INSERT INTO FEEDBACK (reciever_id, giver_id, did_well, not_well, improvements, event_id) VALUES(?, ?, ?, ?, ?, ?)",[req.body.requester_id, req.body.giver_id, req.body.did_well, req.body.not_well, req.body.improvements, req.body.event_id],).catch(e => { console.log(e) });
     conn.execute("DELETE FROM FEEDBACK_REQUESTS WHERE request_id = ?",[req.body.request_id],).catch(e => { console.log(e) });
-  res.redirect('back');
+  res.redirect('feedback');
   });
 
 app.get('/CreateEvent',(req,res)=>{
