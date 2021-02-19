@@ -153,24 +153,38 @@ app.post('/selected_event',(req,res)=>{
 //Current Event
 
 app.get('/CurrentEvent',(req,res)=>{
+  var info = [];
+  conn.execute("SELECT * FROM EVENT_ADDNL_INFO WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_STATUS=?)",[req.session.userID, "Current"],).then(([rows]) => {
+  info = rows;
+  }).catch(e => { console.log(e) });
         conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Current"],).then(([rows]) => {
         if(req.session.role === "Co-Designer") {
           res.render('CurrentEvent',{
-            data:rows
+            data:rows, info
           });
         }
         else if(req.session.role === "Process Facilitator") {
           res.render('CurrentEvent_PF',{
-            data:rows
+            data:rows, info
           });
         }
         else {
           res.render('CurrentEvent_FAC',{
-            data:rows
+            data:rows,info
           });
         }
 
     }).catch(e => { console.log(e) });
+});
+
+app.post('/saveNotes',(req,res)=>{
+  console.log(req.body.info_id);
+  if(req.body.request_type === "INSERT") {
+    conn.execute("INSERT INTO EVENT_ADDNL_INFO (EVENT_ID, MEMBER_ID, EVENT_NOTES) VALUES (?,?,?)",[req.body.event_id, req.session.userID, req.body.event_notes],).catch(e => { console.log(e) });
+  }
+  else {
+        conn.execute("UPDATE EVENT_ADDNL_INFO SET EVENT_NOTES=? WHERE INFO_ID=?",[req.body.event_notes, req.body.info_id],).catch(e => { console.log(e) });
+  }
 });
 
 //Upcoming Events
@@ -181,7 +195,8 @@ app.get('/UpcomingEvents',(req,res)=>{
             data:rows
         });
 
-    }).catch(e => { console.log(e) });});
+    }).catch(e => { console.log(e) });
+    });
 
 app.post('/selected_event_upcoming',(req,res)=>{
       const {selected} = req.body
