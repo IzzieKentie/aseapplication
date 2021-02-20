@@ -267,7 +267,7 @@ input[type=text], select {
   overflow: hidden;
 }
 
-.dropdown .dropbtn {
+.menu_dropdown .dropbtn {
   border: none;
   outline: none;
   color: white;
@@ -298,7 +298,7 @@ input[type=text], select {
   background-color: #ddd;
 }
 
-.dropdown:hover .dropdown-content {
+.menu_dropdown:hover .dropdown-content {
   display: block;
 }
 
