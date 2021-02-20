@@ -345,7 +345,7 @@ input[type=text], select {
 }
 
 @media screen and (max-width: 1350px) {
-    .flex-event-selected {
-    flex-direction: row;
+    .menu_and_event {
+    flex-direction: column;
   }
 }
