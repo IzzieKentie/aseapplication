@@ -156,7 +156,7 @@
                       <input type="hidden" name="task_name" id="task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0;">
                       <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
                       </form>
-                      <p id="task_name_assigned" style="text-align:center; width:33.33%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
+                      <p id="task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
                       <div style="width:33.33%">
                       <form class="icon" action="/complete" method="POST">
                         <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
