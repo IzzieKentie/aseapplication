@@ -10,8 +10,9 @@ p {
 
 .task {
   border: solid #0070AD; 
-  border-radius: 8px;
+  border-radius: 4px;
   margin: 10px 0px 10px;
+  width:80%;
 }
 
 ul.topnav {
