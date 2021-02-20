@@ -99,7 +99,7 @@
                 <div id="todo" class="collapse" style="width:100%">
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "To Do") { %>
-                    <div class="task">
+                    <div class="task" style="display:flex">
                       <p style="float:left; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b>  <%=tasks[i].task_name%></p>
                       <form class="icon" action="/complete" method="POST">
                         <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
@@ -135,7 +135,7 @@
                   </div>
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "In Progress") { %>
-                    <div class="task">
+                    <div class="task" style="display: flex">
                       <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
                       <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
                       <div style="width:33.33%">
@@ -165,8 +165,10 @@
                 <div id="inreview" class="collapse" style="width:100%">
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "Review") { %>
-                    <div class="task">
-                      <p class="task_text"><%=tasks[i].task_name%></p>
+                    <div class="task" style="display:flex">
+                      <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                      <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
+                      <div style="width:33.33%">
                       <form class="icon" action="/complete" method="POST">
                         <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
                         <input type="image" alt="Complete Task" class="icons" src="complete.png">
@@ -179,6 +181,7 @@
                         <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
                         <input type="image" alt="In Progress" class="icons" src="in-progress.png">
                       </form>
+                    </div>
                     </div>
                   <% } } %>
                     </div>
@@ -192,8 +195,10 @@
                 <div id="complete" class="collapse" style="width:100%">
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "Complete") { %>
-                    <div class="task">
-                      <p style="float:left; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                    <div class="task" style="display:flex">
+                       <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                      <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
+                      <div style="width:33.33%">
                       <form class="icon" action="/complete" method="POST">
                         <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
                         <input type="image" alt="Complete Task" class="icons" src="complete.png">
@@ -211,6 +216,7 @@
                         <input type="image" alt="In Progress" class="icons" src="in-progress.png">
                       </form>
                     </div>
+                    </div>
                   <% } } %>
                     </div>
                 </div>
@@ -223,8 +229,10 @@
                 <div id="blocked" class="collapse" style="width:100%">
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "Blocked") { %>
-                    <div class="task">
-                      <p style="float:left; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                    <div class="task" style="display:flex">
+                      <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                      <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
+                      <div style="width:33.33%">
                       <form class="icon" action="/review" method="POST">
                         <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
                         <input type="image" alt="Review Task" class="icons" src="review.png">
@@ -237,6 +245,7 @@
                         <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
                         <input type="image" alt="In Progress" class="icons" src="in-progress.png">
                       </form>
+                    </div>
                     </div>
                   <% } } %>
                     </div>
