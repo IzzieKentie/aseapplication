@@ -383,4 +383,16 @@ input[type=text], select {
   .flex-event-selected {
     width: 98%;
   }
+    .flex-event-selected-details {
+    width: 98%;
+  }
+    .flex-event-selected-job {
+    width: 98%;
+  }
+    .flex-event-selected-fotd {
+    width: 98%;
+  }
+    .flex-event-selected-notes {
+    width: 98%;
+  }
 }
