@@ -141,9 +141,9 @@
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "In Progress") { %>
                     <div class="task" style="display: flex">
-                      <form id="saveTask" class="icon" method="POST" action="/saveTask" style="width:33.33%">
+                      <form class="icon" method="POST" action="/saveTask" style="width:33.33%">
                         <img id="<%=tasks[i].task_id%>_edit_icon" class="icons" style="float:left" src="edit.png">
-                        <input type="image" id="<%=tasks[i].task_id%>_save_icon" alt="Save" form="saveTask" class="icons" style="float:left" src="complete.png" hidden>
+                        <input type="image" id="<%=tasks[i].task_id%>_save_icon" alt="Save" class="icons" style="float:left" src="complete.png" hidden>
                         <script>
                           document.getElementById("<%=tasks[i].task_id%>_edit_icon").onclick = function () {
                             document.getElementById("<%=tasks[i].task_id%>_task_name_text").hidden = true;
