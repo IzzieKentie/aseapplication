@@ -8,8 +8,8 @@ p {
   font-family: "Ubuntu";
 }
 
-p.task {
-  border: 2px #0070AD; 
+.task {
+  border: solid #0070AD; 
   border-radius: 8px;
   margin: 10px 0px 10px;
 }
