@@ -138,27 +138,26 @@
                     <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
                     <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
                   </div>
-                    <script>
-                      i = 0;
-                      var editTask = [];
-                    </script>
              <% for(var i = 0;i < tasks.length;i++) { %>
-             <script>
-              i++;
-              editTask[i] = i;
-             </script>
                     <% if(tasks[i].task_status === "In Progress") { %>
                     <div class="task" style="display: flex">
                       <form id="saveTask" class="icon" method="POST" action="/saveTask" style="width:33.33%">
-                        <img id="<%=tasks[i].task_id%>_edit_icon" class="icons" style="float:left" src="edit.png" onclick="editTask[i]">
+                        <img id="<%=tasks[i].task_id%>_edit_icon" class="icons" style="float:left" src="edit.png">
                         <input type="image" id="<%=tasks[i].task_id%>_save_icon" alt="Save" form="saveTask" class="icons" style="float:left" src="complete.png" hidden>
                         <script>
+                          document.getElementById("<%=tasks[i].task_id%>_edit_icon").onclick = function () {
+                            document.getElementById("<%=tasks[i].task_id%>_task_name_text").hidden = true;
+                            document.getElementById("<%=tasks[i].task_id%>_task_name_edit").type = "text";
+                            document.getElementById("<%=tasks[i].task_id%>_edit_icon").hidden = true;
+                            document.getElementById("<%=tasks[i].task_id%>_save_icon").hidden = false;
+                          };
+                          /*
                           function editTask() {
                             document.getElementById("<%=tasks[i].task_id%>_task_name_text").hidden = true;
                             document.getElementById("<%=tasks[i].task_id%>_task_name_edit").type = "text";
                             document.getElementById("<%=tasks[i].task_id%>_edit_icon").hidden = true;
                             document.getElementById("<%=tasks[i].task_id%>_save_icon").hidden = false;
-                          }
+                          } */
                         </script>
                         <p id="<%=tasks[i].task_id%>_task_name_text" style="text-align:left; width:100%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
                         <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0;" value="<%=tasks[i].task_name%>">
