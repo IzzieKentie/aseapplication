@@ -156,8 +156,12 @@ app.get('/CurrentEvent',(req,res)=>{
   var info = [];
   var tasks =[];
   var event = [];
+  var team = [];
   conn.execute("SELECT * FROM EVENT_ADDNL_INFO WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_STATUS=?)",[req.session.userID, "Current"],).then(([rows]) => {
   info = rows;
+  }).catch(e => { console.log(e) });
+  conn.execute("SELECT * FROM ASE_TEAM WHERE ID IN (SELECT MEMBER_ID FROM EVENT_ASSIGNED WHERE EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_STATUS=? AND MEMBER_ID=?)",["Current", req.session.userID],).then(([rows]) => {
+  team = rows;
   }).catch(e => { console.log(e) });
   conn.execute("SELECT t.*, a.event_name, te.forename, te.surname FROM EVENT_TASKS t, ASE_EVENTS a, ASE_TEAM te WHERE t.ASSIGNED_ID = te.ID AND t.ASSIGNED_ID = ? AND a.event_status = ? ",[req.session.userID, "Current"],).then(([rows]) => {
   tasks = rows;
@@ -166,17 +170,17 @@ app.get('/CurrentEvent',(req,res)=>{
   event = rows;
   if(req.session.role === "Co-Designer") {
     res.render('CurrentEvent',{
-      event, info, tasks
+      event, info, tasks, team
     });
   }
   else if(req.session.role === "Process Facilitator") {
     res.render('CurrentEvent_PF',{
-      event, info, tasks
+      event, info, tasks, team
     });
   }
   else {
     res.render('CurrentEvent_FAC',{
-      event, info, tasks
+      event, info, tasks, team
     });
   }
     }).catch(e => { console.log(e) });
@@ -427,11 +431,10 @@ app.post('/complete', (req,res) =>{
 });
 
 app.post('/saveTask', (req,res) =>{
-          console.log(req.body.task_name);
-    console.log(req.body.task_id);
     conn.execute("UPDATE EVENT_TASKS SET TASK_NAME=? WHERE TASK_ID=?",[req.body.task_name, req.body.task_id],)
     .catch(e => { console.log(e) });
-
+    conn.execute("UPDATE EVENT_TASKS SET ASSIGNED_ID=? WHERE TASK_ID=?",[req.body.assigned, req.body.task_id],)
+    .catch(e => { console.log(e) });
     res.redirect('CurrentEvent');
 });
 

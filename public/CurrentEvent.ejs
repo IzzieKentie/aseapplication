@@ -150,13 +150,21 @@
                             document.getElementById("<%=tasks[i].task_id%>_task_name_edit").type = "text";
                             document.getElementById("<%=tasks[i].task_id%>_edit_icon").hidden = true;
                             document.getElementById("<%=tasks[i].task_id%>_save_icon").hidden = false;
+                            document.getElementById("assigned").hidden = false;
+                            document.getElementById("<%=tasks[i].task_id%>_task_name_assigned").hidden = true;
                           };
                         </script>
                         <p id="<%=tasks[i].task_id%>_task_name_text" style="text-align:left; width:100%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
                         <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0;" value="<%=tasks[i].task_name%>">
                         <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                      <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
+                      <select id="assigned" name="feedback_from" style="text-align:center; width:100%; margin: 10px 0 10px 0px" hidden>
+                        <% if(team.length){ 
+                          for(var i = 0;i < team.length;i++) { %>
+                            <option value="<%=team[i].ID%>"><%=team[i].forename%> <%=team[i].surname%></option>
+                          <% }}%>
+                      </select> 
                       </form>
-                      <p id="task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
                       <div style="width:33.33%">
                       <form class="icon" action="/complete" method="POST">
                         <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
