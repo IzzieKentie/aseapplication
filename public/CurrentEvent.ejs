@@ -86,6 +86,7 @@
                   <div class="flex-event-selected-item" >
                     <div id="todo" class="collapse task">
                       <p style="margin: 10px 0 10px"><%=tasks[i].task_name%></p>
+                      <button type="button">In Progress</button>
                     </div>
                   <% } %>
                 </div>
@@ -94,6 +95,7 @@
                   <% if(tasks[i].task_status === "In Progress") { %>
                     <div id="inprogress" class="collapse">
                       <p style="margin: 10px 0 10px"><%=tasks[i].task_name%></p>
+                      <button type="button">Complete</button>
                     </div>
                   <% } %>
                 </div>
