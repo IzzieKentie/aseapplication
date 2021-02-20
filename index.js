@@ -427,10 +427,11 @@ app.post('/complete', (req,res) =>{
 });
 
 app.post('/saveTask', (req,res) =>{
-    conn.execute("UPDATE EVENT_TASKS SET TASK_NAME=? WHERE TASK_ID=?",[req.body.task_name, req.body.task_id],)
-    console.log(req.body.task_name);
+          console.log(req.body.task_name);
     console.log(req.body.task_id);
+    conn.execute("UPDATE EVENT_TASKS SET TASK_NAME=? WHERE TASK_ID=?",[req.body.task_name, req.body.task_id],)
     .catch(e => { console.log(e) });
+
     res.redirect('CurrentEvent');
 });
 
