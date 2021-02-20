@@ -30,7 +30,7 @@
 </ul>
   <img class="center" style="width: 8%;" src="ASE_UK_logo_v1.0.png"></li>
  <div class="menu_and_event">
-    <div class="flex-event-selected">
+    <div class="flex-event-selected" style="width:20%">
       <% if(event.length){ %>
         <div class="flex-event-selected-item" >
           <h3>Event Name</h3>
@@ -72,7 +72,7 @@
     <div class="flex-event-selected-item">No Events to Display</div>
   <% } %>
 </div>
-      <div class="flex-event-selected">
+      <div class="flex-event-selected" style="width:30%">
           <h3>Job Jar</h3>
           <form>
             <button class="select-event">Assigned to me</button>
@@ -93,21 +93,53 @@
                     </div>
                 </div>
               <% } %>
-          <div class="task" >
+          <div class="flex-event-selected-item" >
             <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inprogress">In Progress</button><br>
           </div>
-          <% if(tasks.length){
-              for(var i = 0;i < tasks.length;i++) { %>
-                  <% if(tasks[i].task_status === "In Progress") { %>
-                  <div class="flex-event-selected-item" >
-                    <div id="inprogress" class="collapse task">
+          <% if(tasks.length){ %>
+              <div class="flex-event-selected-item" >
+                <div id="inprogress" class="collapse" style="width:100%">
+             <% for(var i = 0;i < tasks.length;i++) { %>
+                    <% if(tasks[i].task_status === "In Progress") { %>
+                    <div class="task">
                       <p style="float:left; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
                       <button type="button" style="float:right; margin: 10px 0 10px 0px">In Review</button>
                     </div>
-                  </div>
-                  <% } 
-                } 
-              } %>    
+                  <% } } %>
+                    </div>
+                </div>
+          <% } %>
+          <div class="flex-event-selected-item" >
+            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inreview">In Review</button><br>
+          </div>
+          <% if(tasks.length){ %>
+              <div class="flex-event-selected-item" >
+                <div id="inreview" class="collapse" style="width:100%">
+             <% for(var i = 0;i < tasks.length;i++) { %>
+                    <% if(tasks[i].task_status === "In Progress") { %>
+                    <div class="task">
+                      <p style="float:left; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                      <button type="button" style="float:right; margin: 10px 0 10px 0px">Complete</button>
+                    </div>
+                  <% } } %>
+                    </div>
+                </div>
+          <% } %>
+          <div class="flex-event-selected-item" >
+            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#complete">Complete</button><br>
+          </div>
+          <% if(tasks.length){ %>
+              <div class="flex-event-selected-item" >
+                <div id="complete" class="collapse" style="width:100%">
+             <% for(var i = 0;i < tasks.length;i++) { %>
+                    <% if(tasks[i].task_status === "In Progress") { %>
+                    <div class="task">
+                      <p style="float:left; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                    </div>
+                  <% } } %>
+                    </div>
+                </div>
+          <% } %>
       </div>
       <div class="flex-event-selected">
         <div class="flex-event-selected-item">
