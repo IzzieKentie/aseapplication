@@ -8,6 +8,12 @@ p {
   font-family: "Ubuntu";
 }
 
+.icons {
+      width: 8%;
+    float: right;
+    margin: 10px 10px 10px 0;
+}
+
 .task {
   border-bottom: solid 2px #0070AD; 
   margin: 10px 4px 10px;
