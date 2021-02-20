@@ -80,20 +80,24 @@
           </form>
             <% if(tasks.length){
               for(var i = 0;i < tasks.length;i++) { %>
-                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#todo">To Do</button>
-                <% if(tasks[i].task_status === "To Do") { %>
-                  <div id="todo" class="collapse">
-                  <p><%=tasks[i].task_name%></p>
-                  <p><%=tasks[i].task_status%></p>
+                <div class="flex-event-selected-item" >
+                  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#todo">To Do</button>
+                  <% if(tasks[i].task_status === "To Do") { %>
+                    <div id="todo" class="collapse">
+                    <p><%=tasks[i].task_name%></p>
+                    <p><%=tasks[i].task_status%></p>
+                  </div>
+                  <% } %>
                 </div>
-                <% } %>
-                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#current">Current</button>
-                <% if(tasks[i].task_status === "Current") { %>
-                <div id="current" class="collapse">
+                <div class="flex-event-selected-item" >
+                  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#current">Current</button>
+                  <% if(tasks[i].task_status === "Current") { %>
+                    <div id="current" class="collapse">
                   <p><%=tasks[i].task_name%></p>
-                  <p><%=tasks[i].task_status%></p>
+                    <p><%=tasks[i].task_status%></p>
+                  </div>
+                  <% } %>
                 </div>
-                <% } %>
             <% } } else { %>
               <p>No Tasks to Show</p>
             <% } %>     
