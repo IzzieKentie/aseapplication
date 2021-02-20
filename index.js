@@ -160,7 +160,7 @@ app.get('/CurrentEvent',(req,res)=>{
   conn.execute("SELECT * FROM EVENT_ADDNL_INFO WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_STATUS=?)",[req.session.userID, "Current"],).then(([rows]) => {
   info = rows;
   }).catch(e => { console.log(e) });
-  conn.execute("SELECT * FROM ASE_TEAM WHERE ID IN (SELECT MEMBER_ID FROM EVENT_ASSIGNED WHERE EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?))",["Current", req.session.userID],).then(([rows]) => {
+  conn.execute("SELECT * FROM ASE_TEAM WHERE ID IN (SELECT MEMBER_ID FROM EVENT_ASSIGNED WHERE EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?))",[req.session.userID, "Current"],).then(([rows]) => {
   team = rows;
   }).catch(e => { console.log(e) });
   conn.execute("SELECT t.*, a.event_name, te.forename, te.surname FROM EVENT_TASKS t, ASE_EVENTS a, ASE_TEAM te WHERE t.ASSIGNED_ID = te.ID AND t.ASSIGNED_ID = ? AND a.event_status = ? ",[req.session.userID, "Current"],).then(([rows]) => {
