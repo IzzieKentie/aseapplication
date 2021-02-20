@@ -79,10 +79,10 @@
             <button class="job">All Tasks</button>
           </form>
           <div class="flex-event-selected-item" >
-            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#todo" style="width:100%">New Task</button><br>
+            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#new" style="width:100%">New Task</button><br>
           </div>
           <div class="flex-event-selected-item" >
-            <div id="complete" class="collapse" style="width:100%">
+            <div id="new" class="collapse" style="width:100%">
               <div class="task">
                 <form action="/newTask" method="POST">
                   <input type="text" name="task_name">
@@ -208,11 +208,11 @@
                 </div>
           <% } %>
           <div class="flex-event-selected-item" >
-            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#todo" style="width:100%"><img class="icons" src="block.png">Blocked</button><br>
+            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#blocked" style="width:100%"><img style="height: 25px; float:right" class="icons" src="block.png"><p style="float: left">Blocked</p></button><br>
           </div>
           <% if(tasks.length){ %>
               <div class="flex-event-selected-item" >
-                <div id="complete" class="collapse" style="width:100%">
+                <div id="blocked" class="collapse" style="width:100%">
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "Blocked") { %>
                     <div class="task">
