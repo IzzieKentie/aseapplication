@@ -77,11 +77,15 @@
           <form>
             <button class="select-event">Assigned to me</button>
           </form>
-            <% if(tasks.length){
-              for(var i = 0;i < tasks.length;i++) { %>
-                <div class="flex-event-selected-item" >
+                          <div class="flex-event-selected-item" >
                   <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#todo">To Do</button><br>
                 </div>
+                                <div class="flex-event-selected-item" >
+                  <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inprogress">In Progress</button><br>
+                </div>
+            <% if(tasks.length){
+              for(var i = 0;i < tasks.length;i++) { %>
+
                   <% if(tasks[i].task_status === "To Do") { %>
                   <div class="flex-event-selected-item" >
                     <div id="todo" class="collapse task">
@@ -89,10 +93,8 @@
                       <button type="button" style="float:right; margin: 10px 0 10px 0px">In Progress</button>
                     </div>
                   <% } %>
-                </div>
-                <div class="flex-event-selected-item" >
-                  <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inprogress">In Progress</button><br>
-                </div>
+                  </div>
+
                   <% if(tasks[i].task_status === "In Progress") { %>
                   <div class="flex-event-selected-item" >
                     <div id="inprogress" class="collapse task">
