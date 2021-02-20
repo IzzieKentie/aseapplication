@@ -83,7 +83,7 @@
           </div>
           <div class="flex-event-selected-item" >
             <div id="new" class="collapse" style="width:100%">
-              <div class="task">
+              <div class="newTask">
                 <form action="/newTask" method="POST">
                   <input type="text" name="task_name">
                   <input type="submit" class="select-event">
@@ -123,7 +123,7 @@
                 </div>
               <% } %>
           <div class="flex-event-selected-item" >
-            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inprogress" style="width:100%">In Progress</button><br>
+            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inprogress" style="width:100%"><img style="height: 25px; float:right; margin: 0 0 0 0" class="icons" src="in-progress.png"><p style="float: left margin: 5px 0 5px 0">In Progress</p></button><br>
           </div>
           <% if(tasks.length){ %>
               <div class="flex-event-selected-item" >
@@ -150,7 +150,7 @@
                 </div>
           <% } %>
           <div class="flex-event-selected-item" >
-            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inreview" style="width:100%">In Review</button><br>
+            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inreview" style="width:100%"><img style="height: 25px; float:right; margin: 0 0 0 0" class="icons" src="review.png"><p style="float: left margin: 5px 0 5px 0">In Review</p></button><br>
           </div>
           <% if(tasks.length){ %>
               <div class="flex-event-selected-item" >
@@ -177,7 +177,7 @@
                 </div>
           <% } %>
           <div class="flex-event-selected-item" >
-            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#complete" style="width:100%">Complete</button><br>
+            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#complete" style="width:100%"><img style="height: 25px; float:right; margin: 0 0 0 0" class="icons" src="complete.png"><p style="float: left margin: 5px 0 5px 0">Complete</p></button><br>
           </div>
           <% if(tasks.length){ %>
               <div class="flex-event-selected-item" >
@@ -208,7 +208,7 @@
                 </div>
           <% } %>
           <div class="flex-event-selected-item" >
-            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#blocked" style="width:100%"><img style="height: 25px; float:right" class="icons" src="block.png"><p style="float: left">Blocked</p></button><br>
+            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#blocked" style="width:100%"><img style="height: 25px; float:right; margin: 0 0 0 0" class="icons" src="block.png"><p style="float: left margin: 5px 0 5px 0">Blocked</p></button><br>
           </div>
           <% if(tasks.length){ %>
               <div class="flex-event-selected-item" >
