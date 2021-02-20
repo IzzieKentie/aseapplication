@@ -97,7 +97,7 @@
           </div>
           <% if(tasks.length){
               for(var i = 0;i < tasks.length;i++) { %>
-                  <% if(tasks[i].task_status === "To Do") { %>
+                  <% if(tasks[i].task_status === "In Progress") { %>
                   <div class="flex-event-selected-item" >
                     <div id="inprogress" class="collapse task">
                       <p style="float:left; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
