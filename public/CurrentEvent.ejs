@@ -128,10 +128,16 @@
           <% if(tasks.length){ %>
               <div class="flex-event-selected-item" >
                 <div id="inprogress" class="collapse" style="width:100%">
+                  <div class="task">
+                    <p style="float:left; margin: 10px 0 10px 0px">Name</p>
+                    <p style="float:none; margin: 10px 0 10px 0px">Assigned to</p>
+                    <p style="float:right; margin: 10px 0 10px 0px">Update Status</p>
+                  </div>
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "In Progress") { %>
                     <div class="task">
-                      <p style="float:left; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b>  <%=tasks[i].task_name%></p>
+                      <p style="float:left; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                      <p style="float:none; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
                       <form class="icon" action="/complete" method="POST">
                         <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
                         <input type="image" alt="Complete Task" class="icons" src="complete.png">
