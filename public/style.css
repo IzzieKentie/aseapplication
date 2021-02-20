@@ -262,7 +262,7 @@ input[type=text], select {
   height: 200px;
 }
 
-.dropdown {
+.menu_dropdown {
   float: left;
   overflow: hidden;
 }
