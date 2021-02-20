@@ -224,7 +224,7 @@ input[type=text], select {
   padding-left: 2%;
   margin-top: 3%;
   flex-direction: column;
-  width:80%;
+  width:78%;
 }
 
 .flex-event-selected-fotd {
@@ -232,7 +232,7 @@ input[type=text], select {
   padding-left: 2%;
   margin-top: 3%;
   flex-direction: column;
-  width:70%;
+  width:68%;
 }
 
 .flex-event-selected-notes {
@@ -374,10 +374,7 @@ input[type=text], select {
     .flex-container {
     flex-direction: column;
   }
-}
-
-@media screen and (max-width: 1100px) {
-    .menu_and_event {
+      .menu_and_event {
     flex-direction: column;
   }
   .flex-event-selected {
