@@ -25,7 +25,7 @@ p {
   display:inline;
 }
 
-p.tasks {
+p.task_text {
   float: left;
   font-size: 12pt;
   margin: 5px 0 5px 0;
