@@ -21,6 +21,8 @@ p {
   height: 150px;
 }
 
+
+
 .icon {
   display:inline;
 }
@@ -203,7 +205,7 @@ input[type=text], select {
 
 .flex-event-selected {
   display: flex;
-  padding-left: 4%;
+  padding-left: 2%;
   margin-top: 3%;
   flex-direction: column;
   width:25%;
