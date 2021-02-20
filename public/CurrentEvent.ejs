@@ -78,11 +78,11 @@
             <button class="select-event">Assigned to me</button>
           </form>
           <div class="flex-event-selected-item" >
-            <button type="button" style="width:100%" class="btn btn-info select-event" data-toggle="collapse" data-target="#todo">To Do</button><br>
+            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#todo">To Do</button><br>
           </div>
           <% if(tasks.length){ %>
               <div class="flex-event-selected-item" >
-                <div id="todo" class="collapse">
+                <div id="todo" class="collapse" style="width:100%">
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "To Do") { %>
                     <div class="task">
