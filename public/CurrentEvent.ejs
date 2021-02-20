@@ -87,19 +87,19 @@
                     <% if(tasks[i].task_status === "To Do") { %>
                     <div class="task">
                       <p style="float:left; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
-                      <form action="/complete" method="POST">
+                      <form class="task" action="/complete" method="POST">
                         <input type="hidden" value="<%=tasks[i].task_id%>">
                         <input type="image" alt="Complete Task" class="icons" src="complete.png">
                       </form>
-                      <form action="/review" method="POST">
+                      <form class="task" action="/review" method="POST">
                         <input type="hidden" value="<%=tasks[i].task_id%>">
                         <input type="image" alt="Review Task" class="icons" src="review.png">
                       </form>
-                      <form action="/block" method="POST">
+                      <form class="task" action="/block" method="POST">
                         <input type="hidden" value="<%=tasks[i].task_id%>">
                         <input type="image" alt="Block Task" class="icons" src="block.png">
                       </form>
-                      <form action="/in-progress" method="POST">
+                      <form class="task" action="/in-progress" method="POST">
                         <input type="hidden" value="<%=tasks[i].task_id%>">
                         <input type="image" alt="In Progress" class="icons" src="in-progress.png">
                       </form>
