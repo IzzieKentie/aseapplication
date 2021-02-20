@@ -96,7 +96,7 @@
             <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inprogress">In Progress</button><br>
           </div>
           <% if(tasks.length){
-                   if(tasks[i].task_status === "In Progress") { %>
+                  <% if(tasks[i].task_status === "In Progress") { %>
                   <div class="flex-event-selected-item" >
                     <div id="inprogress" class="collapse task">
                       <% for(var i = 0;i < tasks.length;i++) { %>
