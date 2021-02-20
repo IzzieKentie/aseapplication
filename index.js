@@ -154,26 +154,31 @@ app.post('/selected_event',(req,res)=>{
 
 app.get('/CurrentEvent',(req,res)=>{
   var info = [];
+  var tasks =[];
+  var event = [];
   conn.execute("SELECT * FROM EVENT_ADDNL_INFO WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_STATUS=?)",[req.session.userID, "Current"],).then(([rows]) => {
   info = rows;
   }).catch(e => { console.log(e) });
-        conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Current"],).then(([rows]) => {
-        if(req.session.role === "Co-Designer") {
-          res.render('CurrentEvent',{
-            data:rows, info
-          });
-        }
-        else if(req.session.role === "Process Facilitator") {
-          res.render('CurrentEvent_PF',{
-            data:rows, info
-          });
-        }
-        else {
-          res.render('CurrentEvent_FAC',{
-            data:rows,info
-          });
-        }
-
+  conn.execute("SELECT t.*, a.event_name, te.forename, te.surname FROM EVENT_TASKS t, ASE_EVENTS a, ASE_TEAM te WHERE t.ASSIGNED_ID = te.ID AND t.ASSIGNED_ID = ? AND a.event_status = ? ",[req.session.userID, "Current"],).then(([rows]) => {
+  tasks = rows;
+  }).catch(e => { console.log(e) });
+  conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Current"],).then(([rows]) => {
+  event = rows;
+  if(req.session.role === "Co-Designer") {
+    res.render('CurrentEvent',{
+      event, info, tasks
+    });
+  }
+  else if(req.session.role === "Process Facilitator") {
+    res.render('CurrentEvent_PF',{
+      event, info, tasks
+    });
+  }
+  else {
+    res.render('CurrentEvent_FAC',{
+      event, info, tasks
+    });
+  }
     }).catch(e => { console.log(e) });
 });
 

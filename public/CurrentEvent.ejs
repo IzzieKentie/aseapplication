@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+<link type="css" rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 <ul class="topnav">
@@ -28,42 +31,42 @@
   <img class="center" style="width: 8%;" src="ASE_UK_logo_v1.0.png"></li>
  <div class="menu_and_event">
     <div class="flex-event-selected">
-      <% if(data.length){ %>
+      <% if(event.length){ %>
         <div class="flex-event-selected-item" >
           <h3>Event Name</h3>
           </div>
           <div class="flex-event-selected-item" >
-          <p><%=data[0].event_name%></p>
+          <p><%=event[0].event_name%></p>
         </div>
        <div class="flex-event-selected-item">
           <h3>Event Description</h3>
           </div>
           <div class="flex-event-selected-item">
-          <p><%=data[0].event_description%></p>
+          <p><%=event[0].event_description%></p>
         </div>
         <div class="flex-event-selected-item">
           <h3>Event Client</h3>
           </div>
           <div class="flex-event-selected-item">
-          <p><%=data[0].event_client%></p>
+          <p><%=event[0].event_client%></p>
         </div>
         <div class="flex-event-selected-item">
           <h3>Process Facilitator</h3>
           </div>
           <div class="flex-event-selected-item">
-          <p><%=data[0].event_pf%></p>
+          <p><%=event[0].event_pf%></p>
         </div>
         <div class="flex-event-selected-item">
           <h3>Co Facilitator</h3>
           </div>
           <div class="flex-event-selected-item">
-          <p><%=data[0].event_cofac%></p>
+          <p><%=event[0].event_cofac%></p>
         </div>
         <div class="flex-event-selected-item">
           <h3>Facilitator</h3>
           </div>
           <div class="flex-event-selected-item">
-          <p><%=data[0].event_fac%></p>
+          <p><%=event[0].event_fac%></p>
         </div> 
  <% }else{ %>
     <div class="flex-event-selected-item">No Events to Display</div>
@@ -72,6 +75,28 @@
       <div class="flex-event-selected">
         <div class="flex-event-selected-item">
           <h3>Job Jar</h3>
+          <form>
+            <button class="select-event">Assigned to me</button>
+          </form>
+            <% if(tasks.length){
+              for(var i = 0;i < tasks.length;i++) { %>
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#todo">To Do</button>
+                <% if(tasks[i].task_status === "To Do") { %>
+                  <div id="todo" class="collapse">
+                  <p><%=tasks[i].task_name%></p>
+                  <p><%=tasks[i].task_status%></p>
+                </div>
+                <% } %>
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#current">Current</button>
+                <% if(tasks[i].task_status === "Current") { %>
+                <div id="current" class="collapse">
+                  <p><%=tasks[i].task_name%></p>
+                  <p><%=tasks[i].task_status%></p>
+                </div>
+                <% } %>
+            <% } } else { %>
+              <p>No Tasks to Show</p>
+            <% } %>     
         </div>
       </div>
       <div class="flex-event-selected">
@@ -100,7 +125,7 @@
         <div class="flex-event-selected-item">
           <form method="POST" action="/saveNotes" id="add_notes" style="width: 90%">
             <input type="hidden" name="request_type" value="INSERT"></input>
-            <input type="hidden" name="event_id" value="<%=data[0].event_id%>"></input>
+            <input type="hidden" name="event_id" value="<%=event[0].event_id%>"></input>
             <textarea name="event_notes" form="add_notes" class="notes"></textarea>
             <br><br>
             <input type="submit" class="select-event" value="Save"></input>
