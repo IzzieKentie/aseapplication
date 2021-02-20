@@ -143,6 +143,7 @@
                     <div class="task" style="display: flex">
                       <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
                       <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
+                      <img class="icons" style="float:left" src="edit.png">
                       <div style="width:33.33%">
                       <form class="icon" action="/complete" method="POST">
                         <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
@@ -249,7 +250,6 @@
                       <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
                       <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
                       <div style="width:33.33%">
-                      <img class="icons" style="float:left" src="edit.png">
                       <form class="icon" action="/review" method="POST">
                         <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
                         <input type="image" alt="Review Task" class="icons" src="review.png">
