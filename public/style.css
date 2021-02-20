@@ -211,6 +211,38 @@ input[type=text], select {
   width:25%;
 }
 
+.flex-event-selected-details {
+  display: flex;
+  padding-left: 2%;
+  margin-top: 3%;
+  flex-direction: column;
+  width:20%;
+}
+
+.flex-event-selected-job {
+  display: flex;
+  padding-left: 2%;
+  margin-top: 3%;
+  flex-direction: column;
+  width:30%;
+}
+
+.flex-event-selected-fotd {
+  display: flex;
+  padding-left: 2%;
+  margin-top: 3%;
+  flex-direction: column;
+  width:30%;
+}
+
+.flex-event-selected-notes {
+  display: flex;
+  padding-left: 2%;
+  margin-top: 3%;
+  flex-direction: column;
+  width:20%;
+}
+
 .flex-feedback-menu {
   display: flex;
   flex-direction: column;
@@ -347,5 +379,8 @@ input[type=text], select {
 @media screen and (max-width: 1350px) {
     .menu_and_event {
     flex-direction: column;
+  }
+  .flex-event-selected {
+    width: 98%;
   }
 }
