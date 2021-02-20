@@ -85,15 +85,13 @@
                   <% if(tasks[i].task_status === "To Do") { %>
                   <div class="flex-event-selected-item" >
                     <div id="todo" class="collapse">
-                      <ul class="tasks">
-                        <li><%=tasks[i].task_name%></li>
-                      </ul>
-                  </div>
+                      <p style="border: 2px #0070AD; border-radius: 8px;"><%=tasks[i].task_name%></p>
+                    </div>
                   <% } %>
                 </div>
                 <div class="flex-event-selected-item" >
-                  <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inprogress">Current</button><br>
-                  <% if(tasks[i].task_status === "Current") { %>
+                  <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inprogress">In Progress</button><br>
+                  <% if(tasks[i].task_status === "In Progress") { %>
                     <div id="inprogress" class="collapse">
                       <ul class="tasks">
                         <li><%=tasks[i].task_name%></li>
