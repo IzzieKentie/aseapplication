@@ -25,6 +25,12 @@ p {
   display:inline;
 }
 
+p.tasks {
+  float: left;
+  font-size: 12pt;
+  margin: 5px 0 5px 0;
+}
+
 .task {
   border-bottom: solid 2px #0070AD; 
   margin: 10px 4px 10px;
