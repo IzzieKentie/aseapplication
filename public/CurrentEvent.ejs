@@ -141,7 +141,7 @@
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "In Progress") { %>
                     <div class="task" style="display: flex">
-                      <form id="saveTask" class="icon" method="POST" action="/saveTask">
+                      <form id="saveTask" class="icon" method="POST" action="/saveTask" style="width:33.33%">
                       <img id="edit_icon" class="icons" style="float:left" src="edit.png" onclick="editTask()">
                       <img id="save_icon" form="saveTask" class="icons" style="float:left" src="complete.png" hidden>
                       <script>
