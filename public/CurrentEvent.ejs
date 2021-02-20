@@ -143,7 +143,7 @@
                     <div class="task" style="display: flex">
                       <form id="saveTask" class="icon" method="POST" action="/saveTask">
                       <img id="edit_icon" class="icons" style="float:left" src="edit.png" onclick="editTask()">
-                      <img id="save_icon" form="saveTask" class="icons" style="float:left" src="edit.png" onclick="editTask()" hidden>
+                      <img id="save_icon" form="saveTask" class="icons" style="float:left" src="complete.png" hidden>
                       <script>
                         function editTask() {
                           document.getElementById("task_name_text").hidden = true;
@@ -153,6 +153,7 @@
                         }
                       </script>
                       <p id="task_name_text" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                      <input type="hidden" id="task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px">
                       </form>
                       <p id="task_name_assigned" style="text-align:center; width:33.33%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
                       <div style="width:33.33%">
