@@ -80,22 +80,22 @@
             <% if(tasks.length){
               for(var i = 0;i < tasks.length;i++) { %>
                 <div class="flex-event-selected-item" >
-                  <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#todo">To Do</button>
+                  <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#todo">To Do</button><br>
                 </div>
                   <% if(tasks[i].task_status === "To Do") { %>
                   <div class="flex-event-selected-item" >
                     <div id="todo" class="collapse">
-                      <ul>
+                      <ul class="tasks">
                         <li><%=tasks[i].task_name%></li>
                       </ul>
                   </div>
                   <% } %>
                 </div>
                 <div class="flex-event-selected-item" >
-                  <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#current">Current</button><br>
+                  <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inprogress">Current</button><br>
                   <% if(tasks[i].task_status === "Current") { %>
-                    <div id="current" class="collapse">
-                      <ul>
+                    <div id="inprogress" class="collapse">
+                      <ul class="tasks">
                         <li><%=tasks[i].task_name%></li>
                       </ul>
                   </div>

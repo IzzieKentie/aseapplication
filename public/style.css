@@ -19,6 +19,11 @@ ul.topnav {
 
 }
 
+ul.tasks {
+  list-style-type: square;
+}
+
+
 ul.topnav li {float: left;}
 
 .center {
