@@ -78,7 +78,7 @@
             <button class="select-event">Assigned to me</button>
           </form>
           <div class="flex-event-selected-item" >
-            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#todo">To Do</button><br>
+            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#todo" style="width:100%">To Do</button><br>
           </div>
           <% if(tasks.length){ %>
               <div class="flex-event-selected-item" >
@@ -94,7 +94,7 @@
                 </div>
               <% } %>
           <div class="flex-event-selected-item" >
-            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inprogress">In Progress</button><br>
+            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inprogress" style="width:100%">In Progress</button><br>
           </div>
           <% if(tasks.length){ %>
               <div class="flex-event-selected-item" >
@@ -110,13 +110,13 @@
                 </div>
           <% } %>
           <div class="flex-event-selected-item" >
-            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inreview">In Review</button><br>
+            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inreview" style="width:100%">In Review</button><br>
           </div>
           <% if(tasks.length){ %>
               <div class="flex-event-selected-item" >
                 <div id="inreview" class="collapse" style="width:100%">
              <% for(var i = 0;i < tasks.length;i++) { %>
-                    <% if(tasks[i].task_status === "In Progress") { %>
+                    <% if(tasks[i].task_status === "In Review") { %>
                     <div class="task">
                       <p style="float:left; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
                       <button type="button" style="float:right; margin: 10px 0 10px 0px">Complete</button>
@@ -126,13 +126,13 @@
                 </div>
           <% } %>
           <div class="flex-event-selected-item" >
-            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#complete">Complete</button><br>
+            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#complete" style="width:100%">Complete</button><br>
           </div>
           <% if(tasks.length){ %>
               <div class="flex-event-selected-item" >
                 <div id="complete" class="collapse" style="width:100%">
              <% for(var i = 0;i < tasks.length;i++) { %>
-                    <% if(tasks[i].task_status === "In Progress") { %>
+                    <% if(tasks[i].task_status === "Complete") { %>
                     <div class="task">
                       <p style="float:left; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
                     </div>
@@ -141,12 +141,12 @@
                 </div>
           <% } %>
       </div>
-      <div class="flex-event-selected">
+      <div class="flex-event-selected" style="width:30%">
         <div class="flex-event-selected-item">
           <h3>Flow of The Day</h3>
         </div>
       </div>
-      <div class="flex-event-selected">
+      <div class="flex-event-selected" style="width:20%">
         <div class="flex-event-selected-item">
           <h3>Notes/Other</h3>
         </div>
