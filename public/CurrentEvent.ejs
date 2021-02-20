@@ -87,7 +87,10 @@
                     <% if(tasks[i].task_status === "To Do") { %>
                     <div class="task">
                       <p style="float:left; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
-                      <button type="button" style="float:right; margin: 10px 0 10px 0px">In Progress</button>
+                        <img style="width: 8%;" src="choice.png">
+                         <img style="width: 8%;" src="block.png">
+                         <img style="width: 8%;" src="file.png">
+                     <!-- <button type="button" style="float:right; margin: 10px 0 10px 0px">In Progress</button> -->
                     </div>
                   <% } } %>
                     </div>
@@ -178,5 +181,6 @@
     </div>
   </div>
 </div>
+ <div style="display: none">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 </body>
 </html>
