@@ -402,6 +402,30 @@ app.post('/CreateNewEvent', (req,res)=>{
     res.render('home');
   });
 
+app.post('/in-progress', (req,res) =>{
+    conn.execute("UPDATE EVENT_TASKS SET TASK_STATUS=? WHERE TASK_ID=?",["In Progress", req.body.task_id],)
+    .catch(e => { console.log(e) });
+    res.redirect('CurrentEvent');
+});
+
+app.post('/review', (req,res) =>{
+    conn.execute("UPDATE EVENT_TASKS SET TASK_STATUS=? WHERE TASK_ID=?",["Review", req.body.task_id],)
+    .catch(e => { console.log(e) });
+    res.redirect('CurrentEvent');
+});
+
+app.post('/block', (req,res) =>{
+    conn.execute("UPDATE EVENT_TASKS SET TASK_STATUS=? WHERE TASK_ID=?",["Blocked", req.body.task_id],)
+    .catch(e => { console.log(e) });
+    res.redirect('CurrentEvent');
+});
+
+app.post('/complete', (req,res) =>{
+    conn.execute("UPDATE EVENT_TASKS SET TASK_STATUS=? WHERE TASK_ID=?",["Complete", req.body.task_id],)
+    .catch(e => { console.log(e) });
+    res.redirect('CurrentEvent');
+});
+
 
 
 const port = process.env.PORT || 1337;
