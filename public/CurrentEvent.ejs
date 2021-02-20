@@ -153,7 +153,7 @@
                           }
                         </script>
                         <p id="<%=tasks[i].task_id%>_task_name_text" style="text-align:left; width:100%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
-                        <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0;"><%=tasks[i].task_name%></input>
+                        <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0;" value="<%=tasks[i].task_name%>">
                         <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
                       </form>
                       <p id="task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
