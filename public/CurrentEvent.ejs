@@ -118,7 +118,18 @@
                     <% if(tasks[i].task_status === "In Progress") { %>
                     <div class="task">
                       <p style="float:left; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
-                      <button type="button" style="float:right; margin: 10px 0 10px 0px">In Review</button>
+                      <form class="icon" action="/complete" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="Complete Task" class="icons" src="complete.png">
+                      </form>
+                      <form class="icon" action="/review" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="Review Task" class="icons" src="review.png">
+                      </form>
+                      <form class="icon" action="/block" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="Block Task" class="icons" src="block.png">
+                      </form>                    
                     </div>
                   <% } } %>
                     </div>
@@ -131,10 +142,21 @@
               <div class="flex-event-selected-item" >
                 <div id="inreview" class="collapse" style="width:100%">
              <% for(var i = 0;i < tasks.length;i++) { %>
-                    <% if(tasks[i].task_status === "In Review") { %>
+                    <% if(tasks[i].task_status === "Review") { %>
                     <div class="task">
                       <p style="float:left; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
-                      <button type="button" style="float:right; margin: 10px 0 10px 0px">Complete</button>
+                      <form class="icon" action="/complete" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="Complete Task" class="icons" src="complete.png">
+                      </form>
+                      <form class="icon" action="/block" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="Block Task" class="icons" src="block.png">
+                      </form>
+                      <form class="icon" action="/in-progress" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="In Progress" class="icons" src="in-progress.png">
+                      </form>
                     </div>
                   <% } } %>
                     </div>
@@ -150,6 +172,18 @@
                     <% if(tasks[i].task_status === "Complete") { %>
                     <div class="task">
                       <p style="float:left; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                      <form class="icon" action="/review" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="Review Task" class="icons" src="review.png">
+                      </form>
+                      <form class="icon" action="/block" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="Block Task" class="icons" src="block.png">
+                      </form>
+                      <form class="icon" action="/in-progress" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="In Progress" class="icons" src="in-progress.png">
+                      </form>
                     </div>
                   <% } } %>
                     </div>
