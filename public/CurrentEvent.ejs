@@ -97,6 +97,11 @@
           <% if(tasks.length){ %>
               <div class="flex-event-selected-item" >
                 <div id="todo" class="collapse" style="width:100%">
+                  <div class="task" style="display:flex">
+                    <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px">Name</p>
+                    <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
+                    <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
+                  </div>
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "To Do") { %>
                     <div class="task" style="display:flex">
@@ -131,7 +136,7 @@
                   <div class="task" style="display:flex">
                     <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px">Name</p>
                     <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
-                    <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
+                    <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
                   </div>
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "In Progress") { %>
@@ -163,6 +168,11 @@
           <% if(tasks.length){ %>
               <div class="flex-event-selected-item" >
                 <div id="inreview" class="collapse" style="width:100%">
+                  <div class="task" style="display:flex">
+                    <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px">Name</p>
+                    <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
+                    <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
+                  </div>
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "Review") { %>
                     <div class="task" style="display:flex">
@@ -193,6 +203,11 @@
           <% if(tasks.length){ %>
               <div class="flex-event-selected-item" >
                 <div id="complete" class="collapse" style="width:100%">
+                  <div class="task" style="display:flex">
+                    <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px">Name</p>
+                    <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
+                    <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
+                  </div>
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "Complete") { %>
                     <div class="task" style="display:flex">
@@ -227,6 +242,11 @@
           <% if(tasks.length){ %>
               <div class="flex-event-selected-item" >
                 <div id="blocked" class="collapse" style="width:100%">
+                  <div class="task" style="display:flex">
+                    <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px">Name</p>
+                    <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
+                    <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
+                  </div>
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "Blocked") { %>
                     <div class="task" style="display:flex">
