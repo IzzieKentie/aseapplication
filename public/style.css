@@ -8,6 +8,12 @@ p {
   font-family: "Ubuntu";
 }
 
+p.task {
+  border: 2px #0070AD; 
+  border-radius: 8px;
+  margin: 10px 0px 10px;
+}
+
 ul.topnav {
   list-style-type: none;
   margin: 0;
@@ -19,9 +25,6 @@ ul.topnav {
 
 }
 
-ul.tasks {
-  list-style-type: square;
-}
 
 
 ul.topnav li {float: left;}
