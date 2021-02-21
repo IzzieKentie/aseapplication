@@ -434,11 +434,11 @@
           <form class="icon" method="POST" action="/saveModule" style="width:100%; display: flex">
             <div class="flex-event-selected-item module">
               <div class="flex-event-selected-item">
-                <img id="<%=modules[k].module_id%>_edit_icon" class="icons" style="float:left; height: 20px" src="edit.png">
-                <input type="image" id="<%=modules[k].module_id%>_save_icon" alt="Save" class="icons" style="float:left; height: 20px" src="save.png" hidden>
+                <img id="<%=modules[k].module_id%>_mod_edit_icon" class="icons" style="float:left; height: 20px" src="edit.png">
+                <input type="image" id="<%=modules[k].module_id%>_mod_save_icon" alt="Save" class="icons" style="float:left; height: 20px" src="save.png" hidden>
               </div>
               <script>
-                document.getElementById("<%=modules[k].module_id%>_edit_icon").onclick = function () {
+                document.getElementById("<%=modules[k].module_id%>_mod_edit_icon").onclick = function () {
                   document.getElementById("<%=modules[k].module_id%>_name_text").hidden = true;
                   document.getElementById("<%=modules[k].module_id%>_location_text").hidden = true;
                   document.getElementById("<%=modules[k].module_id%>_leader_text").hidden = true;
@@ -449,8 +449,8 @@
                   document.getElementById("<%=modules[k].module_id%>_leader_edit").type = "text";
                   document.getElementById("<%=modules[k].module_id%>_start_edit").type = "text";
                   document.getElementById("<%=modules[k].module_id%>_end_edit").type = "text";
-                  document.getElementById("<%=modules[k].module_id%>_edit_icon").hidden = true;
-                  document.getElementById("<%=modules[k].module_id%>_save_icon").hidden = false;
+                  document.getElementById("<%=modules[k].module_id%>_mod_edit_icon").hidden = true;
+                  document.getElementById("<%=modules[k].module_id%>_mod_save_icon").hidden = false;
                 };
               </script>
               <input type="hidden" name="module_id" value="<%=modules[k].module_id%>">
