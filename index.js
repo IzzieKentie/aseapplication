@@ -157,6 +157,7 @@ app.get('/CurrentEvent',(req,res)=>{
   var tasks =[];
   var event = [];
   var team = [];
+  var id = req.session.userID;
   conn.execute("SELECT * FROM EVENT_ADDNL_INFO WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_STATUS=?)",[req.session.userID, "Current"],).then(([rows]) => {
   info = rows;
   }).catch(e => { console.log(e) });
@@ -171,17 +172,17 @@ app.get('/CurrentEvent',(req,res)=>{
   if(req.session.role === "Co-Designer") {
     console.log(team);
     res.render('CurrentEvent',{
-      event, info, tasks, team
+      event, info, tasks, team, id
     });
   }
   else if(req.session.role === "Process Facilitator") {
     res.render('CurrentEvent_PF',{
-      event, info, tasks, team
+      event, info, tasks, team, id
     });
   }
   else {
     res.render('CurrentEvent_FAC',{
-      event, info, tasks, team
+      event, info, tasks, team, id
     });
   }
     }).catch(e => { console.log(e) });

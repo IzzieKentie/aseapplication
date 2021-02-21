@@ -67,7 +67,15 @@
           </div>
           <div class="flex-event-selected-item">
           <p><%=event[0].event_fac%></p>
-        </div> 
+        </div>
+        <% if(id === "Co-Designer") { %>
+                <input id="edit" type="submit" value="Edit" hidden> 
+       <% } else {
+        <input type = "hidden" name = "status" value = "<%=data[0].event_status%>" />
+        <input type = "hidden" name = "selected" value = "<%=data[0].event_id%>" />
+        <div class="flex-item-event" >
+        <input id="edit" type="submit" value="Edit" hidden> 
+        <% } %>
  <% }else{ %>
     <div class="flex-event-selected-item">No Events to Display</div>
   <% } %>
