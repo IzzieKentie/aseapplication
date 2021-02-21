@@ -157,7 +157,7 @@ app.get('/CurrentEvent',(req,res)=>{
   var tasks =[];
   var event = [];
   var team = [];
-  var id = req.session.userID;
+  var role = req.session.role;
   conn.execute("SELECT * FROM EVENT_ADDNL_INFO WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_STATUS=?)",[req.session.userID, "Current"],).then(([rows]) => {
   info = rows;
   }).catch(e => { console.log(e) });
@@ -169,13 +169,13 @@ app.get('/CurrentEvent',(req,res)=>{
   }).catch(e => { console.log(e) });
   conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Current"],).then(([rows]) => {
   event = rows;
-  if(req.session.role === "Co-Designer") {
-    console.log(team);
+ // if(req.session.role === "Co-Designer") {
+        console.log(role);
     res.render('CurrentEvent',{
-      event, info, tasks, team, id
+      event, info, tasks, team, role
     });
-  }
-  else if(req.session.role === "Process Facilitator") {
+  //}
+  /*else if(req.session.role === "Process Facilitator") {
     res.render('CurrentEvent_PF',{
       event, info, tasks, team, id
     });
@@ -184,7 +184,7 @@ app.get('/CurrentEvent',(req,res)=>{
     res.render('CurrentEvent_FAC',{
       event, info, tasks, team, id
     });
-  }
+  }*/
     }).catch(e => { console.log(e) });
 });
 

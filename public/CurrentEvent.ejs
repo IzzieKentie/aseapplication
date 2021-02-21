@@ -11,10 +11,10 @@
 <ul class="topnav">
   <li><a href="/home">Home</a></li>
   <li><a href="profile.html">Profile</a></li>
-    <li><a href="#feedback">Feedback</a></li>
+    <li><a href="/feedback">Feedback</a></li>
     <div class="menu_dropdown">
     <button class="dropbtn">
-      <li><a class="active" href="#events">Events</a></li>
+      <li><a class="active">Events</a></li>
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
@@ -68,13 +68,16 @@
           <div class="flex-event-selected-item">
           <p><%=event[0].event_fac%></p>
         </div>
-        <% if(id === "Co-Designer") { %>
+        <% if(role === "Co-Designer") { %>
                 <input id="edit" type="submit" value="Edit" hidden> 
-       <% } else {
-        <input type = "hidden" name = "status" value = "<%=data[0].event_status%>" />
-        <input type = "hidden" name = "selected" value = "<%=data[0].event_id%>" />
+       <% } else { %>
+           <form method="POST" action="/EditSelectedEvent">
+        <input type = "hidden" name = "status" value = "<%=event[0].event_status%>" />
+        <input type = "hidden" name = "selected" value = "<%=event[0].event_id%>" />
         <div class="flex-item-event" >
-        <input id="edit" type="submit" value="Edit" hidden> 
+          <input id="edit" type="submit" value="Edit"> 
+        </div>
+      </form>
         <% } %>
  <% }else{ %>
     <div class="flex-event-selected-item">No Events to Display</div>
