@@ -366,7 +366,11 @@ app.post('/saveTask', (req,res) =>{
     res.redirect('CurrentEvent');
 });
 
-
+app.post('/newTask', (req,res) =>{
+    conn.execute("INSERT INTO EVENT_TASKS (task_name, event_id, assigned_id, task_status) VALUES (?,?,?,?)",[req.body.task_name, req.body.event_id, req.body.team_member ,"To Do"],)
+    .catch(e => { console.log(e) });
+    res.redirect('CurrentEvent');
+});
 
 const port = process.env.PORT || 1337;
 app.listen(port);
