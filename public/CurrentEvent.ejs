@@ -430,10 +430,18 @@
           </div>
         </div>
         <% if(modules.length){ 
+          <div class="task" style="display:flex">
+            <p style="width:33.33%; margin: 10px 0 10px 0px"></p>
+            <p style="margin: 10px 0 10px 0px">Name</p>
+            <p style="margin: 10px 0 10px 0px">Location</p>
+            <p style="margin: 10px 0 10px 0px">Leader</p>
+            <p style="margin: 10px 0 10px 0px">Start Time</p>
+            <p style="margin: 10px 0 10px 0px">End Time</p>
+          </div>
           for(var k = 0;k < modules.length;k++) { %>
           <form class="icon" method="POST" action="/saveModule" style="width:100%; display: flex">
             <div class="flex-event-selected-item module">
-              <div class="flex-event-selected-item">
+              <div class="flex-event-selected-item" style="width: 33.33%">
                 <img id="<%=modules[k].module_id%>_mod_edit_icon" class="icons" style="float:left; height: 20px" src="edit.png">
                 <input type="image" id="<%=modules[k].module_id%>_mod_save_icon" alt="Save" class="icons" style="float:left; height: 20px" src="save.png" hidden>
               </div>
@@ -447,8 +455,8 @@
                   document.getElementById("<%=modules[k].module_id%>_name_edit").type = "text";
                   document.getElementById("<%=modules[k].module_id%>_location_edit").type = "text";
                   document.getElementById("<%=modules[k].module_id%>_leader_edit").type = "text";
-                  document.getElementById("<%=modules[k].module_id%>_start_edit").type = "text";
-                  document.getElementById("<%=modules[k].module_id%>_end_edit").type = "text";
+                  document.getElementById("<%=modules[k].module_id%>_start_edit").type = "time";
+                  document.getElementById("<%=modules[k].module_id%>_end_edit").type = "time";
                   document.getElementById("<%=modules[k].module_id%>_mod_edit_icon").hidden = true;
                   document.getElementById("<%=modules[k].module_id%>_mod_save_icon").hidden = false;
                 };
