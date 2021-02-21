@@ -8,115 +8,114 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<ul class="topnav">
-  <li><a href="/home">Home</a></li>
-  <li><a href="profile.html">Profile</a></li>
+  <ul class="topnav">
+    <li><a href="/home">Home</a></li>
+    <li><a href="profile.html">Profile</a></li>
     <li><a href="/feedback">Feedback</a></li>
     <div class="menu_dropdown">
-    <button class="dropbtn">
-      <li><a class="active">Events</a></li>
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="/PastEvents">Past Events</a>
-      <a href="/CurrentEvent">Current Event</a>
-      <a href="/UpcomingEvents">Upcoming Events</a>
-    </div>
-  </div> 
-
-  <li class="right"><a href="#Messages">Messages</a></li>
-  <li class="right"><a href="#Encyclopedia">Encyclopedia</a></li>
-  <li class="right"><a href="/logout">Logout</a></li>
-</ul>
-  <img class="center" style="width: 8%;" src="ASE_UK_logo_v1.0.png"></li>
- <div class="menu_and_event">
+      <button class="dropbtn">
+        <li><a class="active">Events</a></li>
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="/PastEvents">Past Events</a>
+        <a href="/CurrentEvent">Current Event</a>
+        <a href="/UpcomingEvents">Upcoming Events</a>
+      </div>
+    </div> 
+    <li class="right"><a href="#Messages">Messages</a></li>
+    <li class="right"><a href="#Encyclopedia">Encyclopedia</a></li>
+    <li class="right"><a href="/logout">Logout</a></li>
+  </ul>
+  <img class="center" style="width: 8%;" src="ASE_UK_logo_v1.0.png">
+  <div class="menu_and_event">
     <div class="flex-event-selected-details">
-      <% if(event.length){ %>
-        <div class="flex-event-selected-item" >
-          <h3>Event Name</h3>
-          </div>
-          <div class="flex-event-selected-item" >
-          <p><%=event[0].event_name%></p>
-        </div>
-       <div class="flex-event-selected-item">
-          <h3>Event Description</h3>
-          </div>
-          <div class="flex-event-selected-item">
-          <p><%=event[0].event_description%></p>
-        </div>
-        <div class="flex-event-selected-item">
-          <h3>Event Client</h3>
-          </div>
-          <div class="flex-event-selected-item">
-          <p><%=event[0].event_client%></p>
-        </div>
-        <div class="flex-event-selected-item">
-          <h3>Process Facilitator</h3>
-          </div>
-          <div class="flex-event-selected-item">
-          <p><%=event[0].event_pf%></p>
-        </div>
-        <div class="flex-event-selected-item">
-          <h3>Co Facilitator</h3>
-          </div>
-          <div class="flex-event-selected-item">
-          <p><%=event[0].event_cofac%></p>
-        </div>
-        <div class="flex-event-selected-item">
-          <h3>Facilitator</h3>
-          </div>
-          <div class="flex-event-selected-item">
-          <p><%=event[0].event_fac%></p>
-        </div>
-        <% if(role === "Co-Designer") { %>
-            <input id="edit" type="submit" value="Edit" hidden> 
+    <% if(event.length){ %>
+      <div class="flex-event-selected-item" >
+        <h3>Event Name</h3>
+      </div>
+      <div class="flex-event-selected-item" >
+        <p><%=event[0].event_name%></p>
+      </div>
+      <div class="flex-event-selected-item">
+        <h3>Event Description</h3>
+      </div>
+      <div class="flex-event-selected-item">
+        <p><%=event[0].event_description%></p>
+      </div>
+      <div class="flex-event-selected-item">
+        <h3>Event Client</h3>
+      </div>
+      <div class="flex-event-selected-item">
+        <p><%=event[0].event_client%></p>
+      </div>
+      <div class="flex-event-selected-item">
+        <h3>Process Facilitator</h3>
+      </div>
+      <div class="flex-event-selected-item">
+        <p><%=event[0].event_pf%></p>
+      </div>
+      <div class="flex-event-selected-item">
+        <h3>Co Facilitator</h3>
+      </div>
+      <div class="flex-event-selected-item">
+        <p><%=event[0].event_cofac%></p>
+      </div>
+      <div class="flex-event-selected-item">
+        <h3>Facilitator</h3>
+      </div>
+      <div class="flex-event-selected-item">
+        <p><%=event[0].event_fac%></p>
+      </div>
+      <% if(role === "Co-Designer") { %>
+        <input id="edit" type="submit" value="Edit" hidden> 
        <% } else { %>
-            <form method="POST" action="/EditSelectedEvent">
-              <input type = "hidden" name = "status" value = "<%=event[0].event_status%>" />
-              <input type = "hidden" name = "selected" value = "<%=event[0].event_id%>" />
-              <div class="flex-item-event" >
-                <input id="edit" type="submit" value="Edit"> 
-              </div>
-            </form>
-        <% } %>
- <% }else{ %>
-    <div class="flex-event-selected-item">No Events to Display</div>
-  <% } %>
-</div>
-      <div class="flex-event-selected-job">
-          <h3>Job Jar</h3>
-          <form>
-            <button class="job">Assigned to me</button>
-            <button class="job">All Tasks</button>
-          </form>
-          <div class="flex-event-selected-item" >
-            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#new" style="width:100%"><p class="task_text">New Task</p></button><br>
+        <form method="POST" action="/EditSelectedEvent">
+          <input type = "hidden" name = "status" value = "<%=event[0].event_status%>" />
+          <input type = "hidden" name = "selected" value = "<%=event[0].event_id%>" />
+          <div class="flex-item-event" >
+            <input id="edit" type="submit" value="Edit"> 
           </div>
-          <div class="flex-event-selected-item" >
-            <div id="new" class="collapse" style="width:100%">
-              <div class="newTask">
-                <form action="/newTask" method="POST">
-                  <input type="text" name="task_name">
-                  <input type="submit" class="select-event">
-                </form>
-              </div>
+        </form>
+        <% } %>
+      <% }else{ %>
+        <div class="flex-event-selected-item">No Events to Display</div>
+      <% } %>
+    </div>
+    <div class="flex-event-selected-job">
+      <h3>Job Jar</h3>
+        <form>
+          <button class="job">Assigned to me</button>
+          <button class="job">All Tasks</button>
+        </form>
+        <div class="flex-event-selected-item" >
+          <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#new" style="width:100%"><p class="task_text">New Task</p></button><br>
+        </div>
+        <div class="flex-event-selected-item" >
+          <div id="new" class="collapse" style="width:100%">
+            <div class="newTask">
+              <form action="/newTask" method="POST">
+                <input type="text" name="task_name">
+                <input type="submit" class="select-event">
+              </form>
             </div>
           </div>
+        </div>
+        <div class="flex-event-selected-item" >
+          <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#todo" style="width:100%"><p class="task_text">To Do</p></button><br>
+        </div>
+        <% if(tasks.length){ %>
           <div class="flex-event-selected-item" >
-            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#todo" style="width:100%"><p class="task_text">To Do</p></button><br>
-          </div>
-          <% if(tasks.length){ %>
-              <div class="flex-event-selected-item" >
-                <div id="todo" class="collapse" style="width:100%">
+            <div id="todo" class="collapse" style="width:100%">
+              <div class="task" style="display:flex">
+                <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px">Name</p>
+                <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
+                <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
+              </div>
+              <% for(var i = 0;i < tasks.length;i++) { %>
+                <% if(tasks[i].task_status === "To Do") { %>
                   <div class="task" style="display:flex">
-                    <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px">Name</p>
-                    <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
-                    <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
-                  </div>
-             <% for(var i = 0;i < tasks.length;i++) { %>
-                    <% if(tasks[i].task_status === "To Do") { %>
-                    <div class="task" style="display:flex">
-                      <p style="float:left; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b>  <%=tasks[i].task_name%></p>
+                    <p style="float:left; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b>  <%=tasks[i].task_name%></p>
                       <form class="icon" action="/complete" method="POST">
                         <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
                         <input type="image" alt="Complete Task" class="icons" src="complete.png">
@@ -134,83 +133,105 @@
                         <input type="image" alt="In Progress" class="icons" src="in-progress.png">
                       </form>
                     </div>
-                  <% } } %>
-                    </div>
-                </div>
-              <% } %>
-          <div class="flex-event-selected-item" >
-            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inprogress" style="width:100%"><img style="height: 25px; float:right; margin: 0 0 0 0" class="icons" src="in-progress.png"><p class="task_text">In Progress</p></button><br>
+                <% } } %>
+            </div>
           </div>
-          <% if(tasks.length){ %>
-              <div class="flex-event-selected-item" >
-                <div id="inprogress" class="collapse" style="width:100%">
+        <% } %>
+        <div class="flex-event-selected-item" >
+          <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inprogress" style="width:100%"><img style="height: 25px; float:right; margin: 0 0 0 0" class="icons" src="in-progress.png"><p class="task_text">In Progress</p></button><br>
+        </div>
+        <% if(tasks.length){ %>
+          <div class="flex-event-selected-item" >
+            <div id="inprogress" class="collapse" style="width:100%">
+              <div class="task" style="display:flex">
+                <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px">Name</p>
+                <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
+                <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
+            </div>
+            <% for(var i = 0;i < tasks.length;i++) { %>
+              <% if(tasks[i].task_status === "In Progress") { %>
+                <div class="task" style="display: flex">
+                  <form class="icon" method="POST" action="/saveTask" style="width:66.66%; display: flex">
+                    <img id="<%=tasks[i].task_id%>_edit_icon" class="icons" style="float:left" src="edit.png">
+                    <input type="image" id="<%=tasks[i].task_id%>_save_icon" alt="Save" class="icons" style="float:left" src="save.png" hidden>
+                    <script>
+                      document.getElementById("<%=tasks[i].task_id%>_edit_icon").onclick = function () {
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_text").hidden = true;
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_edit").type = "text";
+                        document.getElementById("<%=tasks[i].task_id%>_edit_icon").hidden = true;
+                        document.getElementById("<%=tasks[i].task_id%>_save_icon").hidden = false;
+                        document.getElementById("<%=tasks[i].task_id%>_assigned").hidden = false;
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_assigned").hidden = true;
+                      };
+                    </script>
+                    <p id="<%=tasks[i].task_id%>_task_name_text" style="text-align:left; width:100%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                    <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0;" value="<%=tasks[i].task_name%>">
+                    <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                    <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
+                    <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                      <% if(team.length){ 
+                        for(var l = 0;l < team.length;l++) { %>
+                          <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
+                      <% }}%>
+                    </select> 
+                  </form>
+                  <div style="width:33.33%">
+                    <form class="icon" action="/complete" method="POST">
+                      <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                      <input type="image" alt="Complete Task" class="icons" src="complete.png">
+                    </form>
+                    <form class="icon" action="/review" method="POST">
+                      <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                      <input type="image" alt="Review Task" class="icons" src="review.png">
+                    </form>
+                    <form class="icon" action="/block" method="POST">
+                      <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                      <input type="image" alt="Block Task" class="icons" src="block.png">
+                    </form>
+                  </div>                    
+                </div>
+              <% } } %>
+            </div>
+          </div>
+        <% } %>
+        <div class="flex-event-selected-item" >
+          <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inreview" style="width:100%"><img style="height: 25px; float:right; margin: 0 0 0 0" class="icons" src="review.png"><p class="task_text">In Review</p></button><br>
+        </div>
+        <% if(tasks.length){ %>
+          <div class="flex-event-selected-item" >
+            <div id="inreview" class="collapse" style="width:100%">
+              <div class="task" style="display:flex">
+                <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px">Name</p>
+                <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
+                <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
+              </div>
+              <% for(var i = 0;i < tasks.length;i++) { %>
+                <% if(tasks[i].task_status === "Review") { %>
                   <div class="task" style="display:flex">
-                    <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px">Name</p>
-                    <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
-                    <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
-                  </div>
-             <% for(var i = 0;i < tasks.length;i++) { %>
-                    <% if(tasks[i].task_status === "In Progress") { %>
-                    <div class="task" style="display: flex">
                       <form class="icon" method="POST" action="/saveTask" style="width:66.66%; display: flex">
-                        <img id="<%=tasks[i].task_id%>_edit_icon" class="icons" style="float:left" src="edit.png">
-                        <input type="image" id="<%=tasks[i].task_id%>_save_icon" alt="Save" class="icons" style="float:left" src="save.png" hidden>
-                        <script>
-                          document.getElementById("<%=tasks[i].task_id%>_edit_icon").onclick = function () {
-                            document.getElementById("<%=tasks[i].task_id%>_task_name_text").hidden = true;
-                            document.getElementById("<%=tasks[i].task_id%>_task_name_edit").type = "text";
-                            document.getElementById("<%=tasks[i].task_id%>_edit_icon").hidden = true;
-                            document.getElementById("<%=tasks[i].task_id%>_save_icon").hidden = false;
-                            document.getElementById("<%=tasks[i].task_id%>_assigned").hidden = false;
-                            document.getElementById("<%=tasks[i].task_id%>_task_name_assigned").hidden = true;
-                          };
-                        </script>
-                        <p id="<%=tasks[i].task_id%>_task_name_text" style="text-align:left; width:100%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
-                        <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0;" value="<%=tasks[i].task_name%>">
-                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
-                      <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
-                      <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
-                        <% if(team.length){ 
-                          for(var l = 0;l < team.length;l++) { %>
-                            <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
-                          <% }}%>
-                      </select> 
-                      </form>
-                      <div style="width:33.33%">
-                      <form class="icon" action="/complete" method="POST">
-                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
-                        <input type="image" alt="Complete Task" class="icons" src="complete.png">
-                      </form>
-                      <form class="icon" action="/review" method="POST">
-                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
-                        <input type="image" alt="Review Task" class="icons" src="review.png">
-                      </form>
-                      <form class="icon" action="/block" method="POST">
-                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
-                        <input type="image" alt="Block Task" class="icons" src="block.png">
-                      </form>
-                      </div>                    
-                    </div>
-                  <% } } %>
-                    </div>
-                </div>
-          <% } %>
-          <div class="flex-event-selected-item" >
-            <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#inreview" style="width:100%"><img style="height: 25px; float:right; margin: 0 0 0 0" class="icons" src="review.png"><p class="task_text">In Review</p></button><br>
-          </div>
-          <% if(tasks.length){ %>
-              <div class="flex-event-selected-item" >
-                <div id="inreview" class="collapse" style="width:100%">
-                  <div class="task" style="display:flex">
-                    <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px">Name</p>
-                    <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
-                    <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
-                  </div>
-             <% for(var i = 0;i < tasks.length;i++) { %>
-                    <% if(tasks[i].task_status === "Review") { %>
-                    <div class="task" style="display:flex">
-                      <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
-                      <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
+                    <img id="<%=tasks[i].task_id%>_edit_icon" class="icons" style="float:left" src="edit.png">
+                    <input type="image" id="<%=tasks[i].task_id%>_save_icon" alt="Save" class="icons" style="float:left" src="save.png" hidden>
+                    <script>
+                      document.getElementById("<%=tasks[i].task_id%>_edit_icon").onclick = function () {
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_text").hidden = true;
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_edit").type = "text";
+                        document.getElementById("<%=tasks[i].task_id%>_edit_icon").hidden = true;
+                        document.getElementById("<%=tasks[i].task_id%>_save_icon").hidden = false;
+                        document.getElementById("<%=tasks[i].task_id%>_assigned").hidden = false;
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_assigned").hidden = true;
+                      };
+                    </script>
+                    <p id="<%=tasks[i].task_id%>_task_name_text" style="text-align:left; width:100%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                    <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0;" value="<%=tasks[i].task_name%>">
+                    <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                    <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
+                    <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                      <% if(team.length){ 
+                        for(var l = 0;l < team.length;l++) { %>
+                          <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
+                      <% }}%>
+                    </select> 
+                  </form>
                       <div style="width:33.33%">
                       <form class="icon" action="/complete" method="POST">
                         <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
@@ -244,8 +265,30 @@
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "Complete") { %>
                     <div class="task" style="display:flex">
-                       <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
-                      <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
+                      <form class="icon" method="POST" action="/saveTask" style="width:66.66%; display: flex">
+                    <img id="<%=tasks[i].task_id%>_edit_icon" class="icons" style="float:left" src="edit.png">
+                    <input type="image" id="<%=tasks[i].task_id%>_save_icon" alt="Save" class="icons" style="float:left" src="save.png" hidden>
+                    <script>
+                      document.getElementById("<%=tasks[i].task_id%>_edit_icon").onclick = function () {
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_text").hidden = true;
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_edit").type = "text";
+                        document.getElementById("<%=tasks[i].task_id%>_edit_icon").hidden = true;
+                        document.getElementById("<%=tasks[i].task_id%>_save_icon").hidden = false;
+                        document.getElementById("<%=tasks[i].task_id%>_assigned").hidden = false;
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_assigned").hidden = true;
+                      };
+                    </script>
+                    <p id="<%=tasks[i].task_id%>_task_name_text" style="text-align:left; width:100%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                    <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0;" value="<%=tasks[i].task_name%>">
+                    <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                    <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
+                    <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                      <% if(team.length){ 
+                        for(var l = 0;l < team.length;l++) { %>
+                          <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
+                      <% }}%>
+                    </select> 
+                  </form>
                       <div style="width:33.33%">
                       <form class="icon" action="/review" method="POST">
                         <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
@@ -279,8 +322,30 @@
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "Blocked") { %>
                     <div class="task" style="display:flex">
-                      <p style="text-align:left; width:33.33%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
-                      <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
+                      <form class="icon" method="POST" action="/saveTask" style="width:66.66%; display: flex">
+                    <img id="<%=tasks[i].task_id%>_edit_icon" class="icons" style="float:left" src="edit.png">
+                    <input type="image" id="<%=tasks[i].task_id%>_save_icon" alt="Save" class="icons" style="float:left" src="save.png" hidden>
+                    <script>
+                      document.getElementById("<%=tasks[i].task_id%>_edit_icon").onclick = function () {
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_text").hidden = true;
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_edit").type = "text";
+                        document.getElementById("<%=tasks[i].task_id%>_edit_icon").hidden = true;
+                        document.getElementById("<%=tasks[i].task_id%>_save_icon").hidden = false;
+                        document.getElementById("<%=tasks[i].task_id%>_assigned").hidden = false;
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_assigned").hidden = true;
+                      };
+                    </script>
+                    <p id="<%=tasks[i].task_id%>_task_name_text" style="text-align:left; width:100%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                    <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0;" value="<%=tasks[i].task_name%>">
+                    <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                    <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
+                    <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                      <% if(team.length){ 
+                        for(var l = 0;l < team.length;l++) { %>
+                          <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
+                      <% }}%>
+                    </select> 
+                  </form>
                       <div style="width:33.33%">
                       <form class="icon" action="/review" method="POST">
                         <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
