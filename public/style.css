@@ -1,6 +1,6 @@
 body {margin: 0;}
 
-h3 {
+.h3, h3 {
   font-family: "Ubuntu";
   color: white;
 }
@@ -25,7 +25,7 @@ p {
 
 .background {
 background: rgb(2,0,36);
-background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,112,173,1) 35%, rgba(91,192,222,1) 100%);
+background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,112,173,1) 45%, rgba(91,192,222,1) 100%);
 }
 
 p.moduleText {
@@ -84,7 +84,6 @@ ul.topnav {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #ffffff;
   font-family: "Ubuntu";
   margin-top: 2%;
 
@@ -365,10 +364,6 @@ input[type=text], select {
   text-align: center;
   flex: 20%;
   height: 200px;
-}
-
-.btn-info {
-  background-color: #fff;
 }
 
 .menu_dropdown {
