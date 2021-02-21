@@ -434,45 +434,45 @@
           <form class="icon" method="POST" action="/saveTask" style="width:66.66%; display: flex">
             <div class="flex-event-selected-item module">
               <div class="flex-event-selected-item">
-                <img id="<%=modules[i].module_id%>_edit_icon" class="icons" style="float:left" src="edit.png">
-                <input type="image" id="<%=tasks[i].task_id%>_save_icon" alt="Save" class="icons" style="float:left" src="save.png" hidden>
+                <img id="<%=modules[k].module_id%>_edit_icon" class="icons" style="float:left" src="edit.png">
+                <input type="image" id="<%=tasks[k].task_id%>_save_icon" alt="Save" class="icons" style="float:left" src="save.png" hidden>
               </div>
               <script>
-                document.getElementById("<%=modules[i].module_id%>_edit_icon").onclick = function () {
-                  document.getElementById("<%=modules[i].module_id%>_name_text").hidden = true;
-                  document.getElementById("<%=modules[i].module_id%>_location_text").hidden = true;
-                  document.getElementById("<%=modules[i].module_id%>_leader_text").hidden = true;
-                  document.getElementById("<%=modules[i].module_id%>_start_text").hidden = true;
-                  document.getElementById("<%=modules[i].module_id%>_end_text").hidden = true;
-                  document.getElementById("<%=modules[i].module_id%>_name_edit").type = "text";
-                  document.getElementById("<%=modules[i].module_id%>_location_edit").type = "text";
-                  document.getElementById("<%=modules[i].module_id%>_leader_edit").type = "text";
-                  document.getElementById("<%=modules[i].module_id%>_start_edit").type = "text";
-                  document.getElementById("<%=modules[i].module_id%>_end_edit").type = "text";
-                  document.getElementById("<%=modules[i].module_id%>_edit_icon").hidden = true;
-                  document.getElementById("<%=modules[i].module_id%>_save_icon").hidden = false;
+                document.getElementById("<%=modules[k].module_id%>_edit_icon").onclick = function () {
+                  document.getElementById("<%=modules[k].module_id%>_name_text").hidden = true;
+                  document.getElementById("<%=modules[k].module_id%>_location_text").hidden = true;
+                  document.getElementById("<%=modules[k].module_id%>_leader_text").hidden = true;
+                  document.getElementById("<%=modules[k].module_id%>_start_text").hidden = true;
+                  document.getElementById("<%=modules[k].module_id%>_end_text").hidden = true;
+                  document.getElementById("<%=modules[k].module_id%>_name_edit").type = "text";
+                  document.getElementById("<%=modules[k].module_id%>_location_edit").type = "text";
+                  document.getElementById("<%=modules[k].module_id%>_leader_edit").type = "text";
+                  document.getElementById("<%=modules[k].module_id%>_start_edit").type = "text";
+                  document.getElementById("<%=modules[k].module_id%>_end_edit").type = "text";
+                  document.getElementById("<%=modules[k].module_id%>_edit_icon").hidden = true;
+                  document.getElementById("<%=modules[k].module_id%>_save_icon").hidden = false;
                 };
               </script>
-              <input type="hidden" name="module_id" value="<%=modules[i].module_id%>">
+              <input type="hidden" name="module_id" value="<%=modules[k].module_id%>">
               <div class="flex-event-selected-item">
-                <h4 id="<%=modules[i].module_id%>_name_text"><%=modules[k].module_name%></h4><br><br>
-                <input type="hidden" name="module_name" id="<%=modules[i].module_id%>_name_edit" value="<%=modules[i].module_name%>">
+                <h4 id="<%=modules[k].module_id%>_name_text"><%=modules[k].module_name%></h4><br><br>
+                <input type="hidden" name="module_name" id="<%=modules[k].module_id%>_name_edit" value="<%=modules[k].module_name%>">
               </div>
               <div class="flex-event-selected-item">
-                <p id="<%=modules[i].module_id%>_location_text" class="moduleText"><b>Location: </b><%=modules[k].module_location%></p>
-                <input type="hidden" name="module_location" id="<%=modules[i].module_id%>_location_edit" value="<%=modules[i].module_location%>">
+                <p id="<%=modules[k].module_id%>_location_text" class="moduleText"><b>Location: </b><%=modules[k].module_location%></p>
+                <input type="hidden" name="module_location" id="<%=modules[k].module_id%>_location_edit" value="<%=modules[k].module_location%>">
                 </div>
               <div class="flex-event-selected-item">
-                <p id="<%=modules[i].module_id%>_leader_text" class="moduleText"><b>Leader: </b><%=modules[k].module_leader%></p>
-                <input type="hidden" name="module_leader" id="<%=modules[i].module_id%>_leader_edit" value="<%=modules[i].module_leader%>">
+                <p id="<%=modules[k].module_id%>_leader_text" class="moduleText"><b>Leader: </b><%=modules[k].module_leader%></p>
+                <input type="hidden" name="module_leader" id="<%=modules[k].module_id%>_leader_edit" value="<%=modules[k].module_leader%>">
                 </div>
               <div class="flex-event-selected-item">
-                <p id="<%=modules[i].module_id%>_start_text" class="moduleText"><b>Start Time: </b><%=modules[k].module_start_time%></p>
-                <input type="hidden" name="module_start" id="<%=modules[i].module_id%>_start_edit" value="<%=modules[i].module_start_time%>">
+                <p id="<%=modules[k].module_id%>_start_text" class="moduleText"><b>Start Time: </b><%=modules[k].module_start_time%></p>
+                <input type="hidden" name="module_start" id="<%=modules[k].module_id%>_start_edit" value="<%=modules[k].module_start_time%>">
                 </div>
               <div class="flex-event-selected-item">
-                <p id="<%=modules[i].module_id%>_end_text" class="moduleText"><b>End Time: </b><%=modules[k].module_end_time%></p>
-                <input type="hidden" name="module_end" id="<%=modules[i].module_id%>_end_edit" value="<%=modules[i].module_end_time%>">
+                <p id="<%=modules[k].module_id%>_end_text" class="moduleText"><b>End Time: </b><%=modules[k].module_end_time%></p>
+                <input type="hidden" name="module_end" id="<%=modules[k].module_id%>_end_edit" value="<%=modules[k].module_end_time%>">
               </div>
             </div>
           </form>
