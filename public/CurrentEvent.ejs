@@ -96,7 +96,7 @@
             <div class="newTask">
               <form action="/newTask" method="POST">
                 <input type="text" name="task_name" style="padding: 0 0 0 0; width: 50%">
-                <select id="team_member" name="team_member" style="text-align:center; width:60%; margin: 10px 0 10px 0px">
+                <select id="team_member" name="team_member" style="text-align:center; width:50%; margin: 10px 0 10px 0px; padding: 0 0 0 0;">
                   <% if(team.length){ 
                     for(var l = 0;l < team.length;l++) { %>
                       <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
