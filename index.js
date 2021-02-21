@@ -133,6 +133,8 @@ app.get('/CurrentEvent',(req,res)=>{
   var event = [];
   var team = [];
   var role = req.session.role;
+  var modules = [];
+  var id = "";
   conn.execute("SELECT * FROM EVENT_ADDNL_INFO WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_STATUS=?)",[req.session.userID, "Current"],).then(([rows]) => {
     info = rows;
   }).catch(e => { console.log(e) });
@@ -144,8 +146,12 @@ app.get('/CurrentEvent',(req,res)=>{
   }).catch(e => { console.log(e) });
   conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Current"],).then(([rows]) => {
     event = rows;
+  }).catch(e => { console.log(e) });
+  conn.execute("SELECT * FROM EVENT_FOTD_MODULES WHERE EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?) ORDER BY module_start_time ASC",[req.session.userID, "Current"],).then(([rows]) => {
+    modules = rows;
+    console.log(modules);
     res.render('CurrentEvent',{
-      event, info, tasks, team, role
+      event, info, tasks, team, role, modules
     });
   }).catch(e => { console.log(e) });
 });
@@ -368,6 +374,12 @@ app.post('/saveTask', (req,res) =>{
 
 app.post('/newTask', (req,res) =>{
     conn.execute("INSERT INTO EVENT_TASKS (task_name, event_id, assigned_id, task_status) VALUES (?,?,?,?)",[req.body.task_name, req.body.event_id, req.body.team_member ,"To Do"],)
+    .catch(e => { console.log(e) });
+    res.redirect('CurrentEvent');
+});
+
+app.post('/newModule', (req,res) =>{
+    conn.execute("INSERT INTO EVENT_FOTD_MODULES (event_id, module_name, module_start_time, module_end_time, module_location, module_leader) VALUES (?,?,?,?,?,?)",[req.body.event_id, req.body.module_name, req.body.module_start_time, req.body.module_end_time, req.body.module_location, req.body.module_leader],)
     .catch(e => { console.log(e) });
     res.redirect('CurrentEvent');
 });
