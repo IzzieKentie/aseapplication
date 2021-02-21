@@ -431,12 +431,12 @@
         </div>
         <% if(modules.length){ %>
           <div class="task" style="display:flex">
-            <p style="width:33.33%; margin: 10px 0 10px 0px"></p>
-            <p style="margin: 10px 0 10px 0px">Name</p>
-            <p style="margin: 10px 0 10px 0px">Location</p>
-            <p style="margin: 10px 0 10px 0px">Leader</p>
-            <p style="margin: 10px 0 10px 0px">Start Time</p>
-            <p style="margin: 10px 0 10px 0px">End Time</p>
+            <p style="width:6%; margin: 10px 0 10px 0px"></p>
+            <p style="width:19%; margin: 10px 0 10px 0px">Name</p>
+            <p style="width:19%; margin: 10px 0 10px 0px">Location</p>
+            <p style="width:19%; margin: 10px 0 10px 0px">Leader</p>
+            <p style="width:19%; margin: 10px 0 10px 0px">Start Time</p>
+            <p style="width:19%; margin: 10px 0 10px 0px">End Time</p>
           </div>
     <%      for(var k = 0;k < modules.length;k++) { %>
           <form class="icon" method="POST" action="/saveModule" style="width:100%; display: flex">
@@ -467,19 +467,19 @@
                 <input style="padding: 0 0 0 0;  height: 30px;  width: 95%;" type="hidden" name="module_name" id="<%=modules[k].module_id%>_name_edit" value="<%=modules[k].module_name%>">
               </div>
               <div class="flex-event-selected-item">
-                <p id="<%=modules[k].module_id%>_location_text" class="moduleText"><b>Location: </b><%=modules[k].module_location%></p>
+                <p id="<%=modules[k].module_id%>_location_text" class="moduleText"><%=modules[k].module_location%></p>
                 <input style="padding: 0 0 0 0;  height: 30px;  width: 95%;" type="hidden" name="module_location" id="<%=modules[k].module_id%>_location_edit" value="<%=modules[k].module_location%>">
                 </div>
               <div class="flex-event-selected-item">
-                <p id="<%=modules[k].module_id%>_leader_text" class="moduleText"><b>Leader: </b><%=modules[k].module_leader%></p>
+                <p id="<%=modules[k].module_id%>_leader_text" class="moduleText"><%=modules[k].module_leader%></p>
                 <input style="padding: 0 0 0 0;  height: 30px;  width: 95%;" type="hidden" name="module_leader" id="<%=modules[k].module_id%>_leader_edit" value="<%=modules[k].module_leader%>">
                 </div>
               <div class="flex-event-selected-item">
-                <p id="<%=modules[k].module_id%>_start_text" class="moduleText"><b>Start Time: </b><%=modules[k].module_start_time%></p>
+                <p id="<%=modules[k].module_id%>_start_text" class="moduleText"><%=modules[k].module_start_time%></p>
                 <input style="padding: 0 0 0 0;  height: 30px;  width: 95%;" type="hidden" name="module_start" id="<%=modules[k].module_id%>_start_edit" value="<%=modules[k].module_start_time%>">
                 </div>
               <div class="flex-event-selected-item">
-                <p id="<%=modules[k].module_id%>_end_text" class="moduleText"><b>End Time: </b><%=modules[k].module_end_time%></p>
+                <p id="<%=modules[k].module_id%>_end_text" class="moduleText"><%=modules[k].module_end_time%></p>
                 <input style="padding: 0 0 0 0;  height: 30px;  width: 95%;" type="hidden" name="module_end" id="<%=modules[k].module_id%>_end_edit" value="<%=modules[k].module_end_time%>">
               </div>
             </div>
