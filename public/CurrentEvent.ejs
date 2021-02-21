@@ -69,15 +69,15 @@
           <p><%=event[0].event_fac%></p>
         </div>
         <% if(role === "Co-Designer") { %>
-                <input id="edit" type="submit" value="Edit" hidden> 
+            <input id="edit" type="submit" value="Edit" hidden> 
        <% } else { %>
-           <form method="POST" action="/EditSelectedEvent">
-        <input type = "hidden" name = "status" value = "<%=event[0].event_status%>" />
-        <input type = "hidden" name = "selected" value = "<%=event[0].event_id%>" />
-        <div class="flex-item-event" >
-          <input id="edit" type="submit" value="Edit"> 
-        </div>
-      </form>
+            <form method="POST" action="/EditSelectedEvent">
+              <input type = "hidden" name = "status" value = "<%=event[0].event_status%>" />
+              <input type = "hidden" name = "selected" value = "<%=event[0].event_id%>" />
+              <div class="flex-item-event" >
+                <input id="edit" type="submit" value="Edit"> 
+              </div>
+            </form>
         <% } %>
  <% }else{ %>
     <div class="flex-event-selected-item">No Events to Display</div>
