@@ -384,6 +384,12 @@ app.post('/newModule', (req,res) =>{
     res.redirect('CurrentEvent');
 });
 
+app.post('/saveModule', (req,res) =>{
+    conn.execute("UPDATE EVENT_FOTD_MODULES SET MODULE_NAME=?, MODULE_START_TIME=?, MODULE_END_TIME=?, MODULE_LOCATION=?, MODULE_LEADER=? WHERE MODULE_ID=?",[req.body.module_name, req.body.module_start, req.body.module_end, req.body.module_location, req.body.module_leader, req.body.module_id],)
+    .catch(e => { console.log(e) });
+    res.redirect('CurrentEvent');
+});
+
 const port = process.env.PORT || 1337;
 app.listen(port);
 console.log("Server running at http://localhost:%d", port); 
