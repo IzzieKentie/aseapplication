@@ -1,8 +1,11 @@
-body {margin: 0;}
+body {margin: 0;
+  color: white;
+  background: rgb(2,0,36);
+background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,81,125,1) 61%, rgba(0,135,177,1) 100%);
+}
 
 .h3, h3 {
   font-family: "Ubuntu";
-  color: white;
 }
 
 p {
@@ -23,10 +26,6 @@ p {
   height: 180px;
 }
 
-.background {
-background: rgb(2,0,36);
-background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,112,173,1) 45%, rgba(91,192,222,1) 100%);
-}
 
 p.moduleText {
 
