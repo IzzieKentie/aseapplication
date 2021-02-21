@@ -432,11 +432,21 @@
         <% if(modules.length){ 
           for(var k = 0;k < modules.length;k++) { %>
             <div class="flex-event-selected-item task">
+              <div class="flex-event-selected-item">
                 <h4><%=modules[k].module_name%></h4><br><br>
-                <p class="moduleText"><b>Location: </b><%=modules[k].module_location%></p><br><br>
-                <p class="moduleText"><b>Leader: </b><%=modules[k].module_leader%></p><br><br>
-                <p class="moduleText"><b>Start Time: </b><%=modules[k].module_start_time%></p><br><br>
+              </div>
+              <div class="flex-event-selected-item">
+                <p class="moduleText"><b>Location: </b><%=modules[k].module_location%></p>
+                </div>
+              <div class="flex-event-selected-item">
+                <p class="moduleText"><b>Leader: </b><%=modules[k].module_leader%></p>
+                </div>
+              <div class="flex-event-selected-item">
+                <p class="moduleText"><b>Start Time: </b><%=modules[k].module_start_time%></p>
+                </div>
+              <div class="flex-event-selected-item">
                 <p class="moduleText"><b>End Time: </b><%=modules[k].module_end_time%></p>
+              </div>
             </div>
         <% } } %>
       </div>
