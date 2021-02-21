@@ -95,7 +95,9 @@
           <div id="new" class="collapse" style="width:100%">
             <div class="newTask">
               <form action="/newTask" method="POST">
+                <p>Task Name</p>
                 <input type="text" name="task_name" style="padding: 0 0 0 0; width: 50%">
+                <p>Assigned to:</p>
                 <select id="team_member" name="team_member" style="text-align:center; width:50%; margin: 10px 0 10px 0px; padding: 0 0 0 0;">
                   <% if(team.length){ 
                     for(var l = 0;l < team.length;l++) { %>
