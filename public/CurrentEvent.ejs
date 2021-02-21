@@ -429,7 +429,7 @@
             </div>
           </div>
         </div>
-        <% if(modules.length){ 
+        <% if(modules.length){ %>
           <div class="task" style="display:flex">
             <p style="width:33.33%; margin: 10px 0 10px 0px"></p>
             <p style="margin: 10px 0 10px 0px">Name</p>
@@ -438,7 +438,7 @@
             <p style="margin: 10px 0 10px 0px">Start Time</p>
             <p style="margin: 10px 0 10px 0px">End Time</p>
           </div>
-          for(var k = 0;k < modules.length;k++) { %>
+    <%      for(var k = 0;k < modules.length;k++) { %>
           <form class="icon" method="POST" action="/saveModule" style="width:100%; display: flex">
             <div class="flex-event-selected-item module">
               <div class="flex-event-selected-item" style="width: 33.33%">
