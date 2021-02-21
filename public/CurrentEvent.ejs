@@ -95,15 +95,15 @@
           <div id="new" class="collapse" style="width:100%">
             <div class="newTask">
               <form action="/newTask" method="POST">
-                <input type="text" name="task_name">
+                <input type="text" name="task_name" style="padding: 0 0 0 0; width: 50%">
                 <select id="team_member" name="team_member" style="text-align:center; width:60%; margin: 10px 0 10px 0px">
                   <% if(team.length){ 
                     for(var l = 0;l < team.length;l++) { %>
                       <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
                   <% }}%>
                 </select>
-                <input type = "hidden" name = "event_id" value = "<%=event[0].event_id%>" />
-                <input type="submit" class="select-event"> 
+                <input type = "hidden" name = "event_id" value = "<%=event[0].event_id%>" style="padding: 0 0 0 0; width: 50%"/>
+                <input type="submit" class="select-event" style="padding: 0 0 0 0; width: 50%"> 
               </form>
             </div>
           </div>
