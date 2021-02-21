@@ -431,11 +431,11 @@
         </div>
         <% if(modules.length){ 
           for(var k = 0;k < modules.length;k++) { %>
-          <form class="icon" method="POST" action="/saveTask" style="width:100%; display: flex">
+          <form class="icon" method="POST" action="/saveModule" style="width:100%; display: flex">
             <div class="flex-event-selected-item module">
               <div class="flex-event-selected-item">
                 <img id="<%=modules[k].module_id%>_edit_icon" class="icons" style="float:left; height: 20px" src="edit.png">
-                <input type="image" id="<%=modules[k].task_id%>_save_icon" alt="Save" class="icons" style="float:left" src="save.png" hidden>
+                <input type="image" id="<%=modules[k].module_id%>_save_icon" alt="Save" class="icons" style="float:left" src="save.png" hidden>
               </div>
               <script>
                 document.getElementById("<%=modules[k].module_id%>_edit_icon").onclick = function () {
