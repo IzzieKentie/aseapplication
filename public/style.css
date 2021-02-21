@@ -22,6 +22,14 @@ p {
 }
 
 
+.newModule {
+  border-bottom: solid 2px #0070AD; 
+  margin: 10px 4px 10px;
+  width:100%;
+  height: 370px;
+}
+
+
 
 .icon {
   display:inline;
