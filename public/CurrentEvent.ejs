@@ -431,12 +431,12 @@
         </div>
         <% if(modules.length){ 
           for(var k = 0;k < modules.length;k++) { %>
-            <div class="flex-event-selected-item">
-                <p><%=modules[k].module_name%></p>
-                <p><%=modules[k].module_location%></p>
-                <p><%=modules[k].module_leader%></p>
-                <p><%=modules[k].module_start_time%></p>
-                <p><%=modules[k].module_end_time%></p>
+            <div class="flex-event-selected-item task">
+                <h4><%=modules[k].module_name%></h4><br><br>
+                <p class="moduleText"><b>Location: </b><%=modules[k].module_location%></p><br><br>
+                <p class="moduleText"><b>Leader: </b><%=modules[k].module_leader%></p><br><br>
+                <p class="moduleText"><b>Start Time: </b><%=modules[k].module_start_time%></p><br><br>
+                <p class="moduleText"><b>End Time: </b><%=modules[k].module_end_time%></p>
             </div>
         <% } } %>
       </div>
