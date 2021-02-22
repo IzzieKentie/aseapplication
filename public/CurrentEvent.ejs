@@ -492,11 +492,11 @@
             <div class="flex-event-selected-item">
               <% for(var m = 0;m < breakouts.length;m++) { %>
                 <% if(breakouts.length && breakouts[m].module_id === modules[k].module_id){ %>
-                  <div class="flex-event-selected-item">
-                    <div class="flex-event-selected-item" style="width: 33.33%">
+                  <div class="flex-event-selected-item breakout">
+                   <!-- <div class="flex-event-selected-item" style="width: 33.33%">
                     <img id="<%=breakouts[m].breakout_id%>_break_edit_icon" class="icons" style="float:left; height: 20px; margin: 0 0 0 0;" src="edit.png">
-                    </div>
-                    <p><%=breakouts[m].breakout_name%></p>
+                    </div> -->
+                    <p class="break"><%=breakouts[m].breakout_name%></p>
                   </div>
                 <% } %>
               <% } %>

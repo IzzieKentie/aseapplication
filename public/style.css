@@ -46,6 +46,19 @@ h4 {
   flex-direction: row;
 }
 
+.breakout {
+  background-color: white;
+    border-radius: 20px;
+    color: black;
+    padding: 14px 20px;
+}
+
+p.break {
+  color: black;
+    text-align: center;
+    margin: 5% 5% 5% 15%;
+}
+
 .breakouts {
   border-bottom: solid 2px #0070AD; 
   margin: 10px 4px 10px;
