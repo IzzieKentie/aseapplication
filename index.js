@@ -135,6 +135,7 @@ app.get('/CurrentEvent',(req,res)=>{
   var role = req.session.role;
   var modules = [];
   var id = "";
+  var breakouts = [];
   conn.execute("SELECT * FROM EVENT_ADDNL_INFO WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_STATUS=?)",[req.session.userID, "Current"],).then(([rows]) => {
     info = rows;
   }).catch(e => { console.log(e) });
@@ -147,11 +148,14 @@ app.get('/CurrentEvent',(req,res)=>{
   conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Current"],).then(([rows]) => {
     event = rows;
   }).catch(e => { console.log(e) });
+  conn.execute("SELECT * FROM EVENT_MODULE_BREAKOUTS WHERE MODULE_ID IN (SELECT MODULE_ID FROM EVENT_FOTD_MODULES WHERE EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?))",[req.session.userID, "Current"],).then(([rows]) => {
+    breakouts = rows;
+  }).catch(e => { console.log(e) });
   conn.execute("SELECT * FROM EVENT_FOTD_MODULES WHERE EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?) ORDER BY module_start_time ASC",[req.session.userID, "Current"],).then(([rows]) => {
     modules = rows;
     console.log(modules);
     res.render('CurrentEvent',{
-      event, info, tasks, team, role, modules
+      event, info, tasks, team, role, modules, breakouts
     });
   }).catch(e => { console.log(e) });
 });
