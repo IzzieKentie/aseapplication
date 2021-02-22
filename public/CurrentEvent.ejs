@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body style="height: 100%">
   <ul class="topnav">
     <li><a href="/home">Home</a></li>
     <li><a href="profile.html">Profile</a></li>
@@ -441,7 +441,7 @@
           </div>
           <% for(var k = 0;k < modules.length;k++) { %>
           <form class="icon" method="POST" action="/saveModule" style="width:100%; display: flex">
-            <div class="flex-event-selected-item module">
+            <div class="flex-event-selected-item">
              <div class="flex-event-selected-item">
               <div class="flex-event-selected-item" style="width: 33.33%">
                 <img id="<%=modules[k].module_id%>_mod_edit_icon" class="icons" style="float:left; height: 20px; margin: 0 0 0 0;" src="edit.png">
@@ -492,6 +492,8 @@
               <% for(var m = 0;m < breakouts.length;m++) { %>
                 <% if(breakouts.length && breakouts[m].module_id === modules[k].module_id){ %>
                   <div class="flex-event-selected-item">
+                    <div class="flex-event-selected-item" style="width: 33.33%">
+                    <img id="<%=breakouts[m].breakout_id%>_break_edit_icon" class="icons" style="float:left; height: 20px; margin: 0 0 0 0;" src="edit.png">
                     <p><%=breakouts[m].breakout_name%></p>
                   </div>
                 <% } %>
