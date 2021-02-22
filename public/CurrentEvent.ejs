@@ -485,6 +485,9 @@
                 <input style="padding: 0 0 0 0;  height: 30px;  width: 95%;" type="hidden" name="module_end" id="<%=modules[k].module_id%>_end_edit" value="<%=modules[k].module_end_time%>">
               </div>
             </div>
+            </form>
+          </div>
+          <div class="flex-event-selected-item module">
             <div class="flex-event-selected-item">
               <% for(var m = 0;m < breakouts.length;m++) { %>
                 <% if(breakouts.length && breakouts[m].module_id === modules[k].module_id){ %>
@@ -494,8 +497,7 @@
                 <% } %>
               <% } %>
             </div>
-            </div>
-          </form>
+          </div>
         <% } } %>
       </div>
     <div class="flex-event-selected-notes">
