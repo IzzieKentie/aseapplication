@@ -442,7 +442,7 @@
           <% for(var k = 0;k < modules.length;k++) { %>
           <form class="icon" method="POST" action="/saveModule" style="width:100%; display: flex">
             <div class="flex-event-selected-item">
-             <div class="flex-event-selected-item">
+             <div class="flex-event-selected-item module">
               <div class="flex-event-selected-item" style="width: 33.33%">
                 <img id="<%=modules[k].module_id%>_mod_edit_icon" class="icons" style="float:left; height: 20px; margin: 0 0 0 0;" src="edit.png">
                 <input type="image" id="<%=modules[k].module_id%>_mod_save_icon" alt="Save" class="icons" style="float:left; height: 20px; margin: 0 0 0 0;" src="save.png" hidden>
@@ -484,7 +484,10 @@
                 <p id="<%=modules[k].module_id%>_end_text" class="moduleText"><%=modules[k].module_end_time%></p>
                 <input style="padding: 0 0 0 0;  height: 30px;  width: 95%;" type="hidden" name="module_end" id="<%=modules[k].module_id%>_end_edit" value="<%=modules[k].module_end_time%>">
               </div>
+              </div>
+          </div>
               </form>
+
             </div>
           <div class="flex-event-selected-item module">
             <div class="flex-event-selected-item">
