@@ -85,14 +85,14 @@
     </div>
     <div class="flex-event-selected-job">
       <h3>Job Jar</h3>
-          <button id="myTasks" class="job">Assigned to me</button>
+          <button id="myTasks" class="select-event">Assigned to me</button>
           <% var tasks = []; %>
           <script>
             document.getElementById("myTasks").onclick = function () {
               <% tasks = my_tasks %>
             };
           </script>
-          <button id="allTasks" class="job">All Tasks</button>
+          <button id="allTasks" class="select-event">All Tasks</button>
           <script>
             document.getElementById("allTasks").onclick = function () {
               <% tasks = all_tasks %>
