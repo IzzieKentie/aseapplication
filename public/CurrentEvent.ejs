@@ -244,6 +244,7 @@
                 <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
                 <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
             </div>
+            <div id="myTasks">
             <% for(var i = 0;i < tasks.length;i++) { %>
               <% if(tasks[i].task_status === "In Progress") { %>
                 <div class="task" style="display: flex">
@@ -288,6 +289,52 @@
                 </div>
               <% } } %>
             </div>
+            <div id="allTasks">
+            <% for(var i = 0;i < tasks.length;i++) { %>
+              <% if(tasks[i].task_status === "In Progress") { %>
+                <div class="task" style="display: flex">
+                  <form class="icon" method="POST" action="/saveTask" style="width:66.66%; display: flex">
+                    <img id="<%=tasks[i].task_id%>_edit_icon" class="icons" style="float:left" src="edit.png">
+                    <input type="image" id="<%=tasks[i].task_id%>_save_icon" alt="Save" class="icons" style="float:left" src="save.png" hidden>
+                    <script>
+                      document.getElementById("<%=tasks[i].task_id%>_edit_icon").onclick = function () {
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_text").hidden = true;
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_edit").type = "text";
+                        document.getElementById("<%=tasks[i].task_id%>_edit_icon").hidden = true;
+                        document.getElementById("<%=tasks[i].task_id%>_save_icon").hidden = false;
+                        document.getElementById("<%=tasks[i].task_id%>_assigned").hidden = false;
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_assigned").hidden = true;
+                      };
+                    </script>
+                    <p id="<%=tasks[i].task_id%>_task_name_text" style="text-align:left; width:100%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                    <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0;" value="<%=tasks[i].task_name%>">
+                    <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                    <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
+                    <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                      <% if(team.length){ 
+                        for(var l = 0;l < team.length;l++) { %>
+                          <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
+                      <% }}%>
+                    </select> 
+                  </form>
+                  <div style="width:33.33%">
+                    <form class="icon" action="/complete" method="POST">
+                      <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                      <input type="image" alt="Complete Task" class="icons" src="complete.png">
+                    </form>
+                    <form class="icon" action="/review" method="POST">
+                      <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                      <input type="image" alt="Review Task" class="icons" src="review.png">
+                    </form>
+                    <form class="icon" action="/block" method="POST">
+                      <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                      <input type="image" alt="Block Task" class="icons" src="block.png">
+                    </form>
+                  </div>                    
+                </div>
+              <% } } %>
+            </div>
+            </div>
           </div>
         <% } %>
         <div class="flex-event-selected-item" >
@@ -301,6 +348,7 @@
                 <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
                 <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
               </div>
+              <div id="myTasks">
               <% for(var i = 0;i < tasks.length;i++) { %>
                 <% if(tasks[i].task_status === "Review") { %>
                   <div class="task" style="display:flex">
@@ -344,6 +392,52 @@
                     </div>
                     </div>
                   <% } } %>
+                </div>
+                <div id="allTasks">
+              <% for(var i = 0;i < tasks.length;i++) { %>
+                <% if(tasks[i].task_status === "Review") { %>
+                  <div class="task" style="display:flex">
+                      <form class="icon" method="POST" action="/saveTask" style="width:66.66%; display: flex">
+                    <img id="<%=tasks[i].task_id%>_edit_icon" class="icons" style="float:left" src="edit.png">
+                    <input type="image" id="<%=tasks[i].task_id%>_save_icon" alt="Save" class="icons" style="float:left" src="save.png" hidden>
+                    <script>
+                      document.getElementById("<%=tasks[i].task_id%>_edit_icon").onclick = function () {
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_text").hidden = true;
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_edit").type = "text";
+                        document.getElementById("<%=tasks[i].task_id%>_edit_icon").hidden = true;
+                        document.getElementById("<%=tasks[i].task_id%>_save_icon").hidden = false;
+                        document.getElementById("<%=tasks[i].task_id%>_assigned").hidden = false;
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_assigned").hidden = true;
+                      };
+                    </script>
+                    <p id="<%=tasks[i].task_id%>_task_name_text" style="text-align:left; width:100%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                    <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0;" value="<%=tasks[i].task_name%>">
+                    <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                    <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
+                    <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                      <% if(team.length){ 
+                        for(var l = 0;l < team.length;l++) { %>
+                          <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
+                      <% }}%>
+                    </select> 
+                  </form>
+                      <div style="width:33.33%">
+                      <form class="icon" action="/complete" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="Complete Task" class="icons" src="complete.png">
+                      </form>
+                      <form class="icon" action="/block" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="Block Task" class="icons" src="block.png">
+                      </form>
+                      <form class="icon" action="/in-progress" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="In Progress" class="icons" src="in-progress.png">
+                      </form>
+                    </div>
+                    </div>
+                  <% } } %>
+                </div>
                     </div>
                 </div>
           <% } %>
@@ -358,6 +452,7 @@
                     <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
                     <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
                   </div>
+                  <div id="myTasks">
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "Complete") { %>
                     <div class="task" style="display:flex">
@@ -401,6 +496,52 @@
                     </div>
                     </div>
                   <% } } %>
+                </div>
+                <div id="allTasks">
+             <% for(var i = 0;i < tasks.length;i++) { %>
+                    <% if(tasks[i].task_status === "Complete") { %>
+                    <div class="task" style="display:flex">
+                      <form class="icon" method="POST" action="/saveTask" style="width:66.66%; display: flex">
+                    <img id="<%=tasks[i].task_id%>_edit_icon" class="icons" style="float:left" src="edit.png">
+                    <input type="image" id="<%=tasks[i].task_id%>_save_icon" alt="Save" class="icons" style="float:left" src="save.png" hidden>
+                    <script>
+                      document.getElementById("<%=tasks[i].task_id%>_edit_icon").onclick = function () {
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_text").hidden = true;
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_edit").type = "text";
+                        document.getElementById("<%=tasks[i].task_id%>_edit_icon").hidden = true;
+                        document.getElementById("<%=tasks[i].task_id%>_save_icon").hidden = false;
+                        document.getElementById("<%=tasks[i].task_id%>_assigned").hidden = false;
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_assigned").hidden = true;
+                      };
+                    </script>
+                    <p id="<%=tasks[i].task_id%>_task_name_text" style="text-align:left; width:100%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                    <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0;" value="<%=tasks[i].task_name%>">
+                    <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                    <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
+                    <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                      <% if(team.length){ 
+                        for(var l = 0;l < team.length;l++) { %>
+                          <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
+                      <% }}%>
+                    </select> 
+                  </form>
+                      <div style="width:33.33%">
+                      <form class="icon" action="/review" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="Review Task" class="icons" src="review.png">
+                      </form>
+                      <form class="icon" action="/block" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="Block Task" class="icons" src="block.png">
+                      </form>
+                      <form class="icon" action="/in-progress" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="In Progress" class="icons" src="in-progress.png">
+                      </form>
+                    </div>
+                    </div>
+                  <% } } %>
+                </div>
                     </div>
                 </div>
           <% } %>
@@ -415,6 +556,7 @@
                     <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
                     <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
                   </div>
+                  <div id="myTasks">
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "Blocked") { %>
                     <div class="task" style="display:flex">
@@ -458,6 +600,52 @@
                     </div>
                     </div>
                   <% } } %>
+                </div>
+                <div id="allTasks">
+             <% for(var i = 0;i < tasks.length;i++) { %>
+                    <% if(tasks[i].task_status === "Blocked") { %>
+                    <div class="task" style="display:flex">
+                      <form class="icon" method="POST" action="/saveTask" style="width:66.66%; display: flex">
+                    <img id="<%=tasks[i].task_id%>_edit_icon" class="icons" style="float:left" src="edit.png">
+                    <input type="image" id="<%=tasks[i].task_id%>_save_icon" alt="Save" class="icons" style="float:left" src="save.png" hidden>
+                    <script>
+                      document.getElementById("<%=tasks[i].task_id%>_edit_icon").onclick = function () {
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_text").hidden = true;
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_edit").type = "text";
+                        document.getElementById("<%=tasks[i].task_id%>_edit_icon").hidden = true;
+                        document.getElementById("<%=tasks[i].task_id%>_save_icon").hidden = false;
+                        document.getElementById("<%=tasks[i].task_id%>_assigned").hidden = false;
+                        document.getElementById("<%=tasks[i].task_id%>_task_name_assigned").hidden = true;
+                      };
+                    </script>
+                    <p id="<%=tasks[i].task_id%>_task_name_text" style="text-align:left; width:100%; margin: 10px 0 10px 0px"><%=tasks[i].task_name%></p>
+                    <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0;" value="<%=tasks[i].task_name%>">
+                    <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                    <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
+                    <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                      <% if(team.length){ 
+                        for(var l = 0;l < team.length;l++) { %>
+                          <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
+                      <% }}%>
+                    </select> 
+                  </form>
+                      <div style="width:33.33%">
+                      <form class="icon" action="/review" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="Review Task" class="icons" src="review.png">
+                      </form>
+                      <form class="icon" action="/complete" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="Complete Task" class="icons" src="complete.png">
+                      </form>
+                      <form class="icon" action="/in-progress" method="POST">
+                        <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
+                        <input type="image" alt="In Progress" class="icons" src="in-progress.png">
+                      </form>
+                    </div>
+                    </div>
+                  <% } } %>
+                </div>
                     </div>
                 </div>
           <% } %>
