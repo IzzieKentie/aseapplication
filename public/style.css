@@ -47,15 +47,15 @@ h4 {
 }
 
 .breakout {
-  background-color: white;
+  background-color: #01416b;
     border-radius: 20px;
-    color: black;
+    color: white;
     padding: 14px 20px;
     margin-right: 0.5%;
 }
 
 p.break {
-  color: black;
+  color: white;
     text-align: center;
     margin: 5% 5% 5% 5%;
 }
