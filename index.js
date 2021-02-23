@@ -129,7 +129,7 @@ app.post('/selected_event',(req,res)=>{
 
 app.get('/CurrentEvent',(req,res)=>{
   var info = [];
-  var my_tasks =[];
+  var tasks =[];
   var event = [];
   var team = [];
   var role = req.session.role;
@@ -144,7 +144,7 @@ app.get('/CurrentEvent',(req,res)=>{
     team = rows;
   }).catch(e => { console.log(e) });
   conn.execute("SELECT t.*, a.event_name, te.forename, te.surname FROM EVENT_TASKS t, ASE_EVENTS a, ASE_TEAM te WHERE t.ASSIGNED_ID = te.ID AND t.ASSIGNED_ID = ? AND a.event_status = ? ",[req.session.userID, "Current"],).then(([rows]) => {
-    my_tasks = rows;
+    tasks = rows;
   }).catch(e => { console.log(e) });
   conn.execute("  SELECT t.*, a.event_name, te.forename, te.surname FROM EVENT_TASKS t, ASE_EVENTS a, ASE_TEAM te WHERE t.ASSIGNED_ID = te.ID AND t.ASSIGNED_ID IN (SELECT ID FROM ASE_TEAM WHERE ID IN (SELECT MEMBER_ID FROM EVENT_ASSIGNED WHERE EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?)))) AND a.event_status = ?",[req.session.userID, "Current"],).then(([rows]) => {
     all_tasks = rows;
@@ -159,7 +159,7 @@ app.get('/CurrentEvent',(req,res)=>{
     modules = rows;
     console.log(modules);
     res.render('CurrentEvent',{
-      event, info, my_tasks, team, role, modules, breakouts, all_tasks
+      event, info, tasks, team, role, modules, breakouts, all_tasks
     });
   }).catch(e => { console.log(e) });
 });
