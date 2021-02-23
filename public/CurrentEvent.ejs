@@ -89,16 +89,37 @@
           <button id="myTasksButton" class="select-event" hidden>Assigned to me</button>
           <script type="text/javascript">
             document.getElementById("allTasksButton").onclick = function () {
-              document.getElementById("allTasks").hidden = false;
-              document.getElementById("myTasks").hidden = true;
+              document.getElementById("allTasksToDo").hidden = false;
+              document.getElementById("allTasksInProgress").hidden = false;
+              document.getElementById("allTasksReview").hidden = false;
+              document.getElementById("allTasksComplete").hidden = false;
+              document.getElementById("allTasksBlocked").hidden = false;
+
+              document.getElementById("myTasksToDo").hidden = true;
+              document.getElementById("myTasksInProgress").hidden = true;
+              document.getElementById("myTasksReview").hidden = true;
+              document.getElementById("myTasksComplete").hidden = true;
+              document.getElementById("myTasksBlocked").hidden = true;
+
               document.getElementById("myTasksButton").hidden = false;
               document.getElementById("allTasksButton").hidden = true;
             };
             document.getElementById("myTasksButton").onclick = function () {
-              document.getElementById("myTasks").hidden = false;
-              document.getElementById("allTasks").hidden = true;
-              document.getElementById("allTasksButton").hidden = false;
+              document.getElementById("allTasksToDo").hidden = true;
+              document.getElementById("allTasksInProgress").hidden = true;
+              document.getElementById("allTasksReview").hidden = true;
+              document.getElementById("allTasksComplete").hidden = true;
+              document.getElementById("allTasksBlocked").hidden = true;
+
+              document.getElementById("myTasksToDo").hidden = false;
+              document.getElementById("myTasksInProgress").hidden = false;
+              document.getElementById("myTasksReview").hidden = false;
+              document.getElementById("myTasksComplete").hidden = false;
+              document.getElementById("myTasksBlocked").hidden = false;
+              document.getElementById("myTasksButton").hidden = false;
+
               document.getElementById("myTasksButton").hidden = true;
+              document.getElementById("allTasksButton").hidden = false;
             };
           </script>     
         <div class="flex-event-selected-item" >
@@ -134,7 +155,7 @@
                 <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
                 <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
               </div>
-              <div id="myTasks">
+              <div id="myTasksToDo">
               <% for(var i = 0;i < tasks.length;i++) { %>
                 <% if(tasks[i].task_status === "To Do") { %>
                   <div class="task" style="display:flex">
@@ -183,7 +204,7 @@
                   </div>
                 <% } } %>
               </div>
-              <div id="allTasks" hidden>
+              <div id="allTasksToDo" hidden>
               <% for(var i = 0;i < all_tasks.length;i++) { %>
                 <% if(all_tasks[i].task_status === "To Do") { %>
                   <div class="task" style="display:flex">
@@ -246,7 +267,7 @@
                 <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
                 <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
             </div>
-            <div id="myTasks">
+            <div id="myTasksInProgress">
             <% for(var i = 0;i < tasks.length;i++) { %>
               <% if(tasks[i].task_status === "In Progress") { %>
                 <div class="task" style="display: flex">
@@ -291,7 +312,7 @@
                 </div>
               <% } } %>
             </div>
-            <div id="allTasks">
+            <div id="allTasksInProgress" hidden>
             <% for(var i = 0;i < tasks.length;i++) { %>
               <% if(tasks[i].task_status === "In Progress") { %>
                 <div class="task" style="display: flex">
@@ -350,7 +371,7 @@
                 <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
                 <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
               </div>
-              <div id="myTasks">
+              <div id="myTasksReview">
               <% for(var i = 0;i < tasks.length;i++) { %>
                 <% if(tasks[i].task_status === "Review") { %>
                   <div class="task" style="display:flex">
@@ -395,7 +416,7 @@
                     </div>
                   <% } } %>
                 </div>
-                <div id="allTasks">
+                <div id="allTasksReview" hidden>
               <% for(var i = 0;i < tasks.length;i++) { %>
                 <% if(tasks[i].task_status === "Review") { %>
                   <div class="task" style="display:flex">
@@ -454,7 +475,7 @@
                     <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
                     <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
                   </div>
-                  <div id="myTasks">
+                  <div id="myTasksComplete">
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "Complete") { %>
                     <div class="task" style="display:flex">
@@ -499,7 +520,7 @@
                     </div>
                   <% } } %>
                 </div>
-                <div id="allTasks">
+                <div id="allTasksComplete" hidden>
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "Complete") { %>
                     <div class="task" style="display:flex">
@@ -558,7 +579,7 @@
                     <p style="text-align:center; width:33.33%; margin: 10px 0 10px 0px">Assigned to</p>
                     <p style="text-align:right; width:33.33%; margin: 10px 0 10px 0px">Update Status</p>
                   </div>
-                  <div id="myTasks">
+                  <div id="myTasksBlocked">
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "Blocked") { %>
                     <div class="task" style="display:flex">
@@ -603,7 +624,7 @@
                     </div>
                   <% } } %>
                 </div>
-                <div id="allTasks">
+                <div id="allTasksBlocked" hidden>
              <% for(var i = 0;i < tasks.length;i++) { %>
                     <% if(tasks[i].task_status === "Blocked") { %>
                     <div class="task" style="display:flex">
