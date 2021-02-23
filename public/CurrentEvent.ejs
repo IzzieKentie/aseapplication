@@ -86,17 +86,24 @@
     <div class="flex-event-selected-job">
       <h3>Job Jar</h3>
           <button id="myTasks" class="select-event" onclick="">Assigned to me</button>
-          <% var tasks = []; %>
-          <script>
-            document.getElementById("myTasks").onclick = function () {
-              tasks = <%=my_tasks%>
-            };
-          </script>
           <button id="allTasks" class="select-event">All Tasks</button>
           <script>
-            document.getElementById("allTasks").onclick = function () {
-              tasks = <%=all_tasks%>
+            var myTasks = "";
+            document.getElementById("myTasks").onclick = function () {
+              myTasks = "true";
             };
+            document.getElementById("allTasks").onclick = function () {
+              myTasks = "false";
+            };
+          
+          <% var tasks = []; 
+          if(%>myTasks<% === "true") {
+            tasks = my_tasks;
+          }
+          else {
+            tasks = all_tasks
+          }
+          %>
           </script>
         <div class="flex-event-selected-item" >
           <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#new" style="width:100%; background-color: #fff; border-color: none;""><p class="task_text">New Task</p></button><br>
