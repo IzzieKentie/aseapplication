@@ -85,10 +85,19 @@
     </div>
     <div class="flex-event-selected-job">
       <h3>Job Jar</h3>
-        <form>
-          <button class="job">Assigned to me</button>
-          <button class="job">All Tasks</button>
-        </form>
+          <button id="myTasks" class="job">Assigned to me</button>
+          <% var tasks = []; %>
+          <script>
+            document.getElementById("myTasks").onclick = function () {
+              <% tasks = my_tasks %>
+            };
+          </script>
+          <button id="allTasks" class="job">All Tasks</button>
+          <script>
+            document.getElementById("allTasks").onclick = function () {
+              <% tasks = all_tasks %>
+            };
+          </script>
         <div class="flex-event-selected-item" >
           <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#new" style="width:100%; background-color: #fff; border-color: none;""><p class="task_text">New Task</p></button><br>
         </div>

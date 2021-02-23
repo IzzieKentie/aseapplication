@@ -129,13 +129,14 @@ app.post('/selected_event',(req,res)=>{
 
 app.get('/CurrentEvent',(req,res)=>{
   var info = [];
-  var tasks =[];
+  var my_tasks =[];
   var event = [];
   var team = [];
   var role = req.session.role;
   var modules = [];
   var id = "";
   var breakouts = [];
+  var all_tasks =  []
   conn.execute("SELECT * FROM EVENT_ADDNL_INFO WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_STATUS=?)",[req.session.userID, "Current"],).then(([rows]) => {
     info = rows;
   }).catch(e => { console.log(e) });
@@ -143,7 +144,10 @@ app.get('/CurrentEvent',(req,res)=>{
     team = rows;
   }).catch(e => { console.log(e) });
   conn.execute("SELECT t.*, a.event_name, te.forename, te.surname FROM EVENT_TASKS t, ASE_EVENTS a, ASE_TEAM te WHERE t.ASSIGNED_ID = te.ID AND t.ASSIGNED_ID = ? AND a.event_status = ? ",[req.session.userID, "Current"],).then(([rows]) => {
-    tasks = rows;
+    my_tasks = rows;
+  }).catch(e => { console.log(e) });
+  conn.execute("  SELECT t.*, a.event_name, te.forename, te.surname FROM EVENT_TASKS t, ASE_EVENTS a, ASE_TEAM te WHERE t.ASSIGNED_ID = te.ID AND t.ASSIGNED_ID IN (SELECT ID FROM ASE_TEAM WHERE ID IN (SELECT MEMBER_ID FROM EVENT_ASSIGNED WHERE EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?)))) AND a.event_status = ?",[req.session.userID, "Current"],).then(([rows]) => {
+    all_tasks = rows;
   }).catch(e => { console.log(e) });
   conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Current"],).then(([rows]) => {
     event = rows;
@@ -155,7 +159,7 @@ app.get('/CurrentEvent',(req,res)=>{
     modules = rows;
     console.log(modules);
     res.render('CurrentEvent',{
-      event, info, tasks, team, role, modules, breakouts
+      event, info, my_tasks, team, role, modules, breakouts, all_tasks
     });
   }).catch(e => { console.log(e) });
 });
