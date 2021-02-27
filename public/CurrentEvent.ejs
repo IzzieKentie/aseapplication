@@ -645,10 +645,10 @@
                     <input type="hidden" name="task_name" id="<%=all_tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0;" value="<%=all_tasks[i].task_name%>">
                     <input type="hidden" name="task_id" value="<%=all_tasks[i].task_id%>">
                     <p id="<%=all_tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=all_tasks[i].forename%></b></p>
-                    <select id="<%=all_tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                    <select id="<%=all_tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color:black;" hidden>
                       <% if(team.length){ 
                         for(var l = 0;l < team.length;l++) { %>
-                          <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
+                          <option value="<%=team[l].ID%>" style="color:black;"><%=team[l].forename%> <%=team[l].surname%></option>
                       <% }}%>
                     </select> 
                   </form>
@@ -687,15 +687,15 @@
             <div class="newModule">
               <form action="/newModule" method="POST">
                 <p>Module Name</p>
-                <input type="text" name="module_name" style="padding: 0 0 0 0; width: 50%">
+                <input type="text" name="module_name" style="padding: 0 0 0 0; width: 50%; color:black;">
                 <p>Module Leader:</p>
-                <input type="text" name="module_leader" style="padding: 0 0 0 0; width: 50%">
+                <input type="text" name="module_leader" style="padding: 0 0 0 0; width: 50%; color:black;">
                 <p>Module Location: </p>
-                <input type="text" name="module_location" style="padding: 0 0 0 0; width: 50%">
+                <input type="text" name="module_location" style="padding: 0 0 0 0; width: 50%; color:black;">
                 <p>Module Start Time: </p>
-                <input type="time" min="08:00" max="19:00" name="module_start_time" style="padding: 0 0 0 0; width: 50%">
+                <input type="time" min="08:00" max="19:00" name="module_start_time" style="padding: 0 0 0 0; width: 50%; color:black;">
                 <p>Module End Time: </p>
-                <input type="time" min="08:00" max="19:00" name="module_end_time" style="padding: 0 0 0 0; width: 50%">
+                <input type="time" min="08:00" max="19:00" name="module_end_time" style="padding: 0 0 0 0; width: 50%; color:black;">
                 <input type = "hidden" name = "event_id" value = "<%=event[0].event_id%>" style="padding: 0 0 0 0; width: 50%"/>
                 <input type="submit" class="select-event" style="padding: 0 0 0 0; width: 50%"> 
               </form>
@@ -738,23 +738,23 @@
               <input type="hidden" name="module_id" value="<%=modules[k].module_id%>">
               <div class="flex-event-selected-item">
                 <p id="<%=modules[k].module_id%>_name_text"><%=modules[k].module_name%></p>
-                <input style="padding: 0 0 0 0;  height: 30px;  width: 95%;" type="hidden" name="module_name" id="<%=modules[k].module_id%>_name_edit" value="<%=modules[k].module_name%>">
+                <input style="padding: 0 0 0 0;  height: 30px;  width: 95%; color:black;" type="hidden" name="module_name" id="<%=modules[k].module_id%>_name_edit" value="<%=modules[k].module_name%>">
               </div>
               <div class="flex-event-selected-item">
                 <p id="<%=modules[k].module_id%>_location_text" class="moduleText"><%=modules[k].module_location%></p>
-                <input style="padding: 0 0 0 0;  height: 30px;  width: 95%;" type="hidden" name="module_location" id="<%=modules[k].module_id%>_location_edit" value="<%=modules[k].module_location%>">
+                <input style="padding: 0 0 0 0;  height: 30px;  width: 95%; color:black;" type="hidden" name="module_location" id="<%=modules[k].module_id%>_location_edit" value="<%=modules[k].module_location%>">
                 </div>
               <div class="flex-event-selected-item">
                 <p id="<%=modules[k].module_id%>_leader_text" class="moduleText"><%=modules[k].module_leader%></p>
-                <input style="padding: 0 0 0 0;  height: 30px;  width: 95%;" type="hidden" name="module_leader" id="<%=modules[k].module_id%>_leader_edit" value="<%=modules[k].module_leader%>">
+                <input style="padding: 0 0 0 0;  height: 30px;  width: 95% color:black;;" type="hidden" name="module_leader" id="<%=modules[k].module_id%>_leader_edit" value="<%=modules[k].module_leader%>">
                 </div>
               <div class="flex-event-selected-item">
                 <p id="<%=modules[k].module_id%>_start_text" class="moduleText"><%=modules[k].module_start_time%></p>
-                <input style="padding: 0 0 0 0;  height: 30px;  width: 95%;" type="hidden" name="module_start" id="<%=modules[k].module_id%>_start_edit" value="<%=modules[k].module_start_time%>">
+                <input style="padding: 0 0 0 0;  height: 30px;  width: 95%; color:black;" type="hidden" name="module_start" id="<%=modules[k].module_id%>_start_edit" value="<%=modules[k].module_start_time%>">
                 </div>
               <div class="flex-event-selected-item">
                 <p id="<%=modules[k].module_id%>_end_text" class="moduleText"><%=modules[k].module_end_time%></p>
-                <input style="padding: 0 0 0 0;  height: 30px;  width: 95%;" type="hidden" name="module_end" id="<%=modules[k].module_id%>_end_edit" value="<%=modules[k].module_end_time%>">
+                <input style="padding: 0 0 0 0;  height: 30px;  width: 95%; color:black;" type="hidden" name="module_end" id="<%=modules[k].module_id%>_end_edit" value="<%=modules[k].module_end_time%>">
               </div>
               </div>
           </div>
@@ -764,12 +764,14 @@
               <% for(var m = 0;m < breakouts.length;m++) { %>
                 <% if(breakouts.length && breakouts[m].module_id === modules[k].module_id){ %>
                   <div class="flex-event-selected-item breakout">
-                    <form class="icon" method="POST" action="/saveModule" style="width:100%; display: flex">
+                    <form class="icon" method="POST" action="/saveBreakout" style="width:100%; display: flex">
                     <img id="<%=breakouts[m].breakout_id%>_brk_edit_icon" class="icons" style="float:left; height: 20px; margin: 0 0 0 0;" src="edit.png">
                     <input type="image" id="<%=breakouts[m].breakout_id%>_brk_save_icon" alt="Save" class="icons" style="float:left; height: 20px; margin: 0 0 0 0;" src="save.png" hidden>
 
-                    <input style="padding: 0 0 0 0;  height: 30px;  width: 95%;" type="hidden" name="module_name" id="<%=breakouts[m].breakout_id%>_brk_name_edit" value="<%=breakouts[m].breakout_name%>">
+                    <input style="padding: 0 0 0 0;  height: 30px;  width: 95%; color:black" type="hidden" name="module_name" id="<%=breakouts[m].breakout_id%>_brk_name_edit" value="<%=breakouts[m].breakout_name%>">
                     <p id="<%=breakouts[m].breakout_id%>_brk_name_text" class="break"><%=breakouts[m].breakout_name%></p>
+
+                    <input type="hidden" name="breakout_id" value="<%=breakouts[m].breakout_id%>">
 
                     <script>
                     document.getElementById("<%=breakouts[m].breakout_id%>_brk_edit_icon").onclick = function () {

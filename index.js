@@ -398,6 +398,12 @@ app.post('/saveModule', (req,res) =>{
     res.redirect('CurrentEvent');
 });
 
+app.post('/saveBreakout', (req,res) =>{
+    conn.execute("UPDATE EVENT_MODULE_BREAKOUTS SET BREAKOUT_NAME=? WHERE BREAKOUT_ID=?",[req.body.breakout_name, req.body.breakout_id],)
+    .catch(e => { console.log(e) });
+    res.redirect('CurrentEvent');
+});
+
 const port = process.env.PORT || 1337;
 app.listen(port);
 console.log("Server running at http://localhost:%d", port); 
