@@ -345,22 +345,6 @@ app.post('/giveFeedback', (req,res)=>{
   });
 
 app.get('/CreateEvent',(req,res)=>{
-  const{CoDesigner} = req.body
-  var cd = [];
-  let values = [];
-  cd = req.body.CoDesigner;
-  var role = req.session.role;
-  for(var i = 0;i < cd.length;i++) {
-    values.push([req.body.selected,cd[i]]); 
-  }
-  values.push([req.body.cofac]);
-  values.push([req.body.fac]);
-  values.push([req.body.pf]);
-  var sql = "INSERT INTO EVENT_ASSIGNED (event_id, member_id) VALUES ?";
-  conn.query(sql, [values], function(err) {
-    if (err) throw err;
-    conn.end();
-  });
   conn.execute("SELECT * FROM ASE_TEAM WHERE ROLE='Process Facilitator'",).then(([rows]) => {
     var pf = [];
     pf = rows;
@@ -383,10 +367,29 @@ app.get('/CreateEvent',(req,res)=>{
 });
 
 app.post('/CreateNewEvent', (req,res)=>{
-    conn.execute("INSERT INTO ASE_EVENTS (event_name, event_description, event_client, event_pf, event_cofac, event_fac, event_status) VALUES(?, ?, ?, ?, ?, ?, ?)",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cofac, req.body.fac, req.body.event_status],)
-    .catch(e => { console.log(e) });
-    res.redirect('UpcomingEvents');
-  });
+  var event = [];
+  conn.execute("INSERT INTO ASE_EVENTS (event_name, event_description, event_client, event_pf, event_cofac, event_fac, event_status) VALUES(?, ?, ?, ?, ?, ?, ?)",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cofac, req.body.fac, req.body.event_status],)
+  .catch(e => { console.log(e) });
+  conn.execute("SELECT event_id FROM ASE_EVENTS ORDER BY event_id DESC LIMIT 1",).then(([rows]) => {
+    event = rows;
+    var cd = [];
+    let values = [];
+    cd = req.body.CoDesigner;
+    var role = req.session.role;
+    for(var i = 0;i < cd.length;i++) {
+      values.push([event[0],cd[i]]); 
+    }
+    values.push([req.body.cofac]);
+    values.push([req.body.fac]);
+    values.push([req.body.pf]);
+    var sql = "INSERT INTO EVENT_ASSIGNED (event_id, member_id) VALUES ?";
+    conn.query(sql, [values], function(err) {
+      if (err) throw err;
+      conn.end();
+    });
+  }).catch(e => { console.log(e) });
+  res.redirect('UpcomingEvents');  
+});
 
 app.post('/in-progress', (req,res) =>{
     conn.execute("UPDATE EVENT_TASKS SET TASK_STATUS=? WHERE TASK_ID=?",["In Progress", req.body.task_id],)

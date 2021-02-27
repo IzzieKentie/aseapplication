@@ -40,17 +40,40 @@
           <h3><b>Event Client</b></h3>
           <input type="text" name="client"></input>
         </div>
-        <div class="flex-item-selected-event">
+                <div class="flex-item-selected-event">
           <h3><b>Process Facilitator</b></h3>
-          <input type="text" name="pf"></input>
+          <select id="pf" name="pf">
+            <% if(pf.length){ 
+              for(var i = 0;i < pf.length;i++) { %>
+              <option value="<%=pf[i].forename%> <%=pf[i].surname%>"><%=pf[i].forename%> <%=pf[i].surname%></option>
+            <% }}%>
+          </select>
         </div>
         <div class="flex-item-selected-event">
           <h3><b>Co Facilitator</b></h3>
-          <input type="text" name="cofac"></input>
+          <select id="cf" name="cofac">
+            <% if(cf.length){ 
+              for(var i = 0;i < cf.length;i++) { %>
+              <option value="<%=cf[i].forename%> <%=cf[i].surname%>"><%=cf[i].forename%> <%=cf[i].surname%></option>
+            <% }}%>
+          </select>
         </div>
         <div class="flex-item-selected-event">
           <h3><b>Facilitator</b></h3>
-          <input type="text" name="fac"></input>
+          <select id="f" name="fac">
+            <% if(f.length){ 
+              for(var i = 0;i < f.length;i++) { %>
+              <option value="<%=f[i].forename%> <%=f[i].surname%>"><%=f[i].forename%> <%=f[i].surname%></option>
+            <% }}%>
+          </select>        
+        </div>
+        <div class="flex-item-selected-event">
+          <h3><b>Co-Designer's</b></h3>
+            <% if(cd.length){ 
+              for(var i = 0;i < cd.length;i++) { %>
+              <input type="checkbox" name="CoDesigner" value="<%=cd[i].ID%>">
+              <label for="<%=cd[i].forename%> <%=cd[i].surname%>"><%=cd[i].forename%> <%=cd[i].surname%></label><br>
+            <% }}%>
         </div>
         <div class="flex-item-selected-event">
           <h3><b>Status</b></h3>
