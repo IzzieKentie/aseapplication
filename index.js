@@ -392,6 +392,12 @@ app.post('/newModule', (req,res) =>{
     res.redirect('CurrentEvent');
 });
 
+app.post('/newBreakout', (req,res) =>{
+    conn.execute("INSERT INTO EVENT_MODULE_BREAKOUTS (module_id, breakout_name) VALUES (?,?)",[req.body.module_id, req.body.breakout_name],)
+    .catch(e => { console.log(e) });
+    res.redirect('CurrentEvent');
+});
+
 app.post('/saveModule', (req,res) =>{
     conn.execute("UPDATE EVENT_FOTD_MODULES SET MODULE_NAME=?, MODULE_START_TIME=?, MODULE_END_TIME=?, MODULE_LOCATION=?, MODULE_LEADER=? WHERE MODULE_ID=?",[req.body.module_name, req.body.module_start, req.body.module_end, req.body.module_location, req.body.module_leader, req.body.module_id],)
     .catch(e => { console.log(e) });

@@ -715,7 +715,7 @@
               <form action="/newBreakout" method="POST">
                 <p>Breakout Name</p>
                 <input type="text" name="breakout_name" style="padding: 0 0 0 0; width: 100%; color:black;">
-                <select name="modules" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color:black;" hidden>
+                <select name="modules" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color:black;">
                   <% if(modules.length){ 
                     for(var n = 0;n < modules.length;n++) { %>
                       <option value="<%=modules[n].module_id%>" style="color:black;"><%=modules[n].module_name%></option>
