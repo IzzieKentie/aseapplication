@@ -34,7 +34,9 @@
             <input class="select-event" type="submit"/>
           </div>
         </form>
-      <% } 
+      <% } else {
+      
+    }
    if(events.length){ 
        for(var i = 0;i < events.length;i++) { %>
         <form method="POST" action="/selected_event">
