@@ -33,7 +33,7 @@
         <form method="POST" action="/selectfeedback">
             <input type = "hidden" name = "selected" value = "<%=feedback[i].feedback_id%>" />
             <div class="flex-feedback-menu-item">
-              <% if(feedback[i].feedback_id === selected[0].feedback_id) { %>
+              <% if(selected.length && feedback[i].feedback_id === selected[0].feedback_id) { %>
               <input style="background-color: white; color: black" class="select-feedback" type="submit" value="<%=feedback[i].event_name%> from <%=feedback[i].forename%> <%=feedback[i].surname%>"/>
               <% } else {%>
                 <input class="select-feedback" type="submit" value="<%=feedback[i].event_name%> from <%=feedback[i].forename%> <%=feedback[i].surname%>"/>
