@@ -379,9 +379,9 @@ app.post('/CreateNewEvent', (req,res)=>{
     for(var i = 0;i < cd.length;i++) {
       values.push([event[0],cd[i]]); 
     }
-    values.push([req.body.cofac]);
-    values.push([req.body.fac]);
-    values.push([req.body.pf]);
+    values.push([event[0],req.body.cofac]);
+    values.push([event[0],req.body.fac]);
+    values.push([event[0],req.body.pf]);
     var sql = "INSERT INTO EVENT_ASSIGNED (event_id, member_id) VALUES ?";
     conn.query(sql, [values], function(err) {
       if (err) throw err;
