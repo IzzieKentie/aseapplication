@@ -45,14 +45,14 @@
   <% } %>
             </div>
     <div class="flex-event-selected">
-      <% if(upcoming === "True") {
+      <% if(upcoming === "True") { %>
         <form method="" action="/CreateEvent">
           <div class="flex-event-menu-item">
             <input class="select-event" type="submit"/>
           </div>
         </form>
-      } 
-      <% if(data.length){ 
+      <% } 
+       if(data.length){ 
         for(var i = 0;i < data.length;i++) { %>
         <div class="flex-event-selected-item" >
           <h3>Event Name</h3>
