@@ -30,7 +30,7 @@
   <div class="flex-event-menu">
     <form method="" action="/CreateEvent">
       <div class="flex-event-menu-item">
-        <input class="select_event" type="submit"/>
+        <input class="select-event" type="submit"/>
       </div>
     </form>
   <% if(data.length){ 
@@ -39,7 +39,7 @@
             <input type = "hidden" name = "status" value = "<%=data[i].event_status%>" />
             <input type = "hidden" name = "selected" value = "<%=data[i].event_id%>" />
             <div class="flex-event-menu-item">
-              <input class="select_event" type="submit" value="<%=data[i].event_name%>"/>
+              <input class="select-event" type="submit" value="<%=data[i].event_name%>"/>
             </div>
         </form>
        <% }
