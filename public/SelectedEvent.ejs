@@ -35,7 +35,7 @@
           </div>
         </form>
       <% } 
-  <% if(events.length){ 
+   if(events.length){ 
        for(var i = 0;i < events.length;i++) { %>
         <form method="POST" action="/selected_event">
             <input type = "hidden" name = "selected" value = "<%=events[i].event_id%>" />
