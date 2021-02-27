@@ -105,9 +105,10 @@ app.post('/selected_event',(req,res)=>{
     conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Past"],).then(([rows]) => {
       var events =[];
       events = rows;
+      var upcoming = "False";
       conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[selected],).then(([rows]) => {
         res.render('SelectedEvent',{
-          data:rows, events, role
+          data:rows, events, role, upcoming
         });
       }).catch(e => { console.log(e) });
     }).catch(e => { console.log(e) });
@@ -116,9 +117,10 @@ app.post('/selected_event',(req,res)=>{
     conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Upcoming"],).then(([rows]) => {
       var events =[];
       events = rows;
+      var upcoming = "True";
       conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[selected],).then(([rows]) => {
         res.render('SelectedEvent',{
-          data:rows, events, role
+          data:rows, events, role, upcoming
         });
       }).catch(e => { console.log(e) });
     }).catch(e => { console.log(e) });
@@ -192,9 +194,10 @@ app.post('/selected_event_upcoming',(req,res)=>{
       conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Upcoming"],).then(([rows]) => {
           var events =[];
           events = rows;
+          var upcoming = "True";
         conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[selected],).then(([rows]) => {
             res.render('SelectedEvent',{
-              data:rows, events
+              data:rows, events, upcoming
             });
           
       }).catch(e => { console.log(e) });
@@ -247,6 +250,7 @@ app.post('/SaveEvent',(req,res)=>{
       conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Past"],).then(([rows]) => {
         var events =[];
         events = rows;
+        var upcoming = "False";
         conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[req.body.selected],).then(([rows]) => {
           res.render('SelectedEvent',{
             data:rows, events, role
@@ -265,6 +269,7 @@ app.post('/SaveEvent',(req,res)=>{
         events = rows;
         var upcoming = "True";
         conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[req.body.selected],).then(([rows]) => {
+          console.log(upcoming);
           res.render('SelectedEvent',{
             data:rows, events, role, upcoming
           });
