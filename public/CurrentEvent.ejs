@@ -682,22 +682,39 @@
         <div class="flex-event-selected-item" >
           <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#newModule" style="width:100%; background-color: #fff; border-color: none;"><p class="task_text">New Module</p></button><br>
         </div>
-        <div class="flex-event-selected-item" >
+        <div class="flex-event-selected-item" style="width: 50%">
           <div id="newModule" class="collapse" style="width:100%">
             <div class="newModule">
               <form action="/newModule" method="POST">
                 <p>Module Name</p>
-                <input type="text" name="module_name" style="padding: 0 0 0 0; width: 50%; color:black;">
+                <input type="text" name="module_name" style="padding: 0 0 0 0; width: 100%; color:black;">
                 <p>Module Leader:</p>
-                <input type="text" name="module_leader" style="padding: 0 0 0 0; width: 50%; color:black;">
+                <input type="text" name="module_leader" style="padding: 0 0 0 0; width: 100%; color:black;">
                 <p>Module Location: </p>
-                <input type="text" name="module_location" style="padding: 0 0 0 0; width: 50%; color:black;">
+                <input type="text" name="module_location" style="padding: 0 0 0 0; width: 100%; color:black;">
                 <p>Module Start Time: </p>
-                <input type="time" min="08:00" max="19:00" name="module_start_time" style="padding: 0 0 0 0; width: 50%; color:black;">
+                <input type="time" min="08:00" max="19:00" name="module_start_time" style="padding: 0 0 0 0; width: 100%; color:black;">
                 <p>Module End Time: </p>
-                <input type="time" min="08:00" max="19:00" name="module_end_time" style="padding: 0 0 0 0; width: 50%; color:black;">
+                <input type="time" min="08:00" max="19:00" name="module_end_time" style="padding: 0 0 0 0; width: 100%; color:black;">
                 <input type = "hidden" name = "event_id" value = "<%=event[0].event_id%>" style="padding: 0 0 0 0; width: 50%"/>
-                <input type="submit" class="select-event" style="padding: 0 0 0 0; width: 50%"> 
+                <input type="submit" class="select-event" style="padding: 0 0 0 0; width: 100%"> 
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="flex-event-selected-item" style="width: 50%">
+          <div id="newBreakout" class="collapse" style="width:100%">
+            <div class="newBreakout">
+              <form action="/newBreakout" method="POST">
+                <p>Breakout Name</p>
+                <input type="text" name="breakout_name" style="padding: 0 0 0 0; width: 100%; color:black;">
+                <select name="modules" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color:black;" hidden>
+                  <% if(modules.length){ 
+                    for(var n = 0;n < modules.length;n++) { %>
+                      <option value="<%=modules[n].module_id%>" style="color:black;"><%=modules[n].module_name%></option>
+                  <% }}%>
+                </select> 
+                <input type="submit" class="select-event" style="padding: 0 0 0 0; width: 100%"> 
               </form>
             </div>
           </div>
