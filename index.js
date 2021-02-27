@@ -351,7 +351,7 @@ app.get('/CreateEvent',(req,res)=>{
 app.post('/CreateNewEvent', (req,res)=>{
     conn.execute("INSERT INTO ASE_EVENTS (event_name, event_description, event_client, event_pf, event_cofac, event_fac, event_status) VALUES(?, ?, ?, ?, ?, ?, ?)",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cofac, req.body.fac, req.body.event_status],)
     .catch(e => { console.log(e) });
-    res.render('UpcomingEvents');
+    res.redirect('UpcomingEvents');
   });
 
 app.post('/in-progress', (req,res) =>{
