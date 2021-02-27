@@ -42,7 +42,7 @@
             <input type = "hidden" name = "selected" value = "<%=events[i].event_id%>" />
             <input type = "hidden" name = "status" value = "<%=events[i].event_status%>" />
             <div class="flex-event-menu-item">
-              <% if(events[i].event_id === data[i].event_id) { %>
+              <% if(events[i].event_id === data[0].event_id) { %>
               <input style="background-color: white; color: black" class="select-event" type="submit" value="<%=events[i].event_name%>"/>
               <% } else {%>
               <input class="select-event" type="submit" value="<%=events[i].event_name%>"/>
@@ -57,8 +57,7 @@
   <% } %>
             </div>
     <div class="flex-event-selected">
-      
-    <%   if(data.length){ 
+    <% if(data.length){ 
         for(var i = 0;i < data.length;i++) { %>
         <div class="flex-event-selected-item" >
           <h3>Event Name</h3>
