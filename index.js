@@ -345,7 +345,41 @@ app.post('/giveFeedback', (req,res)=>{
   });
 
 app.get('/CreateEvent',(req,res)=>{
-    res.render('CreateEvent');
+  const{CoDesigner} = req.body
+  var cd = [];
+  let values = [];
+  cd = req.body.CoDesigner;
+  var role = req.session.role;
+  for(var i = 0;i < cd.length;i++) {
+    values.push([req.body.selected,cd[i]]); 
+  }
+  values.push([req.body.cofac]);
+  values.push([req.body.fac]);
+  values.push([req.body.pf]);
+  var sql = "INSERT INTO EVENT_ASSIGNED (event_id, member_id) VALUES ?";
+  conn.query(sql, [values], function(err) {
+    if (err) throw err;
+    conn.end();
+  });
+  conn.execute("SELECT * FROM ASE_TEAM WHERE ROLE='Process Facilitator'",).then(([rows]) => {
+    var pf = [];
+    pf = rows;
+    conn.execute("SELECT * FROM ASE_TEAM WHERE ROLE='Co-Facilitator'",).then(([rows]) => {
+      var cf = [];
+      cf = rows;
+      conn.execute("SELECT * FROM ASE_TEAM WHERE ROLE='Facilitator'",).then(([rows]) => {
+        var f = [];
+        f = rows;
+        conn.execute("SELECT * FROM ASE_TEAM WHERE ROLE='Co-Designer' OR ROLE='Process Facilitator'",).then(([rows]) => {
+          var cd = [];
+          cd = rows;
+          res.render('CreateEvent',{
+            pd, cf, f, cd
+          });    
+        }).catch(e => { console.log(e) });      
+      }).catch(e => { console.log(e) });
+    }).catch(e => { console.log(e) });
+  }).catch(e => { console.log(e) });
 });
 
 app.post('/CreateNewEvent', (req,res)=>{
