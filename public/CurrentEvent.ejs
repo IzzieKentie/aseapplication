@@ -765,11 +765,13 @@
                 <% if(breakouts.length && breakouts[m].module_id === modules[k].module_id){ %>
                   <div class="flex-event-selected-item breakout">
                     <form class="icon" method="POST" action="/saveBreakout" style="width:100%; display: flex">
+                    <div class="flex-event-selected-item">
                     <img id="<%=breakouts[m].breakout_id%>_brk_edit_icon" class="icons" style="float:left; height: 20px; margin: 0 0 0 0;" src="edit.png">
                     <input type="image" id="<%=breakouts[m].breakout_id%>_brk_save_icon" alt="Save" class="icons" style="float:left; height: 20px; margin: 0 0 0 0;" src="save.png" hidden>
 
                     <input style="padding: 0 0 0 0;  height: 30px;  width: 95%; color:black" type="hidden" name="breakout_name" id="<%=breakouts[m].breakout_id%>_brk_name_edit" value="<%=breakouts[m].breakout_name%>">
-                    <br><br>
+                    </div>
+                    <div class="flex-event-selected-item">
                     <p id="<%=breakouts[m].breakout_id%>_brk_name_text" class="break"><%=breakouts[m].breakout_name%></p>
 
                     <input type="hidden" name="breakout_id" value="<%=breakouts[m].breakout_id%>">
@@ -782,6 +784,7 @@
                       document.getElementById("<%=breakouts[m].breakout_id%>_brk_save_icon").hidden = false;
                     };
                     </script>
+                  </div>
                   </form>
                   </div>
                 <% } %>
