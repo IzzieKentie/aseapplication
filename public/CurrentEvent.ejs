@@ -680,7 +680,7 @@
           <h3>Flow of The Day</h3>
         </div>
         <div class="flex-event-selected-item" >
-          <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#newModule" style="width:100%; background-color: #fff; border-color: none;"><p class="task_text">New Module</p></button><br>
+          <button type="button" class="btn btn-info select-event" data-toggle="collapse" data-target="#newModule" style="width:100%; background-color: #fff; border-color: none;"><p class="task_text">New Module/New Breakout</p></button><br>
         </div>
         <div class="flex-event-selected-item" >
           <div id="newModule" class="collapse" style="width:100%">
@@ -708,7 +708,7 @@
                 <select name="modules" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color:black;" hidden>
                       <% if(modules.length){ 
                         for(var n = 0;n < modules.length;n++) { %>
-                          <option value="<%=module[n].module_id%>" style="color:black;"><%=module[n].module_name%></option>
+                          <option value="<%=modules[n].module_id%>" style="color:black;"><%=modules[n].module_name%></option>
                       <% }}%>
                </select> 
                 <input type="submit" class="select-event" style="padding: 0 0 0 0; width: 100%"> 
