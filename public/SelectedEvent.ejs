@@ -37,15 +37,19 @@
       <% } else {
     }
    if(events.length){ 
-       for(var i = 0;i < events.length;i++) { %>
+       for(var i = 0;i < events.length;i++) { %>    
         <form method="POST" action="/selected_event">
             <input type = "hidden" name = "selected" value = "<%=events[i].event_id%>" />
             <input type = "hidden" name = "status" value = "<%=events[i].event_status%>" />
             <div class="flex-event-menu-item">
+              <% if(events[i].event_id === data[i].event_id) { %>
+              <input style="background-color: white; color: black" class="select-event" type="submit" value="<%=events[i].event_name%>"/>
+              <% } else {%>
               <input class="select-event" type="submit" value="<%=events[i].event_name%>"/>
+              <% } %>
             </div>
         </form>
-       <% }
+       <%}
      }else{ %>
         <div class="flex-event-menu">
           <div class="flex-event-menu-item">No Events to Display</div>
