@@ -769,14 +769,14 @@
                     <input type="image" id="<%=breakouts[m].breakout_id%>_brk_save_icon" alt="Save" class="icons" style="float:left; height: 20px; margin: 0 0 0 0;" src="save.png" hidden>
 
                     <input style="padding: 0 0 0 0;  height: 30px;  width: 95%;" type="hidden" name="module_name" id="<%=breakouts[m].breakout_id%>_brk_name_edit" value="<%=breakouts[m].breakout_name%>">
-                    <p id="brk_id%>_brk_name_text" class="break"><%=breakouts[m].breakout_name%></p>
+                    <p id="<%=breakouts[m].breakout_id%>_brk_name_text" class="break"><%=breakouts[m].breakout_name%></p>
 
                     <script>
-                    document.getElementById("<%=breakouts[m].brk_id%>_brk_edit_icon").onclick = function () {
-                      document.getElementById("<%=breakouts[m].brk_id%>_brk_name_text").hidden = true;
-                      document.getElementById("<%=breakouts[m].brk_id%>_brk_name_edit").type = "text";
-                      document.getElementById("<%=breakouts[m].brk_id%>_brk_edit_icon").hidden = true;
-                      document.getElementById("<%=breakouts[m].brk_id%>_brk_save_icon").hidden = false;
+                    document.getElementById("<%=breakouts[m].breakout_id%>_brk_edit_icon").onclick = function () {
+                      document.getElementById("<%=breakouts[m].breakout_id%>_brk_name_text").hidden = true;
+                      document.getElementById("<%=breakouts[m].breakout_id%>_brk_name_edit").type = "text";
+                      document.getElementById("<%=breakouts[m].breakout_id%>_brk_edit_icon").hidden = true;
+                      document.getElementById("<%=breakouts[m].breakout_id%>_brk_save_icon").hidden = false;
                     };
                     </script>
                   </form>
