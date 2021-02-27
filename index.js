@@ -374,7 +374,7 @@ app.get('/CreateEvent',(req,res)=>{
           var cd = [];
           cd = rows;
           res.render('CreateEvent',{
-            pd, cf, f, cd
+            pf, cf, f, cd
           });    
         }).catch(e => { console.log(e) });      
       }).catch(e => { console.log(e) });
