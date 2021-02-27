@@ -42,28 +42,28 @@
         </div>
                 <div class="flex-item-selected-event">
           <h3><b>Process Facilitator</b></h3>
-          <select id="pf" name="pf" value="<%=pf[i].id%>">
+          <select id="pf" name="pf">
             <% if(pf.length){ 
               for(var i = 0;i < pf.length;i++) { %>
-              <option name="pf" value="<%=pf[i].id%>"><%=pf[i].forename%> <%=pf[i].surname%></option>
+              <option name="pf" value="<%=pf[i].ID%>"><%=pf[i].forename%> <%=pf[i].surname%></option>
             <% }}%>
           </select>
         </div>
         <div class="flex-item-selected-event">
           <h3><b>Co Facilitator</b></h3>
-          <select id="cf" name="cofac" value="<%=cf[i].id%>">
+          <select id="cf" name="cofac">
             <% if(cf.length){ 
               for(var i = 0;i < cf.length;i++) { %>
-              <option name="cofac" value="<%=cf[i].id%>"><%=cf[i].forename%> <%=cf[i].surname%></option>
+              <option name="cofac" value="<%=cf[i].ID%>"><%=cf[i].forename%> <%=cf[i].surname%></option>
             <% }}%>
           </select>
         </div>
         <div class="flex-item-selected-event">
           <h3><b>Facilitator</b></h3>
-          <select id="f" name="fac" value="<%=f[i].id%>">
+          <select id="f" name="fac">
             <% if(f.length){ 
               for(var i = 0;i < f.length;i++) { %>
-              <option name="fac" value="<%=f[i].id%>"><%=f[i].forename%> <%=f[i].surname%></option>
+              <option name="fac" value="<%=f[i].ID%>"><%=f[i].forename%> <%=f[i].surname%></option>
             <% }}%>
           </select>        
         </div>

@@ -368,6 +368,7 @@ app.get('/CreateEvent',(req,res)=>{
 
 app.post('/CreateNewEvent', (req,res)=>{
   var event = [];
+  console.log(req.body);
   var cofac = req.body.cofac;
   var fac = req.body.fac;
   var pf = req.body.pf;

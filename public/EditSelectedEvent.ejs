@@ -54,7 +54,7 @@
           <select id="cf" name="cf">
             <% if(cf.length){ 
               for(var i = 0;i < cf.length;i++) { %>
-              <option value="<%=cf[i].forename%> <%=cf[i].surname%>"><%=cf[i].forename%> <%=cf[i].surname%></option>
+              <option value="<%=cf[i].ID%>"><%=cf[i].forename%> <%=cf[i].surname%></option>
             <% }}%>
           </select>
         </div>
@@ -63,7 +63,7 @@
           <select id="f" name="f">
             <% if(f.length){ 
               for(var i = 0;i < f.length;i++) { %>
-              <option value="<%=f[i].forename%> <%=f[i].surname%>"><%=f[i].forename%> <%=f[i].surname%></option>
+              <option value="<%=f[i].ID%>"><%=f[i].forename%> <%=f[i].surname%></option>
             <% }}%>
           </select>        
         </div>
@@ -72,7 +72,7 @@
             <% if(cd.length){ 
               for(var i = 0;i < cd.length;i++) { %>
               <input type="checkbox" name="CoDesigner" value="<%=cd[i].ID%>">
-              <label for="<%=cd[i].forename%> <%=cd[i].surname%>"><%=cd[i].forename%> <%=cd[i].surname%></label><br>
+              <label for="<%=cd[i].ID%>"><%=cd[i].forename%> <%=cd[i].surname%></label><br>
             <% }}%>
         </div>
         <div class="flex-item-selected-event">
