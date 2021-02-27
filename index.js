@@ -368,6 +368,9 @@ app.get('/CreateEvent',(req,res)=>{
 
 app.post('/CreateNewEvent', (req,res)=>{
   var event = [];
+  var cofac = req.body.cofac;
+  var fac = req.body.fac;
+  var pf = req.body.pf;
   conn.execute("INSERT INTO ASE_EVENTS (event_name, event_description, event_client, event_pf, event_cofac, event_fac, event_status) VALUES(?, ?, ?, ?, ?, ?, ?)",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cofac, req.body.fac, req.body.event_status],)
   .catch(e => { console.log(e) });
   conn.execute("SELECT event_id FROM ASE_EVENTS ORDER BY event_id DESC LIMIT 1",).then(([rows]) => {
@@ -376,12 +379,16 @@ app.post('/CreateNewEvent', (req,res)=>{
     let values = [];
     cd = req.body.CoDesigner;
     var role = req.session.role;
+    console.log(event[0].event_id);
     for(var i = 0;i < cd.length;i++) {
-      values.push([event[0],cd[i]]); 
+      values.push([event[0].event_id,cd[i]]); 
     }
-    values.push([event[0],req.body.cofac]);
-    values.push([event[0],req.body.fac]);
-    values.push([event[0],req.body.pf]);
+    console.log(cofac);
+    console.log(fac);
+    console.log(pf);
+    values.push([event[0].event_id,cofac]);
+    values.push([event[0].event_id,fac]);
+    values.push([event[0].event_id,pf]);
     var sql = "INSERT INTO EVENT_ASSIGNED (event_id, member_id) VALUES ?";
     conn.query(sql, [values], function(err) {
       if (err) throw err;
