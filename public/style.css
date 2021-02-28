@@ -473,7 +473,7 @@ input[type=text], select {
   display: block;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 800px) {
   ul.topnav li.right, 
   ul.topnav li {float: none;}
     .flex-container {
@@ -567,7 +567,7 @@ input[type=text], select {
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 800px) {
   .topnav a:not(:first-child), .dropdown .dropbtn {
     display: none;
   }
@@ -577,7 +577,7 @@ input[type=text], select {
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 800px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
