@@ -26,6 +26,12 @@
       <div class="flex-event-selected-item" >
         <p><%=event[0].event_name%></p>
       </div>
+      <div class="flex-event-selected-item" >
+        <p><%=event[0].event_start_date%></p>
+      </div>
+      <div class="flex-event-selected-item" >
+        <p><%=event[0].event_end_date%></p>
+      </div>
       <div class="flex-event-selected-item">
         <h3>Event Description</h3>
       </div>
@@ -63,7 +69,7 @@
           <input type = "hidden" name = "status" value = "<%=event[0].event_status%>" />
           <input type = "hidden" name = "selected" value = "<%=event[0].event_id%>" />
           <div class="flex-item-event" >
-            <input id="edit" type="submit" value="Edit"> 
+            <input class="select-event" id="edit" type="submit" value="Edit"> 
           </div>
         </form>
         <% } %>
