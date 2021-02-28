@@ -274,7 +274,7 @@ app.post('/SaveEvent',(req,res)=>{
     return [year, month, day].join('-');
   }
   var date = new Date()
-  console.log(formatDate(Date.now());
+  console.log(formatDate(Date.now()));
   if(req.body.start > formatDate(Date.now())) {
       status = "Upcoming";
   }
