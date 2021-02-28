@@ -734,12 +734,12 @@
       </div>
         <% if(modules.length){ %>
           <div class="task" style="display:flex; border-bottom:solid 2px #fff">
-            <p style="width:6%; margin: 10px 0 10px 0px"></p>
-            <p style="width:19%; margin: 10px 0 10px 0px">Name</p>
-            <p style="width:19%; margin: 10px 0 10px 0px">Location</p>
-            <p style="width:19%; margin: 10px 0 10px 0px">Leader</p>
-            <p style="width:19%; margin: 10px 0 10px 0px">Start Time</p>
-            <p style="width:19%; margin: 10px 0 10px 0px">End Time</p>
+            <b><p style="width:6%; margin: 10px 0 10px 0px"></p></b>
+            <b><p style="width:19%; margin: 10px 0 10px 0px">Name</p></b>
+            <b><p style="width:19%; margin: 10px 0 10px 0px">Location</p></b>
+            <b><p style="width:19%; margin: 10px 0 10px 0px">Leader</p></b>
+            <b><p style="width:19%; margin: 10px 0 10px 0px">Start Time</p></b>
+            <b><p style="width:19%; margin: 10px 0 10px 0px">End Time</p></b>
           </div>
           <% for(var k = 0;k < modules.length;k++) { %>
           <form class="icon" method="POST" action="/saveModule" style="width:100%; display: flex">
