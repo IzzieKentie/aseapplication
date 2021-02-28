@@ -53,7 +53,7 @@
           <select id="pf" name="pf">
             <% if(pf.length){ 
               for(var i = 0;i < pf.length;i++) { %>
-              <option value="<%=pf[i].forename%> <%=pf[i].surname%>"><%=pf[i].forename%> <%=pf[i].surname%></option>
+              <option value="<%=pf[i].ID%>"><%=pf[i].forename%> <%=pf[i].surname%></option>
             <% }}%>
           </select>
         </div>
@@ -89,6 +89,15 @@
         </div>
   </div>
 </form>
+<form action="/deleteEvent" method="POST">
+  <div class="flex-container-event-column">
+    <div class="flex-item-event" >
+      <input type = "hidden" name = "selected" value = "<%=data[0].event_id%>" />
+          <input class="select-event" type="submit" value="Delete Event">
+        </div>
+      </div>
+</form>
+  
 <script>
 function myFunction() {
   var x = document.getElementById("myTopnav");

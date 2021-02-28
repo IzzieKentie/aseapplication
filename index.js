@@ -127,7 +127,7 @@ app.post('/selected_event',(req,res)=>{
     }).catch(e => { console.log(e) });
   }
   else if (req.body.status === "Upcoming") {
-    conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Upcoming"],).then(([rows]) => {
+    conn.execute("SELECT * FROM ASE_EVENTS e, ASE_TEAM t WHERE e.EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND e.EVENT_STATUS=? AND t.ID=?",[req.session.userID, "Upcoming", req.session.userID],).then(([rows]) => {
       var events =[];
       events = rows;
       var upcoming = "True";
@@ -284,7 +284,17 @@ app.post('/SaveEvent',(req,res)=>{
       status = "Current";
   }
   console.log(status);
-  conn.execute("UPDATE ASE_EVENTS SET event_name = ?, event_description = ?, event_client = ?, event_pf = ?, event_cofac = ?, event_fac = ?, event_start_date = ?, event_end_date = ?, event_status = ? WHERE EVENT_ID=?",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cf, req.body.f, req.body.start, req.body.end, status, req.body.selected],)
+    var prof = "";
+  var cf = "";
+  var f = ""
+  conn.execute("SELECT forename, surname from ASE_TEAM WHERE ID = ?",[req.body.pf],).then(([rows]) => {
+      prof = rows[0].forename + " " + rows[0].surname;
+      conn.execute("SELECT forename, surname from ASE_TEAM WHERE ID = ?",[req.body.cf],).then(([rows]) => {
+          cf = rows[0].forename + " " + rows[0].surname;
+          conn.execute("SELECT forename, surname from ASE_TEAM WHERE ID = ?",[req.body.f],).then(([rows]) => {
+            f = rows[0].forename + " " + rows[0].surname;
+  
+  conn.execute("UPDATE ASE_EVENTS SET event_name = ?, event_description = ?, event_client = ?, event_pf = ?, event_cofac = ?, event_fac = ?, event_start_date = ?, event_end_date = ?, event_status = ? WHERE EVENT_ID=?",[req.body.name, req.body.description, req.body.client, prof, cf, f, req.body.start, req.body.end, status, req.body.selected],)
     if(status === 'Past') {
       conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Past"],).then(([rows]) => {
         var events =[];
@@ -315,6 +325,9 @@ app.post('/SaveEvent',(req,res)=>{
         }).catch(e => { console.log(e) });
       }).catch(e => { console.log(e) });
     }
+    }).catch(e => { console.log(e) });
+  }).catch(e => { console.log(e) });
+}).catch(e => { console.log(e) });
 });
 
 app.get('/home',(req,res)=>{
@@ -436,7 +449,17 @@ app.post('/CreateNewEvent', (req,res)=>{
   else if(Date.parse(req.body.start) <= Date.parse(formatDate(Date.now())) <= Date.parse(req.body.end)) {
       status = "Current";
   }
-  conn.execute("INSERT INTO ASE_EVENTS (event_name, event_description, event_client, event_pf, event_cofac, event_fac, event_status, event_start_date, event_end_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cofac, req.body.fac, status, req.body.start, req.body.end],)
+  var prof = "";
+  var cf = "";
+  var f = "";
+  conn.execute("SELECT forename, surname from ASE_TEAM WHERE ID = ?",[req.body.pf],).then(([rows]) => {
+      prof = rows[0].forename + " " + rows[0].surname;
+  
+  conn.execute("SELECT forename, surname from ASE_TEAM WHERE ID = ?",[req.body.cofac],).then(([rows]) => {
+      cf = rows[0].forename + " " + rows[0].surname;
+  conn.execute("SELECT forename, surname from ASE_TEAM WHERE ID = ?",[req.body.fac],).then(([rows]) => {
+      f = rows[0].forename + " " + rows[0].surname;
+  conn.execute("INSERT INTO ASE_EVENTS (event_name, event_description, event_client, event_pf, event_cofac, event_fac, event_status, event_start_date, event_end_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",[req.body.name, req.body.description, req.body.client, prof, cf, f, status, req.body.start, req.body.end],)
   .catch(e => { console.log(e) });
   conn.execute("SELECT event_id FROM ASE_EVENTS ORDER BY event_id DESC LIMIT 1",).then(([rows]) => {
     event = rows;
@@ -469,6 +492,9 @@ app.post('/CreateNewEvent', (req,res)=>{
   else if(status === "Current") {
       res.redirect('CurrentEvent');  
   }
+  }).catch(e => { console.log(e) });
+  }).catch(e => { console.log(e) });
+}).catch(e => { console.log(e) });
 });
 
 app.post('/in-progress', (req,res) =>{
@@ -531,6 +557,14 @@ app.post('/saveBreakout', (req,res) =>{
     conn.execute("UPDATE EVENT_MODULE_BREAKOUTS SET BREAKOUT_NAME=? WHERE BREAKOUT_ID=?",[req.body.breakout_name, req.body.breakout_id],)
     .catch(e => { console.log(e) });
     res.redirect('CurrentEvent');
+});
+
+app.post('/deleteEvent', (req,res) =>{
+    conn.execute("DELETE FROM ASE_EVENTS WHERE EVENT_ID = ?",[req.body.selected],)
+    .catch(e => { console.log(e) });
+    conn.execute("DELETE FROM EVENT_ASSIGNED WHERE EVENT_ID = ?",[req.body.selected],)
+    .catch(e => { console.log(e) });
+    res.redirect('UpcomingEvents');
 });
 
 const port = process.env.PORT || 1337;
