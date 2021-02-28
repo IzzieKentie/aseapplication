@@ -1,5 +1,5 @@
 <!doctype html>
-<ul class="topnav" id="myTopnav">
+<!--<ul class="topnav" id="myTopnav">
   <li><a id="home" href="/home">Home</a></li>
   <div class="menu_dropdown">
     <button class="dropbtn">
@@ -20,7 +20,30 @@
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>
-</ul>
+</ul> -->
+
+<div class="topnav" id="myTopnav">
+  <a href="/home" class="active">Home</a>
+  <div class="menu_dropdown">
+    <button class="dropbtn">
+      <li><a href="#events">Events</a></li>
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a id="past" href="/PastEvents">Past Events</a>
+      <a id="current" href="/CurrentEvent">Current Event</a>
+      <a href="/UpcomingEvents">Upcoming Events</a>
+    </div>
+  </div>
+  <a id="feedback" href="/feedback">Feedback</a>
+  <a id="profile" href="/profile">Profile</a>
+  <a class="right">href="/logout">Logout</a>
+  <a class="right">href="#Messages">Messages</a>
+  <a class="right"> href="#Encyclopedia">Encyclopedia</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
 
 <script>
 function myFunction() {
