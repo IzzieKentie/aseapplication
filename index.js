@@ -436,7 +436,7 @@ app.post('/CreateNewEvent', (req,res)=>{
   else if(Date.parse(req.body.start) <= Date.parse(formatDate(Date.now())) <= Date.parse(req.body.end)) {
       status = "Current";
   }
-  conn.execute("INSERT INTO ASE_EVENTS (event_name, event_description, event_client, event_pf, event_cofac, event_fac, event_status) VALUES(?, ?, ?, ?, ?, ?, ?)",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cofac, req.body.fac, status],)
+  conn.execute("INSERT INTO ASE_EVENTS (event_name, event_description, event_client, event_pf, event_cofac, event_fac, event_status, event_start_date, event_end_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cofac, req.body.fac, status, req.body.start, req.body.end],)
   .catch(e => { console.log(e) });
   conn.execute("SELECT event_id FROM ASE_EVENTS ORDER BY event_id DESC LIMIT 1",).then(([rows]) => {
     event = rows;
