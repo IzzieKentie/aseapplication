@@ -362,12 +362,14 @@ input[type=text], select {
   flex: 40%;
   height: 200px;
   text-align: center;
+  font-family: ubuntu;
 }
 
 .flex-item-40-blue {
   background-color: #0070AD;
   flex: 40%;
   height: 200px;
+  font-family: ubuntu;
 }
 
 .flex-item-20-blue {
@@ -375,6 +377,7 @@ input[type=text], select {
   flex: 20%;
   height: 200px;
   text-align: center;
+  font-family: ubuntu;
 }
 
 .flex-item-20-black {
@@ -383,14 +386,16 @@ input[type=text], select {
   text-align: center;
   flex: 20%;
   height: 200px;
+  font-family: ubuntu;
 }
 
 .flex-item-20-blue2 {
-  background-color: #002B6E;
+  background-color: #ffffff;
   color: black;
   text-align: center;
   flex: 20%;
   height: 200px;
+  font-family: ubuntu;
 }
 
 .menu_dropdown {
