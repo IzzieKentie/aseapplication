@@ -562,6 +562,12 @@ input[type=text], select {
     width: 95%;
     margin-left: 5%;
   }
+  .icons {
+    height: 25%;
+  }
+  .task {
+    height: 100px;
+  }
 }
 
 @media screen and (max-width: 750px) {
