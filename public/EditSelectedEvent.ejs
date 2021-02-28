@@ -3,29 +3,15 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<ul class="topnav">
-  <li><a href="/home">Home</a></li>
-  <li><a href="profile.html">Profile</a></li>
-    <li><a href="/feedback">Feedback</a></li>
-    <div class="menu_dropdown">
-    <button class="dropbtn">
-      <li><a class="active" href="#events">Events</a></li>
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="/PastEvents">Past Events</a>
-      <a href="/CurrentEvent">Current Event</a>
-      <a href="/UpcomingEvents">Upcoming Events</a>
-    </div>
-  </div> 
-
-  <li class="right"><a href="#Messages">Messages</a></li>
-  <li class="right"><a href="#Encyclopedia">Encyclopedia</a></li>
-  <li class="right"><a href="/logout">Logout</a></li>
-</ul>
-  <img class="center" style="width: 8%;" src="ASE_UK_logo_v1.0.png"></li>
+<script> 
+    $(function(){
+      $("#header").load("header.html"); 
+    });
+    </script> 
+    <div id="header"></div>
   <form method="POST" action="/SaveEvent">
   <div class="flex-container-event-column">
         <div class="flex-item-selected-event">
