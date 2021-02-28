@@ -1,5 +1,5 @@
 <!doctype html>
-<ul class="topnav">
+<ul class="topnav" id="myTopnav">
   <li><a id="home" href="/home">Home</a></li>
   <div class="menu_dropdown">
     <button class="dropbtn">
@@ -17,6 +17,19 @@
   <li class="right"><a href="/logout">Logout</a></li>
   <li class="right"><a href="#Messages">Messages</a></li>
   <li class="right"><a href="#Encyclopedia">Encyclopedia</a></li>
-  
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
 </ul>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
   <img class="center" style="width: 8%;" src="ASE_UK_logo_v1.0.png"></li>
