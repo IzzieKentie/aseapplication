@@ -6,7 +6,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
+<body class="background">
 <script> 
     $(function(){
       $("#header").load("header.html", function() {
@@ -16,6 +16,7 @@
   </script>
     <div id="header"></div>
   <div class="menu_and_event">
+    <h3>Past Events</h3>
   <div class="flex-event-menu">
   <% if(data.length){ 
        for(var i = 0;i < data.length;i++) { %>

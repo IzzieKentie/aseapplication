@@ -14,6 +14,11 @@
     </script> 
     <div id="header"></div>
   <div class="menu_and_event">
+    <% if(upcoming === "True") { %>
+    <h3>Upcoming Events</h3>
+    <% } else { %>
+    <h3>Past Events</h3>
+    <% } %>
   <div class="flex-event-menu">
     <% if(upcoming === "True") { %>
         <form method="" action="/CreateEvent">
