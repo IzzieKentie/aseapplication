@@ -15,7 +15,30 @@
     });
  </script>
 
-<div style="padding:0 16px;">
+<div class="menu_and_event">
+	<div class="flex-event-menu" style="width: 100%">
+  		<% if(data.length){ 
+       		for(var i = 0;i < data.length;i++) { %>
+        		<h3>Forename</h3>
+        		<p><%=data[i].forename%></p>
+        		<h3>Surname</h3>
+        		<p><%=data[i].surname%></p>
+        		<h3>Delivery Role</h3>
+        		<p><%=data[i].delivery_role%></p>
+        		<h3>Internal Role</h3>
+        		<p><%=data[i].internal_role%></p>
+        		<h3>Key Skills</h3>
+        		<p><%=data[i].key_skills%></p>
+        		<h3>Interests</h3>
+        		<p><%=data[i].interests%></p>
+        		<h3>Heroes</h3>
+        		<p><%=data[i].heroes%></p>
+        		<h3>Desired Delivery Role</h3>
+        		<p><%=data[i].desired_delivery_role%></p>
+       		<% }
+   		}
+    <div class="flex-event-selected">
+  </div>
 </div>
 <script>
 function myFunction() {

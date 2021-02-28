@@ -516,6 +516,14 @@ app.post('/in-progress', (req,res) =>{
     res.redirect('CurrentEvent');
 });
 
+app.get('/profile', (req,res) =>{
+    conn.execute("SELECT * FROM TEAM_PROFILE WHERE MEMBER_ID = ?",[req.session.userID],).then(([rows]) => {
+      res.render('profile', {
+        data:rows
+      });
+    }).catch(e => { console.log(e) });
+});
+
 app.post('/review', (req,res) =>{
     conn.execute("UPDATE EVENT_TASKS SET TASK_STATUS=? WHERE TASK_ID=?",["Review", req.body.task_id],)
     .catch(e => { console.log(e) });
