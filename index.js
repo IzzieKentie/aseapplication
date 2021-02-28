@@ -258,8 +258,11 @@ app.post('/SaveEvent',(req,res)=>{
   for(var i = 0;i < cd.length;i++) {
     values.push([req.body.selected,cd[i]]); 
   }
-  var removeSQL = "DELETE FROM EVENT_ASSIGNED WHERE (EVENT_ID, MEMBER_ID) IN ?"
-  conn.query(removeSQL, [values], function(err) {
+  values.push([req.body.selected,req.body.pf]);
+  values.push([req.body.selected,req.body.cf]);
+  values.push([req.body.selected,req.body.f]);
+  var removeSQL = "DELETE FROM EVENT_ASSIGNED WHERE EVENT_ID = ?"
+  conn.query(removeSQL, [req.body.selected], function(err) {
     if (err) throw err;
     conn.end();
   });
