@@ -244,6 +244,22 @@ app.post('/EditSelectedEvent',(req,res)=>{
       }).catch(e => { console.log(e) });
 });
 
+  var date = new Date();
+
+  function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+  }
+
 app.post('/SaveEvent',(req,res)=>{
   const{CoDesigner} = req.body
   var cd = [];
@@ -259,20 +275,7 @@ app.post('/SaveEvent',(req,res)=>{
     conn.end();
   });
   var status = "";
-  function formatDate(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
 
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
-
-    return [year, month, day].join('-');
-  }
-  var date = new Date();
   console.log(Date.parse(formatDate(Date.now())));
   if(Date.parse(req.body.start) > Date.parse(formatDate(Date.now()))) {
       status = "Upcoming";

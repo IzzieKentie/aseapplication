@@ -13,6 +13,19 @@
     });
     </script> 
     <div id="header"></div>
+    <%   function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+  } %>
   <form method="POST" action="/SaveEvent">
   <div class="flex-container-event-column">
         <div class="flex-item-selected-event">
@@ -21,11 +34,11 @@
         </div>
         <div class="flex-item-selected-event">
           <h3><b>Event Start Date</b></h3>
-          <input type="date" name="start" id="start" value="<%=data[0].event_start_date%>"></input>
+          <input type="date" name="start" id="start" value="<%=formatDate(Date.parse(data[0].event_start_date))%>"></input>
         </div>
         <div class="flex-item-selected-event">
           <h3><b>Event End Date</b></h3>
-          <input type="date" name="end" id="end" value="<%=data[0].event_end_date%>"></input>
+          <input type="date" name="end" id="end" value="<%=formatDate(Date.parse(data[0].event_end_date))%>"></input>
         </div>
         <div class="flex-item-selected-event">
           <h3><b>Event Description</b></h3>
