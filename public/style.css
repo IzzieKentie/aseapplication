@@ -480,6 +480,11 @@ input[type=text], select {
 
   .flex-feedback-menu {
     width: 100%;
+    padding-left: 0%;
+  }
+
+  .flex-feedback-selected {
+    width: 98%;
   }
 
   body {
