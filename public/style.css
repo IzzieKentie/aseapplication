@@ -122,6 +122,7 @@ label {
 
 .topnav {
   overflow: hidden;
+  border-bottom: 3px solid #0070AD;
 }
 
 .topnav a {
@@ -155,8 +156,9 @@ label {
   outline: none;
   color: white;
   padding: 14px 16px;
-  font-family: inherit;
+  font-family: ubuntu;
   margin: 0;
+  background-color: inherit;
 }
 
 .dropdown-content {
