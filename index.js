@@ -259,7 +259,6 @@ app.post('/SaveEvent',(req,res)=>{
     conn.end();
   });
   var status = "";
-  console.log(req.body.start);
   function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
@@ -273,19 +272,20 @@ app.post('/SaveEvent',(req,res)=>{
 
     return [year, month, day].join('-');
   }
-  var date = new Date()
-  console.log(formatDate(Date.now()));
-  if(req.body.start > formatDate(Date.now())) {
+  var date = new Date();
+  console.log(Date.parse(formatDate(Date.now())));
+  if(Date.parse(req.body.start) > Date.parse(formatDate(Date.now()))) {
       status = "Upcoming";
   }
-  else if(req.body.start < formatDate(Date.now())) {
+  else if(Date.parse(req.body.end) < Date.parse(formatDate(Date.now()))) {
       status = "Past";
   }
-  else if(req.body.start === formatDate(Date.now())) {
+  else if(Date.parse(req.body.start) <= Date.parse(formatDate(Date.now())) <= Date.parse(req.body.end)) {
       status = "Current";
   }
-  conn.execute("UPDATE ASE_EVENTS SET event_name = ?, event_description = ?, event_client = ?, event_pf = ?, event_cofac = ?, event_fac = ?, event_start_date = ?, event_end_date = ?, event_status = ? WHERE EVENT_ID=?",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cf, req.body.f, req.body.selected, req.body.start, req.body.end, status],)
-    if(req.body.event_status === 'Past') {
+  console.log(status);
+  conn.execute("UPDATE ASE_EVENTS SET event_name = ?, event_description = ?, event_client = ?, event_pf = ?, event_cofac = ?, event_fac = ?, event_start_date = ?, event_end_date = ?, event_status = ? WHERE EVENT_ID=?",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cf, req.body.f, req.body.start, req.body.end, status, req.body.selected],)
+    if(status === 'Past') {
       conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Past"],).then(([rows]) => {
         var events =[];
         events = rows;
@@ -297,12 +297,12 @@ app.post('/SaveEvent',(req,res)=>{
         }).catch(e => { console.log(e) });
       }).catch(e => { console.log(e) });
     }
-    else if(req.body.event_status === 'Current') {
+    else if(status === 'Current') {
       conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[req.body.selected],).then(([rows]) => {
         res.redirect('CurrentEvent');        
       }).catch(e => { console.log(e) });
     }
-    else if(req.body.event_status === 'Upcoming') {
+    else if(status === 'Upcoming') {
       conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Upcoming"],).then(([rows]) => {
         var events =[];
         events = rows;
