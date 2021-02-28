@@ -77,10 +77,19 @@
         </div>
         <div class="flex-item-selected-event">
           <h3><b>Co-Designer's</b></h3>
+          <% var assigned_IDs = [];
+          for(var i = 0;i < assigned.length;i++) { 
+              assigned_IDs.push(assigned[i].ID);
+            } %>
             <% if(cd.length){ 
-              for(var i = 0;i < cd.length;i++) { %>
-              <input type="checkbox" name="CoDesigner" value="<%=cd[i].ID%>">
-              <label for="<%=cd[i].ID%>"><%=cd[i].forename%> <%=cd[i].surname%></label><br>
+              for(var i = 0;i < cd.length;i++) { 
+
+                if(assigned_IDs.includes(cd[i].ID)) { %>
+                  <input type="checkbox" name="CoDesigner" value="<%=cd[i].ID%>" checked>
+                  <% } else { %>
+                  <input type="checkbox" name="CoDesigner" value="<%=cd[i].ID%>">
+                  <% } %>
+                  <label for="<%=cd[i].ID%>"><%=cd[i].forename%> <%=cd[i].surname%></label><br>
             <% }}%>
         </div>
         <input type = "hidden" name = "selected" value = "<%=data[0].event_id%>" />

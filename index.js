@@ -233,10 +233,15 @@ app.post('/EditSelectedEvent',(req,res)=>{
             conn.execute("SELECT * FROM ASE_TEAM WHERE ROLE='Co-Designer' OR ROLE='Process Facilitator'",).then(([rows]) => {
             var cd = [];
             cd = rows;
-              conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[selected],).then(([rows]) => {
-                res.render('EditSelectedEvent',{
-                  data:rows, pf, cf, f, cd
-                });
+              conn.execute("SELECT t.ID FROM ASE_TEAM t, EVENT_ASSIGNED a WHERE a.EVENT_ID=1 AND t.ID = a.member_id;",).then(([rows]) => {
+                var assigned = [];
+                assigned = rows;
+                console.log(assigned);
+                conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[selected],).then(([rows]) => {
+                  res.render('EditSelectedEvent',{
+                    data:rows, pf, cf, f, cd, assigned
+                    });
+                  }).catch(e => { console.log(e) });    
               }).catch(e => { console.log(e) });      
             }).catch(e => { console.log(e) });      
           }).catch(e => { console.log(e) });
@@ -253,6 +258,11 @@ app.post('/SaveEvent',(req,res)=>{
   for(var i = 0;i < cd.length;i++) {
     values.push([req.body.selected,cd[i]]); 
   }
+  var removeSQL = "DELETE FROM EVENT_ASSIGNED WHERE (EVENT_ID, MEMBER_ID) IN = ?"
+  conn.query(removeSQL, [values], function(err) {
+    if (err) throw err;
+    conn.end();
+  });
   var sql = "INSERT INTO EVENT_ASSIGNED (event_id, member_id) VALUES ?";
   conn.query(sql, [values], function(err) {
     if (err) throw err;
