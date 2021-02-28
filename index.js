@@ -244,22 +244,6 @@ app.post('/EditSelectedEvent',(req,res)=>{
       }).catch(e => { console.log(e) });
 });
 
-  var date = new Date();
-
-  function formatDate(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
-
-    return [year, month, day].join('-');
-  }
-
 app.post('/SaveEvent',(req,res)=>{
   const{CoDesigner} = req.body
   var cd = [];
@@ -275,7 +259,20 @@ app.post('/SaveEvent',(req,res)=>{
     conn.end();
   });
   var status = "";
+  function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
 
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+  }
+  var date = new Date();
   console.log(Date.parse(formatDate(Date.now())));
   if(Date.parse(req.body.start) > Date.parse(formatDate(Date.now()))) {
       status = "Upcoming";
@@ -295,7 +292,7 @@ app.post('/SaveEvent',(req,res)=>{
         var upcoming = "False";
         conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[req.body.selected],).then(([rows]) => {
           res.render('SelectedEvent',{
-            data:rows, events, role
+            data:rows, events, role, upcoming
           });
         }).catch(e => { console.log(e) });
       }).catch(e => { console.log(e) });
@@ -414,7 +411,32 @@ app.post('/CreateNewEvent', (req,res)=>{
   var cofac = req.body.cofac;
   var fac = req.body.fac;
   var pf = req.body.pf;
-  conn.execute("INSERT INTO ASE_EVENTS (event_name, event_description, event_client, event_pf, event_cofac, event_fac, event_status) VALUES(?, ?, ?, ?, ?, ?, ?)",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cofac, req.body.fac, req.body.event_status],)
+    var status = "";
+  function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+  }
+  var date = new Date();
+  console.log(Date.parse(formatDate(Date.now())));
+  if(Date.parse(req.body.start) > Date.parse(formatDate(Date.now()))) {
+      status = "Upcoming";
+  }
+  else if(Date.parse(req.body.end) < Date.parse(formatDate(Date.now()))) {
+      status = "Past";
+  }
+  else if(Date.parse(req.body.start) <= Date.parse(formatDate(Date.now())) <= Date.parse(req.body.end)) {
+      status = "Current";
+  }
+  conn.execute("INSERT INTO ASE_EVENTS (event_name, event_description, event_client, event_pf, event_cofac, event_fac, event_status) VALUES(?, ?, ?, ?, ?, ?, ?)",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cofac, req.body.fac, status],)
   .catch(e => { console.log(e) });
   conn.execute("SELECT event_id FROM ASE_EVENTS ORDER BY event_id DESC LIMIT 1",).then(([rows]) => {
     event = rows;
@@ -438,7 +460,15 @@ app.post('/CreateNewEvent', (req,res)=>{
       conn.end();
     });
   }).catch(e => { console.log(e) });
-  res.redirect('UpcomingEvents');  
+  if(status === "Upcoming") {
+      res.redirect('UpcomingEvents');  
+  }
+  else if(status === "Past") {
+      res.redirect('PastEvents');  
+  }
+  else if(status === "Current") {
+      res.redirect('CurrentEvent');  
+  }
 });
 
 app.post('/in-progress', (req,res) =>{
