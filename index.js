@@ -38,10 +38,10 @@ app.get('/logout',(req,res)=>{
 });
 
 app.get('/', ifNotLoggedin, (req,res,next) => {
-    conn.execute("SELECT `username` FROM `ase_team` WHERE `ID`=?",[req.session.userID]).then(([rows]) => {
-        console.log(rows[0].name);
+    conn.execute("SELECT * FROM ase_team WHERE ID=?",[req.session.userID]).then(([rows]) => {
+        console.log(rows[0].forename);
         res.render('home',{
-            name:rows[0].name
+            name:rows[0].forename
         });
 
     }).catch(e => { console.log(e) });

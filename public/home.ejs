@@ -8,13 +8,15 @@
 <body>
 <script> 
     $(function(){
-      $("#header").load("header.ejs", function() {
+      $("#header").load("header.html", function() {
         document.getElementById("home").style = "border-bottom: 3px solid #0070AD;";
       }); 
     });
   </script>
 
-<div id="header"></div>
+<div id="header">
+  <h1><%=name%></h1>
+</div>
 
 
 
