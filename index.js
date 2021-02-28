@@ -525,7 +525,7 @@ app.get('/profile', (req,res) =>{
 });
 
 app.get('/encyclopedia', (req,res) =>{
-    conn.execute("SELECT * FROM ASE_ENCYCLOPEDIA",).then(([rows]) => {
+    conn.execute("SELECT * FROM ASE_ENCYCLOPEDIA ORDER BY  Term desc",).then(([rows]) => {
       res.render('encyclopedia', {
         data:rows
       });
