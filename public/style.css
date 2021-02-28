@@ -515,8 +515,8 @@ input[type=text], select {
   }
 
   .flex-feedback-menu {
-    width: 100%;
-    padding-left: 0%;
+    width: 95%;
+    padding-left: 5%;
   }
 
   .flex-feedback-selected {
@@ -550,6 +550,10 @@ input[type=text], select {
   }
   .select-event {
     width: 95%;
+  }
+  .select-feedback {
+    width: 95%;
+    margin: 8px 0 0 0;
   }
   .create {
     height: 100%;
