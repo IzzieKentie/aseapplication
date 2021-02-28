@@ -14,8 +14,9 @@
     </script> 
 <div id="header"></div>
 <div class="menu_and_event">
-  <h3>Encyclopedia</h3>
+
 	<div class="flex-event-menu" style="width: 100%">
+    <h3>Encyclopedia</h3>
   		<% if(data.length){ 
        		for(var i = 0;i < data.length;i++) { %>
         		<p><%=data[i].term%>: <%=data[i].definition%></p>
