@@ -258,7 +258,17 @@ app.post('/SaveEvent',(req,res)=>{
     if (err) throw err;
     conn.end();
   });
-  conn.execute("UPDATE ASE_EVENTS SET event_name = ?, event_description = ?, event_client = ?, event_pf = ?, event_cofac = ?, event_fac = ?, event_status = ? WHERE EVENT_ID=?",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cf, req.body.f, req.body.event_status, req.body.selected],)
+  var status = "";
+  if(req.body.start > Date.now()) {
+      status = "Upcoming";
+  }
+  else if(req.body.start < Date.now()) {
+      status = "Past";
+  }
+  else if(req.body.start === Date.now()) {
+      status = "Current";
+  }
+  conn.execute("UPDATE ASE_EVENTS SET event_name = ?, event_description = ?, event_client = ?, event_pf = ?, event_cofac = ?, event_fac = ?, event_start_date = ?, event_end_date = ?, event_status = ? WHERE EVENT_ID=?",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cf, req.body.f, req.body.selected, req.body.start, req.body.end, status],)
     if(req.body.event_status === 'Past') {
       conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?",[req.session.userID, "Past"],).then(([rows]) => {
         var events =[];

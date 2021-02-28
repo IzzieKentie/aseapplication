@@ -70,14 +70,6 @@
               <label for="<%=cd[i].ID%>"><%=cd[i].forename%> <%=cd[i].surname%></label><br>
             <% }}%>
         </div>
-        <div class="flex-item-selected-event">
-          <h3><b>Status</b></h3>
-          <select id="event_status" name="event_status" value="<%=data[0].event_status%>">
-            <option value="Past">Past</option>
-            <option value="Current">Current</option>
-            <option value="Upcoming">Upcoming</option>
-          </select>
-        </div>
         <input type = "hidden" name = "selected" value = "<%=data[0].event_id%>" />
         <div class="flex-item-event" >
           <input class="select-event" type="submit" value="Save">
