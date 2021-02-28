@@ -524,6 +524,14 @@ app.get('/profile', (req,res) =>{
     }).catch(e => { console.log(e) });
 });
 
+app.get('/encyclopedia', (req,res) =>{
+    conn.execute("SELECT * FROM ASE_ENCYCLOPEDIA",).then(([rows]) => {
+      res.render('encyclopedia', {
+        data:rows
+      });
+    }).catch(e => { console.log(e) });
+});
+
 app.post('/review', (req,res) =>{
     conn.execute("UPDATE EVENT_TASKS SET TASK_STATUS=? WHERE TASK_ID=?",["Review", req.body.task_id],)
     .catch(e => { console.log(e) });
