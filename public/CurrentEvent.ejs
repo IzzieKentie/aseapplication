@@ -18,6 +18,7 @@
   </script>
     <div id="header"></div>
   <div class="menu_and_event">
+  <% if(event.length) { %>
     <div class="flex-event-selected-details">
     <% if(event.length){ %>
       <div class="flex-event-selected-item" >
@@ -858,6 +859,9 @@
     </div>
   </div>
 </div>
+<% } else { %>
+  <h3>You are not currently on an event</h3>
+<% } %>
  <div style="display: none">Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
  <script>
 function myFunction() {
