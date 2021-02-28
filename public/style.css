@@ -490,4 +490,8 @@ input[type=text], select {
   body {
     height: 100%;
   }
+
+  input[type=text], select {
+    width: 100%;
+  }
 }
