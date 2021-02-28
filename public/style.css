@@ -465,4 +465,8 @@ input[type=text], select {
   .center {
     left: 5%;
   }
+  .menu_dropdown {
+    float:none;
+    text-align: center;
+  }
 }
