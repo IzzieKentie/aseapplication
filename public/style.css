@@ -528,7 +528,7 @@ input[type=text], select {
   }
 
   input[type=text], select {
-    width: 100%;
+    width: 95%;
   }
 
   .flex-event-menu {
@@ -547,6 +547,12 @@ input[type=text], select {
   .breakouts {
     margin: 10px 0 10px;
         height: 100%;
+  }
+  .select-event {
+    width: 95%;
+  }
+  .create {
+    height: 100%;
   }
 }
 
