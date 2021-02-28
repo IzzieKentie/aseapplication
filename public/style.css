@@ -477,4 +477,12 @@ input[type=text], select {
   .menu_dropdown .dropbtn {
     width: 100%;
   }
+
+  .flex-feedback-menu {
+    width: 100%;
+  }
+
+  body {
+    height: 100%;
+  }
 }
