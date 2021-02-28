@@ -65,11 +65,11 @@
       </div>
       <div class="flex-feedback-menu">
         <div class="flex-feedback-menu-item">
-          <h3>Feedback Requests</h3>
+          <h3 style="text-decoration: underline">Feedback Requests</h3>
           <% if(requests.length){ 
             for(var i = 0;i < requests.length;i++) { %>
               <form method="POST" action="/givefeedback">
-              <h3><b>Please provide feedback for: <%=requests[i].event_name%> - <%=requests[i].forename%> <%=requests[i].surname%></b></h3>
+              <h4 style="font-family: ubuntu"><b>Please provide feedback for: <%=requests[i].event_name%> - <%=requests[i].forename%> <%=requests[i].surname%></b></h4>
               <p>What did they do well?</p>
               <input type="hidden" name="event_id" value="<%=requests[i].event_id%>"></input>
               <input type="hidden" name="requester_id" value="<%=requests[i].requester_id%>"></input>
@@ -89,16 +89,16 @@
       </div>
       <div class="flex-feedback-menu">
         <div class="flex-feedback-menu-item" style="padding-right: 2%">
-          <h3>Request feedback</h3>
+          <h3 style="text-decoration: underline">Request feedback</h3>
           <form method="POST" action="/feedbackRequest">
-            <h3><b>Event: </b></h3>
+            <h4 style="font-family: ubuntu"><b>Event: </b></h4>
             <select id="feedback_event" name="feedback_event">
               <% if(events.length){ 
                 for(var i = 0;i < events.length;i++) { %>
                 <option value="<%=events[i].event_id%>"><%=events[i].event_name%></option>
               <% }}%>
             </select>    
-            <h3><b>Request Feedback From: </b></h3>
+            <h4 style="font-family: ubuntu"><b>Request Feedback From: </b></h4>
             <select id="feedback_from" name="feedback_from">
               <% if(team.length){ 
                 for(var i = 0;i < team.length;i++) { %>
