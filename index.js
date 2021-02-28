@@ -258,7 +258,7 @@ app.post('/SaveEvent',(req,res)=>{
   for(var i = 0;i < cd.length;i++) {
     values.push([req.body.selected,cd[i]]); 
   }
-  var removeSQL = "DELETE FROM EVENT_ASSIGNED WHERE (EVENT_ID, MEMBER_ID) IN = ?"
+  var removeSQL = "DELETE FROM EVENT_ASSIGNED WHERE (EVENT_ID, MEMBER_ID) IN ?"
   conn.query(removeSQL, [values], function(err) {
     if (err) throw err;
     conn.end();
