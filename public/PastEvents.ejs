@@ -8,10 +8,11 @@
 <body>
 <script> 
     $(function(){
-      $("#header").load("header.html"); 
+      $("#header").load("header.html", function() {
+        document.getElementById("past").style = "border-bottom: 3px solid #0070AD;";
+      }); 
     });
-    document.getElementById("past").class = "active";
-    </script> 
+  </script>
     <div id="header"></div>
   <div class="menu_and_event">
   <div class="flex-event-menu">
