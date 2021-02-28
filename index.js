@@ -47,6 +47,16 @@ app.get('/', ifNotLoggedin, (req,res,next) => {
     }).catch(e => { console.log(e) });
 });
 
+app.get('/home', ifNotLoggedin, (req,res,next) => {
+    conn.execute("SELECT * FROM ase_team WHERE ID=?",[req.session.userID]).then(([rows]) => {
+        console.log(rows[0].forename);
+        res.render('home',{
+            name:rows[0].forename
+        });
+
+    }).catch(e => { console.log(e) });
+});
+
 app.post('/', ifLoggedin, [
     body('user').custom((value) => {
         return conn.execute('SELECT `username` FROM `ase_team` WHERE `username`=?', [value]).then(([rows]) => {

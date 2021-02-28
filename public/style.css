@@ -469,4 +469,13 @@ input[type=text], select {
     float:none;
     text-align: center;
   }
+
+  .dropdown-content {
+    position: inherit;
+  }
+
+  .menu_dropdown .dropbtn {
+    width: 100%;
+    border-bottom: 3px solid #ffffff;
+  }
 }
