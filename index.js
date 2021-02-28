@@ -259,13 +259,29 @@ app.post('/SaveEvent',(req,res)=>{
     conn.end();
   });
   var status = "";
-  if(req.body.start > Date.now()) {
+  console.log(req.body.start);
+  function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+  }
+  var date = new Date()
+  console.log(formatDate(Date.now());
+  if(req.body.start > formatDate(Date.now())) {
       status = "Upcoming";
   }
-  else if(req.body.start < Date.now()) {
+  else if(req.body.start < formatDate(Date.now())) {
       status = "Past";
   }
-  else if(req.body.start === Date.now()) {
+  else if(req.body.start === formatDate(Date.now())) {
       status = "Current";
   }
   conn.execute("UPDATE ASE_EVENTS SET event_name = ?, event_description = ?, event_client = ?, event_pf = ?, event_cofac = ?, event_fac = ?, event_start_date = ?, event_end_date = ?, event_status = ? WHERE EVENT_ID=?",[req.body.name, req.body.description, req.body.client, req.body.pf, req.body.cf, req.body.f, req.body.selected, req.body.start, req.body.end, status],)
