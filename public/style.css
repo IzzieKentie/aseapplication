@@ -462,4 +462,7 @@ input[type=text], select {
     .flex-event-selected-notes {
     width: 98%;
   }
+  .center {
+    left: 5%;
+  }
 }

@@ -34,7 +34,7 @@ const ifLoggedin = (req,res,next) => {
 
 app.get('/logout',(req,res)=>{
     req.session = null;
-    res.render('login');
+    res.redirect('login');
 });
 
 app.get('/', ifNotLoggedin, (req,res,next) => {
@@ -67,7 +67,9 @@ app.post('/', ifLoggedin, [
                     req.session.isLoggedIn = true;
                     req.session.userID = rows[0].ID;
                     req.session.role = rows[0].role; 
-                    res.render('home');
+                    res.render('home', {
+                      name:rows[0].forename
+                    });
                 }
                 else{
                     res.render('login',{
