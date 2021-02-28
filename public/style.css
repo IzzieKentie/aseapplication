@@ -533,6 +533,20 @@ input[type=text], select {
   .flex-event-menu {
     width: 92%;
   }
+
+  .breakout {
+    flex-direction: column;
+    margin: 5px 0 5px 0;
+    height: 100%;
+  }
+
+  .breakout_line {
+    margin: 0 0 0 0;
+  }
+
+  .breakouts {
+    margin: 10px 0 10px;
+  }
 }
 
 @media screen and (max-width: 750px) {
