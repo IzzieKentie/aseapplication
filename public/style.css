@@ -535,17 +535,17 @@ input[type=text], select {
   }
 
   .breakout {
-    flex-direction: column;
     margin: 5px 0 5px 0;
-    height: 100%;
   }
 
   .breakout_line {
+    flex-direction: column;
     margin: 0 0 0 0;
   }
 
   .breakouts {
     margin: 10px 0 10px;
+        height: 100%;
   }
 }
 
