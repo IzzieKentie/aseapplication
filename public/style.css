@@ -558,6 +558,10 @@ input[type=text], select {
   .create {
     height: 100%;
   }
+  .flex-feedback-selected-item {
+    width: 95%;
+    margin-left: 5%;
+  }
 }
 
 @media screen and (max-width: 750px) {
