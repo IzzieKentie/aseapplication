@@ -179,7 +179,7 @@
                       <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0; color:black" value="<%=tasks[i].task_name%>">
                       <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
                       <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
-                      <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                      <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black" hidden>
                         <% if(team.length){ 
                           for(var l = 0;l < team.length;l++) { %>
                             <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
@@ -228,7 +228,7 @@
                       <input type="hidden" name="task_name" id="<%=all_tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0; color:black" value="<%=all_tasks[i].task_name%>">
                       <input type="hidden" name="task_id" value="<%=all_tasks[i].task_id%>">
                       <p id="<%=all_tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=all_tasks[i].forename%></b></p>
-                      <select id="<%=all_tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                      <select id="<%=all_tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black" hidden>
                         <% if(team.length){ 
                           for(var l = 0;l < team.length;l++) { %>
                             <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
@@ -291,7 +291,7 @@
                     <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0; color:black" value="<%=tasks[i].task_name%>">
                     <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
                     <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
-                    <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                    <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black" hidden>
                       <% if(team.length){ 
                         for(var l = 0;l < team.length;l++) { %>
                           <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
@@ -336,7 +336,7 @@
                     <input type="hidden" name="task_name" id="<%=all_tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0; color:black" value="<%=all_tasks[i].task_name%>">
                     <input type="hidden" name="task_id" value="<%=all_tasks[i].task_id%>">
                     <p id="<%=all_tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=all_tasks[i].forename%></b></p>
-                    <select id="<%=all_tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                    <select id="<%=all_tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black" hidden>
                       <% if(team.length){ 
                         for(var l = 0;l < team.length;l++) { %>
                           <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
@@ -395,7 +395,7 @@
                     <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0; color:black" value="<%=tasks[i].task_name%>">
                     <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
                     <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
-                    <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                    <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black" hidden>
                       <% if(team.length){ 
                         for(var l = 0;l < team.length;l++) { %>
                           <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
@@ -440,7 +440,7 @@
                     <input type="hidden" name="task_name" id="<%=all_tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0; color:black" value="<%=all_tasks[i].task_name%>">
                     <input type="hidden" name="task_id" value="<%=all_tasks[i].task_id%>">
                     <p id="<%=all_tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=all_tasks[i].forename%></b></p>
-                    <select id="<%=all_tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                    <select id="<%=all_tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black" hidden>
                       <% if(team.length){ 
                         for(var l = 0;l < team.length;l++) { %>
                           <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
@@ -499,7 +499,7 @@
                     <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0; color:black" value="<%=tasks[i].task_name%>">
                     <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
                     <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
-                    <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                    <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black" hidden>
                       <% if(team.length){ 
                         for(var l = 0;l < team.length;l++) { %>
                           <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
@@ -544,7 +544,7 @@
                     <input type="hidden" name="task_name" id="<%=all_tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0; color:black" value="<%=all_tasks[i].task_name%>">
                     <input type="hidden" name="task_id" value="<%=all_tasks[i].task_id%>">
                     <p id="<%=all_tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=all_tasks[i].forename%></b></p>
-                    <select id="<%=all_tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                    <select id="<%=all_tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black" hidden>
                       <% if(team.length){ 
                         for(var l = 0;l < team.length;l++) { %>
                           <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
@@ -603,7 +603,7 @@
                     <input type="hidden" name="task_name" id="<%=tasks[i].task_id%>_task_name_edit" style="text-align:left; width:33.33%; margin: 10px 0 10px 0px; padding: 0 0 0 0; color:black" value="<%=tasks[i].task_name%>">
                     <input type="hidden" name="task_id" value="<%=tasks[i].task_id%>">
                     <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
-                    <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px" hidden>
+                    <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black" hidden>
                       <% if(team.length){ 
                         for(var l = 0;l < team.length;l++) { %>
                           <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
