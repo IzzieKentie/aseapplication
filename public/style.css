@@ -152,6 +152,7 @@ label {
 .dropdown {
   float: left;
   overflow: hidden;
+  position: inherit;
 }
 
 .dropdown .dropbtn {
