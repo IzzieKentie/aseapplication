@@ -52,9 +52,13 @@
           <h3><b>Process Facilitator</b></h3>
           <select id="pf" name="pf">
             <% if(pf.length){ 
-              for(var i = 0;i < pf.length;i++) { %>
-              <option value="<%=pf[i].ID%>"><%=pf[i].forename%> <%=pf[i].surname%></option>
-            <% }}%>
+              for(var i = 0;i < pf.length;i++) { 
+              if(data[0].event_pf === (pf[i].forename + " " + pf[i].surname) ) { %>
+                <option value="<%=pf[i].ID%>"  selected><%=pf[i].forename%> <%=pf[i].surname%></option>
+              <% } else { %>
+                <option value="<%=pf[i].ID%>"><%=pf[i].forename%> <%=pf[i].surname%></option>
+             <% }
+             }}%>
           </select>
         </div>
         <div class="flex-item-selected-event">

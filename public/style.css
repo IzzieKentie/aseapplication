@@ -14,6 +14,10 @@ p {
   color: white;
 }
 
+.logout {
+    float: right;
+  }
+
 .icons {
     height: 50%;
     float: right;
@@ -210,6 +214,8 @@ input[type=text], select {
   border-radius: 4px;
   cursor: pointer;
 }
+
+
 
 .select-event {
   width: 80%;
@@ -565,6 +571,9 @@ input[type=text], select {
   }
   .task {
     height: 100px;
+  }
+  .logout {
+    float: left;
   }
 }
 

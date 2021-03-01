@@ -12,7 +12,6 @@
 <script> 
     $(function(){
       $("#header").load("header.html", function() {
-        document.getElementById("current").style = "border-bottom: 3px solid #0070AD;";
       }); 
     });
   </script>
@@ -827,7 +826,7 @@
       </div>
     <div class="flex-event-selected-notes">
         <div class="flex-event-selected-item">
-          <h3>Notes/Other</h3>
+          <h3>Notepad</h3>
         </div>
         <% if(info.length){ %>
         <div class="flex-event-selected-item">
@@ -836,7 +835,7 @@
             <input type="hidden" name="info_id" value="<%=info[0].info_id%>"></input>
             <input type="hidden" name="event_id" value="<%=info[0].event_id%>"></input>
             <input type="hidden" name="member_id" value="<%=info[0].member_id%>"></input>
-            <textarea name="event_notes" form="add_notes" value="<%=info[0].event_notes%>" class="notes"><%=info[0].event_notes%></textarea>
+            <textarea name="event_notes" form="add_notes" value="<%=info[0].event_notes%>" class="notes" style="color: black"><%=info[0].event_notes%></textarea>
             <br><br>
             <input type="submit" class="select-event" value="Save"></input>
           </form>
