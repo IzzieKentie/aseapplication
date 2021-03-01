@@ -65,18 +65,26 @@
           <h3><b>Co Facilitator</b></h3>
           <select id="cf" name="cf">
             <% if(cf.length){ 
-              for(var i = 0;i < cf.length;i++) { %>
-              <option value="<%=cf[i].ID%>"><%=cf[i].forename%> <%=cf[i].surname%></option>
-            <% }}%>
+              for(var i = 0;i < cf.length;i++) { 
+              if(data[0].event_cofac === (cf[i].forename + " " + cf[i].surname) ) { %>
+                <option value="<%=cf[i].ID%>"  selected><%=cf[i].forename%> <%=cf[i].surname%></option>
+              <% } else { %>
+                <option value="<%=cf[i].ID%>"><%=cf[i].forename%> <%=cf[i].surname%></option>
+             <% }
+             }}%>
           </select>
         </div>
         <div class="flex-item-selected-event">
           <h3><b>Facilitator</b></h3>
           <select id="f" name="f">
             <% if(f.length){ 
-              for(var i = 0;i < f.length;i++) { %>
-              <option value="<%=f[i].ID%>"><%=f[i].forename%> <%=f[i].surname%></option>
-            <% }}%>
+              for(var i = 0;i < f.length;i++) { 
+              if(data[0].event_fac === (f[i].forename + " " + f[i].surname) ) { %>
+                <option value="<%=f[i].ID%>"  selected><%=f[i].forename%> <%=f[i].surname%></option>
+              <% } else { %>
+                <option value="<%=f[i].ID%>"><%=f[i].forename%> <%=f[i].surname%></option>
+             <% }
+             }}%>
           </select>        
         </div>
         <div class="flex-item-selected-event">
