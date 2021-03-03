@@ -846,9 +846,9 @@
           <form method="POST" action="/saveNotes" id="add_notes" style="width: 90%">
             <input type="hidden" name="request_type" value="INSERT"></input>
             <% if(event.length){ %>
-            <input type="hidden" name="event_id" value="<%=event[0].event_id%>" style="color: black"></input>
+            <input type="hidden" name="event_id" value="<%=event[0].event_id%>"></input>
             <% } %>
-            <textarea name="event_notes" form="add_notes" class="notes"></textarea>
+            <textarea name="event_notes" form="add_notes" class="notes" style="color: black"></textarea>
             <br><br>
             <input type="submit" class="select-event" value="Save"></input>
           </form>
