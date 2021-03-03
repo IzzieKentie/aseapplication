@@ -152,7 +152,7 @@ app.get('/CurrentEvent',(req,res)=>{
   var id = "";
   var breakouts = [];
   var all_tasks =  []
-  conn.execute("SELECT * FROM EVENT_ADDNL_INFO WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_STATUS=?)",[req.session.userID, "Current"],).then(([rows]) => {
+  conn.execute("SELECT * FROM EVENT_ADDNL_INFO WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_STATUS=?) AND MEMBER_ID=?",[req.session.userID, "Current", req.session.userID],).then(([rows]) => {
     info = rows;
   }).catch(e => { console.log(e) });
   conn.execute("SELECT * FROM ASE_TEAM WHERE ID IN (SELECT MEMBER_ID FROM EVENT_ASSIGNED WHERE EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_STATUS=?))",[req.session.userID, "Current"],).then(([rows]) => {
@@ -237,9 +237,9 @@ app.post('/EditSelectedEvent',(req,res)=>{
                 var assigned = [];
                 assigned = rows;
                 console.log(assigned);
-                conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[selected],).then(([rows]) => {
-                  res.render('EditSelectedEvent',{
-                    data:rows, pf, cf, f, cd, assigned
+                  conn.execute("SELECT * FROM ASE_EVENTS WHERE EVENT_ID=?",[selected],).then(([rows]) => {
+                    res.render('EditSelectedEvent',{
+                      data:rows, pf, cf, f, cd, assigned
                     });
                   }).catch(e => { console.log(e) });    
               }).catch(e => { console.log(e) });      
