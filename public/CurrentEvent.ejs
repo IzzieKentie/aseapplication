@@ -180,9 +180,13 @@
                       <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
                       <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black; padding: 0px 0px 0px 0px" hidden>
                         <% if(team.length){ 
-                          for(var l = 0;l < team.length;l++) { %>
+                        for(var l = 0;l < team.length;l++) { 
+                          if(team[l].ID === tasks[i].assigned_id) { %>
+                            <option value="<%=team[l].ID%>" selected><%=team[l].forename%> <%=team[l].surname%></option>
+                          <% } else { %>
                             <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
-                        <% }}%>
+                          <% } %>
+                      <% }} %>
                       </select> 
                     </form>
                     <div style="width:33.33%">
@@ -229,9 +233,13 @@
                       <p id="<%=all_tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=all_tasks[i].forename%></b></p>
                       <select id="<%=all_tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black; padding: 0px 0px 0px 0px" hidden>
                         <% if(team.length){ 
-                          for(var l = 0;l < team.length;l++) { %>
+                        for(var l = 0;l < team.length;l++) { 
+                          if(team[l].ID === all_tasks[i].assigned_id) { %>
+                            <option value="<%=team[l].ID%>" selected><%=team[l].forename%> <%=team[l].surname%></option>
+                          <% } else { %>
                             <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
-                        <% }}%>
+                          <% } %>
+                      <% }} %>
                       </select> 
                     </form>
                     <div style="width:33.33%">
@@ -292,9 +300,13 @@
                     <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
                     <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black; padding: 0px 0px 0px 0px" hidden>
                       <% if(team.length){ 
-                        for(var l = 0;l < team.length;l++) { %>
-                          <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
-                      <% }}%>
+                        for(var l = 0;l < team.length;l++) { 
+                          if(team[l].ID === tasks[i].assigned_id) { %>
+                            <option value="<%=team[l].ID%>" selected><%=team[l].forename%> <%=team[l].surname%></option>
+                          <% } else { %>
+                            <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
+                          <% } %>
+                      <% }} %>
                     </select> 
                   </form>
                   <div style="width:33.33%">
@@ -337,9 +349,13 @@
                     <p id="<%=all_tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=all_tasks[i].forename%></b></p>
                     <select id="<%=all_tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black; padding: 0px 0px 0px 0px" hidden>
                       <% if(team.length){ 
-                        for(var l = 0;l < team.length;l++) { %>
-                          <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
-                      <% }}%>
+                        for(var l = 0;l < team.length;l++) { 
+                          if(team[l].ID === all_tasks[i].assigned_id) { %>
+                            <option value="<%=team[l].ID%>" selected><%=team[l].forename%> <%=team[l].surname%></option>
+                          <% } else { %>
+                            <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
+                          <% } %>
+                      <% }} %>
                     </select> 
                   </form>
                   <div style="width:33.33%">
@@ -396,9 +412,13 @@
                     <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
                     <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black; padding: 0px 0px 0px 0px" hidden>
                       <% if(team.length){ 
-                        for(var l = 0;l < team.length;l++) { %>
-                          <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
-                      <% }}%>
+                        for(var l = 0;l < team.length;l++) { 
+                          if(team[l].ID === tasks[i].assigned_id) { %>
+                            <option value="<%=team[l].ID%>" selected><%=team[l].forename%> <%=team[l].surname%></option>
+                          <% } else { %>
+                            <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
+                          <% } %>
+                      <% }} %>
                     </select> 
                   </form>
                       <div style="width:33.33%">
@@ -441,9 +461,13 @@
                     <p id="<%=all_tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=all_tasks[i].forename%></b></p>
                     <select id="<%=all_tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black; padding: 0px 0px 0px 0px" hidden>
                       <% if(team.length){ 
-                        for(var l = 0;l < team.length;l++) { %>
-                          <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
-                      <% }}%>
+                        for(var l = 0;l < team.length;l++) { 
+                          if(team[l].ID === all_tasks[i].assigned_id) { %>
+                            <option value="<%=team[l].ID%>" selected><%=team[l].forename%> <%=team[l].surname%></option>
+                          <% } else { %>
+                            <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
+                          <% } %>
+                      <% }} %>
                     </select> 
                   </form>
                       <div style="width:33.33%">
@@ -500,9 +524,13 @@
                     <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
                     <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black; padding: 0px 0px 0px 0px" hidden>
                       <% if(team.length){ 
-                        for(var l = 0;l < team.length;l++) { %>
-                          <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
-                      <% }}%>
+                        for(var l = 0;l < team.length;l++) { 
+                          if(team[l].ID === tasks[i].assigned_id) { %>
+                            <option value="<%=team[l].ID%>" selected><%=team[l].forename%> <%=team[l].surname%></option>
+                          <% } else { %>
+                            <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
+                          <% } %>
+                      <% }} %>
                     </select> 
                   </form>
                       <div style="width:33.33%">
@@ -545,9 +573,13 @@
                     <p id="<%=all_tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=all_tasks[i].forename%></b></p>
                     <select id="<%=all_tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black; padding: 0px 0px 0px 0px" hidden>
                       <% if(team.length){ 
-                        for(var l = 0;l < team.length;l++) { %>
-                          <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
-                      <% }}%>
+                        for(var l = 0;l < team.length;l++) { 
+                          if(team[l].ID === all_tasks[i].assigned_id) { %>
+                            <option value="<%=team[l].ID%>" selected><%=team[l].forename%> <%=team[l].surname%></option>
+                          <% } else { %>
+                            <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
+                          <% } %>
+                      <% }} %>
                     </select> 
                   </form>
                       <div style="width:33.33%">
@@ -604,9 +636,13 @@
                     <p id="<%=tasks[i].task_id%>_task_name_assigned" style="text-align:center; width:100%; margin: 10px 0 10px 0px"><b><%=tasks[i].forename%></b></p>
                     <select id="<%=tasks[i].task_id%>_assigned" name="assigned" style="text-align:center; width:60%; margin: 10px 0 10px 0px; color: black; padding: 0px 0px 0px 0px" hidden>
                       <% if(team.length){ 
-                        for(var l = 0;l < team.length;l++) { %>
-                          <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
-                      <% }}%>
+                        for(var l = 0;l < team.length;l++) { 
+                          if(team[l].ID === tasks[i].assigned_id) { %>
+                            <option value="<%=team[l].ID%>" selected><%=team[l].forename%> <%=team[l].surname%></option>
+                          <% } else { %>
+                            <option value="<%=team[l].ID%>"><%=team[l].forename%> <%=team[l].surname%></option>
+                          <% } %>
+                      <% }} %>
                     </select> 
                   </form>
                       <div style="width:33.33%">

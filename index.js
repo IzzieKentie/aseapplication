@@ -151,7 +151,10 @@ app.get('/CurrentEvent',(req,res)=>{
   var modules = [];
   var id = "";
   var breakouts = [];
-  var all_tasks =  []
+  var all_tasks =  [];
+  var user = "";
+  user = req.session.userID;
+  console.log(user);
   conn.execute("SELECT * FROM EVENT_ADDNL_INFO WHERE EVENT_ID IN (SELECT EVENT_ID FROM EVENT_ASSIGNED WHERE MEMBER_ID=?) AND EVENT_ID IN (SELECT EVENT_ID FROM ASE_EVENTS WHERE EVENT_STATUS=?) AND MEMBER_ID=?",[req.session.userID, "Current", req.session.userID],).then(([rows]) => {
     info = rows;
   }).catch(e => { console.log(e) });
@@ -174,7 +177,7 @@ app.get('/CurrentEvent',(req,res)=>{
     modules = rows;
     console.log(modules);
     res.render('CurrentEvent',{
-      event, info, tasks, team, role, modules, breakouts, all_tasks
+      event, info, tasks, team, role, modules, breakouts, all_tasks, user
     });
   }).catch(e => { console.log(e) });
 });
