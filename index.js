@@ -18,6 +18,8 @@ app.use(cookieSession({
     maxAge:  3600 * 1000 // 1hr
 }));
 
+/* Code below is adapted from https://www.w3jar.com/node-js-login-and-registration-system-with-express-js-and-mysql/ (Accessed January 2021)*/
+
 const ifNotLoggedin = (req, res, next) => {
     if(!req.session.isLoggedIn){
         return res.render('login');
@@ -94,12 +96,14 @@ app.post('/', ifLoggedin, [
         let allErrors = validation_result.errors.map((error) => {
             return error.msg;
         });
-        // REDERING login-register PAGE WITH LOGIN VALIDATION ERRORS
+        // Render login page with the validation errors
         res.render('login',{
             login_errors:allErrors
         });
     }
 });
+
+/* End of adapated code from https://www.w3jar.com/node-js-login-and-registration-system-with-express-js-and-mysql/ (Accessed January 2021) */
 
 
 //Past Events
@@ -407,7 +411,8 @@ app.post('/feedbackRequest', (req,res)=>{
   });
 
 app.post('/giveFeedback', (req,res)=>{
-    conn.execute("INSERT INTO FEEDBACK (reciever_id, giver_id, did_well, not_well, improvements, event_id) VALUES(?, ?, ?, ?, ?, ?)",[req.body.requester_id, req.body.giver_id, req.body.did_well, req.body.not_well, req.body.improvements, req.body.event_id],).catch(e => { console.log(e) });
+    conn.execute("INSERT INTO FEEDBACK (reciever_id, giver_id, did_well, not_well, improvements, event_id) VALUES(?, ?, ?, ?, ?, ?)",
+      [req.body.requester_id, req.body.giver_id, req.body.did_well, req.body.not_well, req.body.improvements, req.body.event_id],).catch(e => { console.log(e) });
     conn.execute("DELETE FROM FEEDBACK_REQUESTS WHERE request_id = ?",[req.body.request_id],).catch(e => { console.log(e) });
   res.redirect('feedback');
   });
@@ -475,7 +480,8 @@ app.post('/CreateNewEvent', (req,res)=>{
       cf = rows[0].forename + " " + rows[0].surname;
   conn.execute("SELECT forename, surname from ASE_TEAM WHERE ID = ?",[req.body.fac],).then(([rows]) => {
       f = rows[0].forename + " " + rows[0].surname;
-  conn.execute("INSERT INTO ASE_EVENTS (event_name, event_description, event_client, event_pf, event_cofac, event_fac, event_status, event_start_date, event_end_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",[req.body.name, req.body.description, req.body.client, prof, cf, f, status, req.body.start, req.body.end],)
+  conn.execute("INSERT INTO ASE_EVENTS (event_name, event_description, event_client, event_pf, event_cofac, event_fac, event_status, event_start_date, event_end_date) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    [req.body.name, req.body.description, req.body.client, prof, cf, f, status, req.body.start, req.body.end],)
   .catch(e => { console.log(e) });
   conn.execute("SELECT event_id FROM ASE_EVENTS ORDER BY event_id DESC LIMIT 1",).then(([rows]) => {
     event = rows;
@@ -513,11 +519,7 @@ app.post('/CreateNewEvent', (req,res)=>{
 }).catch(e => { console.log(e) });
 });
 
-app.post('/in-progress', (req,res) =>{
-    conn.execute("UPDATE EVENT_TASKS SET TASK_STATUS=? WHERE TASK_ID=?",["In Progress", req.body.task_id],)
-    .catch(e => { console.log(e) });
-    res.redirect('CurrentEvent');
-});
+
 
 app.get('/profile', (req,res) =>{
     conn.execute("SELECT * FROM TEAM_PROFILE WHERE MEMBER_ID = ?",[req.session.userID],).then(([rows]) => {
@@ -533,6 +535,12 @@ app.get('/encyclopedia', (req,res) =>{
         data:rows
       });
     }).catch(e => { console.log(e) });
+});
+
+app.post('/in-progress', (req,res) =>{
+    conn.execute("UPDATE EVENT_TASKS SET TASK_STATUS=? WHERE TASK_ID=?",["In Progress", req.body.task_id],)
+    .catch(e => { console.log(e) });
+    res.redirect('CurrentEvent');
 });
 
 app.post('/review', (req,res) =>{
@@ -568,7 +576,8 @@ app.post('/newTask', (req,res) =>{
 });
 
 app.post('/newModule', (req,res) =>{
-    conn.execute("INSERT INTO EVENT_FOTD_MODULES (event_id, module_name, module_start_time, module_end_time, module_location, module_leader) VALUES (?,?,?,?,?,?)",[req.body.event_id, req.body.module_name, req.body.module_start_time, req.body.module_end_time, req.body.module_location, req.body.module_leader],)
+    conn.execute("INSERT INTO EVENT_FOTD_MODULES (event_id, module_name, module_start_time, module_end_time, module_location, module_leader) VALUES (?,?,?,?,?,?)",
+      [req.body.event_id, req.body.module_name, req.body.module_start_time, req.body.module_end_time, req.body.module_location, req.body.module_leader],)
     .catch(e => { console.log(e) });
     res.redirect('CurrentEvent');
 });

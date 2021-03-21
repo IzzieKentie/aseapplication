@@ -6,12 +6,12 @@ languages:
 products:
 - azure
 - azure-app-service
-description: "This sample demonstrates a tiny Hello World Node.js app for Azure App Service."
+description: "This application is to improve event coordination in the ASE. Isabelle Kent FYP"
 ---
 
-# Node.js Hello World
+# Node.js 
 
-This sample demonstrates a tiny Hello World node.js app for [App Service Web App](https://docs.microsoft.com/azure/app-service-web).
+This application is a node.js applicaton for [App Service Web App](https://docs.microsoft.com/azure/app-service-web).
 
 ## Contributing
 
