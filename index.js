@@ -279,6 +279,7 @@ app.post('/SaveEvent',(req,res)=>{
     conn.end();
   });
   var status = "";
+  /* Function below is taken from Kos from https://stackoverflow.com/questions/23593052/format-javascript-date-as-yyyy-mm-dd. Accessed February 2021*/
   function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
@@ -292,6 +293,7 @@ app.post('/SaveEvent',(req,res)=>{
 
     return [year, month, day].join('-');
   }
+  /* End of code taken from https://stackoverflow.com/questions/23593052/format-javascript-date-as-yyyy-mm-dd */
   var date = new Date();
   console.log(Date.parse(formatDate(Date.now())));
   if(Date.parse(req.body.start) > Date.parse(formatDate(Date.now()))) {
@@ -446,6 +448,7 @@ app.post('/CreateNewEvent', (req,res)=>{
   var fac = req.body.fac;
   var pf = req.body.pf;
     var status = "";
+/* Function below is taken from Kos from https://stackoverflow.com/questions/23593052/format-javascript-date-as-yyyy-mm-dd. Accessed February 2021*/
   function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
@@ -459,6 +462,7 @@ app.post('/CreateNewEvent', (req,res)=>{
 
     return [year, month, day].join('-');
   }
+/* End of code taken from https://stackoverflow.com/questions/23593052/format-javascript-date-as-yyyy-mm-dd */
   var date = new Date();
   console.log(Date.parse(formatDate(Date.now())));
   if(Date.parse(req.body.start) > Date.parse(formatDate(Date.now()))) {
